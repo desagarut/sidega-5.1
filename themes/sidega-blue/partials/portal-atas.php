@@ -35,7 +35,7 @@
             </a>
           </div>
           <div class="col-lg-12 col-md-4 mt-1">
-          <a href="<?= site_url('first/toko_warga') ?>">
+          <a href="<?= site_url('first/toko_show') ?>">
             <div class="icon-box">
               <i class="ri-store-2-fill" style="color:#e80368;"></i>
               <h3>Cari Toko Warga</h3>

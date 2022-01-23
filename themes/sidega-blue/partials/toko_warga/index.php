@@ -1,26 +1,329 @@
-<!-- ======= Portfolio Section ======= -->
+<div class="content-wrapper">
 
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-      <div class="section-title" data-aos="fade-left">
-        <h2>Daftar Toko Warga 
-          <?= ucfirst($this->setting->sebutan_desa)?>
-        </h2><?= "Album : $data[nama]" ?>
-      </div>
-      <div class="row portfolio-container" data-aos="fade-up">
-        <?php foreach ($w_gal As $data): ?>
-        <?php if (is_file(LOKASI_GALERI . "sedang_" . $data['gambar'])): ?>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app"> 
-            	<a href="<?= site_url("first/toko_produk/{$data['id']}") ?>"><img src="<?= AmbilGaleri($data['gambar'],'kecil')?>" class="img-fluid" alt="" width="350"></a>
-              <div class="portfolio-info">
-                <h4>
-                  <?= "Album : $data[nama]" ?>
-                </h4>
-                <a href="<?= AmbilGaleri($data['gambar'],'kecil')?>" data-gall="portfolioGallery" class="venobox preview-link" title="<?= "Album : $data[nama]" ?>"><i class="bx bx-plus"></i></a> <a href="<?= site_url("first/toko_produk/{$data['id']}") ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a> </div>
+
+  <section class="content" id="maincontent">
+
+    <form id="mainformexcel" name="mainformexcel" method="post" class="form-horizontal">
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="box box-info">
+
+            <div class="box-header with-border"> </div>
+
+            <div class="box-body">
+
+              <div class="row">
+
+                <div class="col-sm-12">
+
+                  <div class="row">
+
+                    <div class="col-sm-12">
+
+                      <div class="row">
+
+                        <div class="col-sm-2">
+
+                            <select class="form-control input-sm select2" id="tahun" name="tahun" style="width:100%;">
+
+                                <option selected value="semua">Semua Tahun</option>
+
+                                <?php foreach ($list_tahun as $list) : ?>
+
+                                    <option value="<?= $list->tahun_berdiri ?>"><?= $list->tahun_berdiri ?></option>
+
+                                <?php endforeach; ?>
+
+                            </select>
+
+                        </div>
+
+                      </div>
+
+                      <hr>
+
+                      <div id="tabel-tokowarga" class="table">
+
+                        <table id="tabel-tokowarga" class="table table-bordered dataTable table-hover">
+
+                          <thead class="bg-purple">
+
+                            <tr>
+
+                              <th class="text-center">No</th>
+
+                              <th width="230px" class="text-center">Aksi</th>
+
+                              <th class="text-center">Nama Usaha</th>
+
+                              <th class="text-center">Nama Pengelola</th>
+
+                              <th class="text-center">Tahun Berdiri</th>
+
+                              <th class="text-center">Stok terbanyak</th>
+
+                              <th class="text-center">Kategori</th>
+
+                              <th class="text-center">Produk Unggulan</th>
+
+                              <th class="text-center">Omset</th>
+
+                              <th class="text-center">Kepemilikan</th>
+
+                              <th class="text-center">Lokasi</th>
+
+                              <th class="text-center">Foto Toko</th>
+
+                            </tr>
+
+                          </thead>
+
+                          <tbody>
+
+                          </tbody>
+
+                        </table>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
-        <?php endif; ?>
-        <?php endforeach; ?>
+
+          </div>
+
+        </div>
+
       </div>
-    </div>
+
+    </form>
+
   </section>
-  <!-- End Portfolio Section --> 
+
+</div>
+
+<?php $this->load->view('global/confirm_delete'); ?>
+
+<script>
+
+	$(document).ready(function() {
+
+		let tabelTokoWarga = $('#tabel-tokowarga').DataTable({
+
+			'processing': true,
+
+			'serverSide': true,
+
+			'autoWidth': false,
+
+			'pageLength': 10,
+
+			'order': [
+
+				[5, 'desc'],
+
+			],
+
+			'columnDefs': [{
+
+				'orderable': false,
+
+				'targets': [0, 1, 10],
+
+			}],
+
+			'ajax': {
+
+				'url': '<?= site_url('toko_warga'); ?>',
+
+				'method': 'POST',
+
+				'data': function(d) {
+
+					d.tahun_berdiri = $('#tahun').val();
+
+				}
+
+			},
+
+			'columns': [
+
+				{
+
+					'data': null,
+
+					'class': 'text-center',
+
+					'orderable': false,
+
+					'searchable': false,
+
+					'render': function (data, type, row, meta) {
+
+						return meta.row+meta.settings._iDisplayStart+1;
+
+					}
+
+				},
+
+				{
+
+					'data': function(data) {
+
+						let status;
+
+						if (data.status == 1) {
+
+							status = `<a href="<?= site_url('toko_warga/lock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Non Aktifkan Toko Warga"><i class="fa fa-unlock"></i></a>`
+
+						} else {
+
+							status = `<a href="<?= site_url('toko_warga/unlock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Aktifkan Toko Warga"><i class="fa fa-lock"></i></a>`
+
+						}
+
+
+
+						return `
+
+							<a href="<?= site_url('toko_warga/form/'); ?>${data.id}" title="Edit Data"  class="btn bg-orange btn-box btn-sm"><i class="fa fa-edit"></i></a>
+
+							<a href="<?= site_url('toko_warga/lokasi_maps/'); ?>${data.id}" class="btn bg-olive btn-box btn-sm" title="Lokasi Toko Warga"><i class="fa fa-map"></i></a>
+
+							<a href="<?= site_url('toko_warga_produk/show/'); ?>${data.id}" class="btn bg-purple btn-box btn-sm" title="Detil Produk Toko Warga"><i class="fa fa-list-ol"></i></a>
+
+							${status}
+
+							<a href="#" data-href="<?= site_url('toko_warga/delete/'); ?>${data.id}" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
+
+							<a href="<?= site_url('toko_warga/info_toko_warga/'); ?>${data.id}" target="_blank" class="btn bg-blue btn-box btn-sm" title="Lihat Detil"><i class="fa fa-eye"></i></a>
+
+							`
+
+					}
+
+				},
+
+				{
+
+					'data': 'nama_usaha'
+
+				},
+
+				{
+
+					'data': 'nama_pengelola'
+
+				},
+
+				{
+
+					'data': 'tahun_berdiri'
+
+				},
+
+				{
+
+					'data': 'max_persentase'
+
+				},
+
+				{
+
+					'data': 'kategori_toko'
+
+				},
+
+				{
+
+					'data': 'produk_utama'
+
+				},
+
+				{
+
+					'data': 'taksiran_omset',
+
+					'render': $.fn.dataTable.render.number( ',', '.', 0, 'Rp ' )
+
+				},
+
+				{
+
+					'data': 'kepemilikan_tempat_usaha'
+
+				},
+
+				{
+
+					'data': 'alamat'
+
+				},
+
+				{
+
+					'data': function (data) {
+
+						return `<div class="user-panel">
+
+									<div class="image2">
+
+										<img src="<?= base_url(LOKASI_GALERI) ?>${data.foto}" class="img-circle" alt="Gambar Toko">
+
+									</div>
+
+								</div>`
+
+					}
+
+				},
+
+			],
+
+			'language': {
+
+				'url': "<?= base_url('/assets/bootstrap/js/dataTables.indonesian.lang') ?>"
+
+			}
+
+		});
+
+
+
+		tabelTokowarga.on('draw.dt', function() {
+
+			let PageInfo = $('#tabel-tokowarga').DataTable().page.info();
+
+			tableTokowarga.column(0, {
+
+				page: 'current'
+
+			}).nodes().each(function(cell, i) {
+
+				cell.innerHTML = i + 1 + PageInfo.start;
+
+			});
+
+		});
+
+
+
+		$('#tahun').on('select2:select', function (e) {
+
+			tabelTokowarga.ajax.reload();
+
+		});
+
+	});
+
+</script> 
+

@@ -28,7 +28,7 @@
         <div class="container">
         	<div class="row">
             <div class="col-lg-12 entries">
-                  <?php $this->load->view($folder_themes . '/partials/toko_warga/index.php') ?>
+                  <?php $this->load->view($folder_themes . '/partials/toko_warga_old/index.php') ?>
             </div>
 				<?php // $this->load->view($folder_themes .'/partials/sidebar.php') ?>
             </div>

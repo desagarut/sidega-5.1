@@ -683,7 +683,7 @@ class First extends Web_Controller {
 	}
 	
 	// Halaman arsip album Toko Warga
-	public function toko_warga($p=1)
+	public function toko_show($p=1)
 	{
 		$data = $this->includes;
 		$data['p'] = $p;
@@ -701,12 +701,12 @@ class First extends Web_Controller {
 	}
 
 	// halaman rincian tiap album galeri
-	public function toko_produk($p=1)
+	public function produk_show($gal=0, $p=1)
 	{
 		$data = $this->includes;
 		$data['p'] = $p;
 		$data['gal'] = $gal;
-		$data['paging'] = $this->first_toko_warga_m->paging2($p);
+		$data['paging'] = $this->first_toko_warga_m->paging2($gal, $p);
 		$data['paging_range'] = 3;
 		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
 		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
@@ -733,7 +733,7 @@ class First extends Web_Controller {
 		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
 		$data['pages'] = range($data['start_paging'], $data['end_paging']);
 
-		$data['gallery'] = $this->first_toko_warga_m->sub_gallery_show($gal,$data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $this->first_toko_warga_m->produk_show($gal,$data['paging']->offset, $data['paging']->per_page);
 		$data['parrent'] = $this->first_toko_warga_m->get_parrent($gal);
 		$data['mode'] = 1;
 
