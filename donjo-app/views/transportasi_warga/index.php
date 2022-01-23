@@ -1,0 +1,171 @@
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>Daftar Transportasi Warga</h1>
+    <ol class="breadcrumb">
+      <li><a href="<?= site_url('hom_sid') ?>"><i class="fa fa-home"></i> Home</a></li>
+      <li class="active">Daftar Toko Warga</li>
+    </ol>
+  </section>
+  <section class="content" id="maincontent">
+    <form id="mainformexcel" name="mainformexcel" method="post" class="form-horizontal">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border"> <a href="<?= site_url('transportasi_warga/form') ?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Tambah Data Baru"> <i class="fa fa-plus"></i>Tambah Data </a> </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-2">
+                            <select class="form-control input-sm select2" id="tahun" name="tahun" style="width:100%;">
+                                <option selected value="semua">Semua Tahun</option>
+                                <?php foreach ($list_tahun as $list) : ?>
+                                    <option value="<?= $list->tahun_berdiri ?>"><?= $list->tahun_berdiri ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="table-responsive">
+                        <table id="tabel-tokowarga" class="table table-bordered dataTable table-hover">
+                          <thead class="bg-purple">
+                            <tr>
+                              <th class="text-center">No</th>
+                              <th width="230px" class="text-center">Aksi</th>
+                              <th class="text-center">Nama Usaha</th>
+                              <th class="text-center">Nama Pengelola</th>
+                              <th class="text-center">Tahun Berdiri</th>
+                              <th class="text-center">Stok terbanyak</th>
+                              <th class="text-center">Kategori</th>
+                              <th class="text-center">Produk Unggulan</th>
+                              <th class="text-center">Omset</th>
+                              <th class="text-center">Kepemilikan</th>
+                              <th class="text-center">Lokasi</th>
+                              <th class="text-center">Foto Toko</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+<?php $this->load->view('global/confirm_delete'); ?>
+<script>
+	$(document).ready(function() {
+		let tabelTokoWarga = $('#tabel-tokowarga').DataTable({
+			'processing': true,
+			'serverSide': true,
+			'autoWidth': false,
+			'pageLength': 10,
+			'order': [
+				[5, 'desc'],
+			],
+			'columnDefs': [{
+				'orderable': false,
+				'targets': [0, 1, 10],
+			}],
+			'ajax': {
+				'url': '<?= site_url('toko_warga'); ?>',
+				'method': 'POST',
+				'data': function(d) {
+					d.tahun_berdiri = $('#tahun').val();
+				}
+			},
+			'columns': [
+				{
+					'data': null,
+					'class': 'text-center',
+					'orderable': false,
+					'searchable': false,
+					'render': function (data, type, row, meta) {
+						return meta.row+meta.settings._iDisplayStart+1;
+					}
+				},
+				{
+					'data': function(data) {
+						let status;
+						if (data.status == 1) {
+							status = `<a href="<?= site_url('transportasi_warga/lock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Non Aktifkan Toko Warga"><i class="fa fa-unlock"></i></a>`
+						} else {
+							status = `<a href="<?= site_url('transportasi_warga/unlock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Aktifkan Toko Warga"><i class="fa fa-lock"></i></a>`
+						}
+
+						return `
+							<a href="<?= site_url('transportasi_warga/form/'); ?>${data.id}" title="Edit Data"  class="btn bg-orange btn-box btn-sm"><i class="fa fa-edit"></i></a>
+							<a href="<?= site_url('transportasi_warga/lokasi_maps/'); ?>${data.id}" class="btn bg-olive btn-box btn-sm" title="Lokasi Toko Warga"><i class="fa fa-map"></i></a>
+							<a href="<?= site_url('toko_warga_produk/show/'); ?>${data.id}" class="btn bg-purple btn-box btn-sm" title="Detil Produk Toko Warga"><i class="fa fa-list-ol"></i></a>
+							${status}
+							<a href="#" data-href="<?= site_url('transportasi_warga/delete/'); ?>${data.id}" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
+							<a href="<?= site_url('transportasi_warga/info_transportasi_warga/'); ?>${data.id}" target="_blank" class="btn bg-blue btn-box btn-sm" title="Lihat Detil"><i class="fa fa-eye"></i></a>
+							`
+					}
+				},
+				{
+					'data': 'nama_usaha'
+				},
+				{
+					'data': 'nama_pengelola'
+				},
+				{
+					'data': 'tahun_berdiri'
+				},
+				{
+					'data': 'max_persentase'
+				},
+				{
+					'data': 'kategori_toko'
+				},
+				{
+					'data': 'produk_utama'
+				},
+				{
+					'data': 'taksiran_omset',
+					'render': $.fn.dataTable.render.number( ',', '.', 0, 'Rp ' )
+				},
+				{
+					'data': 'kepemilikan_tempat_usaha'
+				},
+				{
+					'data': 'alamat'
+				},
+				{
+					'data': function (data) {
+						return `<div class="user-panel">
+									<div class="image2">
+										<img src="<?= base_url(LOKASI_GALERI) ?>${data.foto}" class="img-circle" alt="Gambar Toko">
+									</div>
+								</div>`
+					}
+				},
+			],
+			'language': {
+				'url': "<?= base_url('/assets/bootstrap/js/dataTables.indonesian.lang') ?>"
+			}
+		});
+
+		tabelTokowarga.on('draw.dt', function() {
+			let PageInfo = $('#tabel-tokowarga').DataTable().page.info();
+			tableTokowarga.column(0, {
+				page: 'current'
+			}).nodes().each(function(cell, i) {
+				cell.innerHTML = i + 1 + PageInfo.start;
+			});
+		});
+
+		$('#tahun').on('select2:select', function (e) {
+			tabelTokowarga.ajax.reload();
+		});
+	});
+</script> 
