@@ -102,19 +102,15 @@
               <tr>
                 <td><input type="checkbox" name="id_cb[]" value="<?=$data['id']?>" /></td>
                 <td><?=$data['no']?></td>
-                <td nowrap>
-                <a href="<?=site_url("toko_warga/urut/$data[id]/1/$sub[id]")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Bawah"><i class="fa fa-arrow-down"></i></a> 
-                <a href="<?=site_url("toko_warga/urut/$data[id]/2/$sub[id]")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Atas"><i class="fa fa-arrow-up"></i></a> 
-                
+                <td nowrap><a href="<?=site_url("toko_warga/urut/$data[id]/1/$sub[id]")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Bawah"><i class="fa fa-arrow-down"></i></a> <a href="<?=site_url("toko_warga/urut/$data[id]/2/$sub[id]")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Atas"><i class="fa fa-arrow-up"></i></a>
                   <?php if ($data['enabled'] == '2'): ?>
                   <a href="<?= site_url("toko_warga/gallery_lock/".$data['id']."/$gallery")?>" class="btn bg-navy btn-box btn-sm"  title="Aktifkan Gambar"><i class="fa fa-lock">&nbsp;</i></a>
                   <?php elseif ($data['enabled'] == '1'): ?>
                   <a href="<?= site_url("toko_warga/gallery_unlock/".$data['id']."/$gallery")?>" class="btn bg-navy btn-box btn-sm"  title="Non Aktifkan Gambar"><i class="fa fa-unlock"></i></a>
-                  <?php endif ?><br/>
+                  <?php endif ?>
+                  <br/>
                   <?php if ($this->CI->cek_hak_akses('h')): ?>
-                    <a href="<?= site_url("toko_warga/form_produk/$gallery/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a>
-                  
-                  <a href="#" data-href="<?= site_url("toko_warga/delete_produk/$gallery/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
+                  <a href="<?= site_url("toko_warga/form_produk/$gallery/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a> <a href="#" data-href="<?= site_url("toko_warga/delete_produk/$gallery/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
                   <?php endif; ?></td>
                 <td align="center"><label data-rel="popover" data-content="<img width=200 height=200 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>"> <img width=50 height=50 class="img-circle" src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>></label></td>
                 <td><label data-rel="popover" data-content="<img width=200 height=134 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>">
