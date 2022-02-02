@@ -11,22 +11,6 @@
             </a>
           </div>
           <div class="col-lg-12 col-md-4 mt-1">
-          <a href="<?= site_url('mandiri_web') ?>">
-            <div class="icon-box">
-              <i class="ri-login-circle-line" style="color: #29cc61;"></i>
-              <h3>Login Layanan Masyarakat</h3>
-            </div>
-            </a>
-          </div>
-          <!--<div class="col-lg-12 col-md-4 mt-1">
-          <a href="<?= site_url('first/statistik/15') ?>">
-            <div class="icon-box">
-              <i class="ri-git-branch-line" style="color: #5578ff;"></i>
-              <h3>Alur Proses Pelayanan</h3>
-            </div>
-            </a>
-          </div>-->
-          <div class="col-lg-12 col-md-4 mt-1">
           <a href="https://cekbansos.kemensos.go.id/">
             <div class="icon-box">
               <i class="ri-checkbox-circle-line" style="color:#F90" ></i>
@@ -34,16 +18,18 @@
             </div>
             </a>
           </div>
+
           <div class="col-lg-12 col-md-4 mt-1">
-          <a href="<?= site_url('first/toko_show') ?>">
+          <a href="<?= site_url('mandiri_web') ?>">
             <div class="icon-box">
-              <i class="ri-store-2-fill" style="color:#e80368;"></i>
-              <h3>Cari Toko Warga</h3>
+              <i class="ri-login-circle-line" style="color: #29cc61;"></i>
+              <h3>Login Layanan Masyarakat</h3>
             </div>
             </a>
           </div>
+
           <div class="col-lg-12 col-md-4 mt-1">
-            <div class="icon-box" align="center">
+            <div class="icon-box">
               <a href=""><i class="ri-facebook-circle-fill" style="color:#2062FB;"></i></a>
               <a href=""><i class="ri-messenger-fill" style="color:#03A2ED;"></i></a>
               <a href=""><i class="ri-youtube-fill" style="color:#DE031A;"></i></a>
@@ -52,14 +38,16 @@
               <a href=""><i class="ri-telegram-fill" style="color:#52415A;"></i></a>
             </div>
           </div>
-          <!--<div class="col-lg-12 col-md-4 mt-1">
-          <a href="<?= site_url('first/statistik/15') ?>">
+          <div class="col-lg-12 col-md-4 mt-1">
             <div class="icon-box">
-              <i class="ri-fingerprint-line ri-bar-chart-2-fill" style="color: #5578ff;"></i>
-              <h3>Cek KTP/KK</h3>
+              <marquee behavior="alternate" scrollamount="1">
+                <a href="<?= site_url('first/toko_show') ?>"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/toko.png" ) ?>" width="70px" /> </a>
+                <a href="<?= site_url('first/tuwa') ?>"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/tukang.png" ) ?>" width="70px" /> </a>
+                <a href="<?= site_url('first/tawa') ?>"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/transport.png" ) ?>" width="70px" /> </a>
+                <a href="<?= site_url('first/wisata') ?>"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/wisata.png" ) ?>" width="70px" /> </a>
+              </marquee>
             </div>
-            </a>
-          </div>-->
+          </div>
         </div>
 
     </section><!-- End Features Section -->

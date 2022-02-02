@@ -1,40 +1,20 @@
 <?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-    <!-- ======= Portfolio Details Section ======= -->
-
-<section id="portfolio-details" class="portfolio-details">
-  <div class="container" data-aos="fade-up">
-    <div class="portfolio-details-container">
-      <div class="owl-carousel portfolio-details-carousel">
-      
-        <?php if($gallery) : ?>
-        <?php foreach($gallery as $data) : ?>
-        
-        <?php if(is_file(LOKASI_GALERI . $data['gambar'])) : ?>
-        <?php $link = AmbilGaleri($data['gambar'],'sedang') ?>
-        <div class="portfolio-description"> 
-        	<img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama_usaha'] ?>" style="width:100%; height:600px">
-
-            <div class="portfolio-info" style="background:rgba(10, 4, 4, 0.6)">
-                <h3>
-                  <small>Nama Toko:</small> <?= $data['nama'] ?> 
-                </h3>
-                <br/><br/>
-               <ul>
-                  <li><strong>Nama Toko</strong>:
-                    <?= $data['nama_produk'] ?>
-                  </li>
-                  <li><strong>Pengelola</strong>: <?= $data['nama_pengelola'] ?></li>
-                  <li><strong>Project date</strong>: 01 March, 2020</li>
-                  <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-                </ul>
-          </div>
-        </div>
-        <?php endif ?>
-        <?php endforeach ?>
-        <?php endif ?>
-      </div>
-    </div>
-  </div>
+<h2 class="content__heading">Produk Toko<a href="<?= site_url('first/gallery') ?>" class="gallery__link"><?= $id_toko_warga['nama_usaha'] ?></a></h2>
+<hr class="--mb-2 --mt-2">
+<section class="gallery">
+	<?php if($gallery) : ?>
+		<ul class="gallery__list">
+			<?php foreach($gallery as $album) : ?>
+				<?php if(is_file(LOKASI_GALERI . "kecil_" . $album['gambar'])) : ?>
+					<?php $link = AmbilGaleri($album['gambar'],'sedang') ?>
+					<li class="gallery__item">
+						<a href="<?= $link ?>" data-fancybox="images" data-caption="<?= $data['nama'] ?>">
+							<img src="<?= AmbilGaleri($album['gambar'],'kecil') ?>" alt="<?= $album['nama'] ?>" class="gallery__image" title="<?= $album['nama'] ?>">
+						</a>
+					</li>
+				<?php endif ?>
+			<?php endforeach ?>
+		</ul>
+	<?php endif ?>
 </section>
-<!-- End Portfolio Details Section -->

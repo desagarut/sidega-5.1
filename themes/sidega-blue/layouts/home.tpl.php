@@ -16,7 +16,7 @@
 	}*/
 ?>
 <?php $this->load->view($folder_themes .'/partials/slider') ?>
-<?php $this->load->view($folder_themes .'/partials/toko_warga/slider') ?>
+<?php // $this->load->view($folder_themes .'/partials/toko_warga/slider') ?>
 <?php $this->load->view($folder_themes .'/partials/tentang') ?>
 <?php if(empty($this->input->get('cari')) AND $headline AND $this->uri->segment(2) != 'kategori') : ?>
 	<?php $this->load->view($folder_themes .'/partials/headline') ?>

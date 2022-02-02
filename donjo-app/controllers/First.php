@@ -25,43 +25,47 @@ class First extends Web_Controller {
 			}
 		}
 
+		$this->load->model('anjungan_model');
 		$this->load->model('config_model');
+		
 		$this->load->model('first_m');
 		$this->load->model('first_artikel_m');
-		$this->load->model('teks_berjalan_model');
 		$this->load->model('first_gallery_m');
 		$this->load->model('first_menu_m');
-		$this->load->model('web_menu_model');
+		$this->load->model('first_toko_warga_m');
 		$this->load->model('first_penduduk_m');
-		$this->load->model('penduduk_model');
-		$this->load->model('surat_model');
+		
 		$this->load->model('keluarga_model');
-		$this->load->model('web_widget_model');
-		$this->load->model('web_gallery_model');
-		$this->load->model('laporan_penduduk_model');
-		$this->load->model('track_model');
-		$this->load->model('keluar_model');
-		$this->load->model('referensi_model');
 		$this->load->model('keuangan_model');
-		$this->load->model('keuangan_manual_model');
-		$this->load->model('web_dokumen_model');
-		$this->load->model('mailbox_model');
-		$this->load->model('lapor_model');
-		$this->load->model('program_bantuan_model');
 		$this->load->model('keuangan_manual_model');
 		$this->load->model('keuangan_grafik_model');
 		$this->load->model('keuangan_grafik_manual_model');
+		$this->load->model('keluar_model');
+ 
+ 		$this->load->model('laporan_penduduk_model');
+		$this->load->model('lapor_model');
+		$this->load->model('mailbox_model');
+		
+		$this->load->model('program_bantuan_model');
 		$this->load->model('plan_lokasi_model');
 		$this->load->model('plan_area_model');
 		$this->load->model('plan_garis_model');
-		
-		$this->load->model('anjungan_model');
 		$this->load->model('pembangunan_model');
 		$this->load->model('pembangunan_dokumentasi_model');
+		$this->load->model('pamong_model');
+		$this->load->model('penduduk_model');
+		
+		$this->load->model('referensi_model');
+		$this->load->model('surat_model');
+		$this->load->model('track_model');
+		$this->load->model('teks_berjalan_model');
+		
+		$this->load->model('web_menu_model');
+		$this->load->model('web_widget_model');
+		$this->load->model('web_gallery_model');
+		$this->load->model('web_dokumen_model');
 		
 		$this->load->library('upload');
-		$this->load->model('first_toko_warga_m');
-		$this->load->model('referensi_model');
 	}
 
 	// public function auth()
@@ -682,64 +686,109 @@ class First extends Web_Controller {
 		$this->load->view($this->template, $data);
 	}
 	
-	// Halaman arsip album Toko Warga
-	public function toko_show($p=1)
+	// Halaman Toko Warga
+/*	public function clear_toko_show()
+	{
+		unset($_SESSION['cari']);
+		unset($_SESSION['filter']);
+		redirect('toko_show');
+	}
+*/
+	public function toko_show($p=1, $o=0)
 	{
 		$data = $this->includes;
+		
 		$data['p'] = $p;
-		$data['paging'] = $this->first_toko_warga_m->paging($p);
-		$data['paging_range'] = 3;
-		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
-		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
-		$data['pages'] = range($data['start_paging'], $data['end_paging']);
-		$data['gallery'] = $this->first_toko_warga_m->toko_show($data['paging']->offset, $data['paging']->per_page);
+		$data['o'] = $o;
+
+	/*	if (isset($_SESSION['cari']))
+			$data['cari'] = $_SESSION['cari'];
+		else $data['cari'] = '';
+
+		if (isset($_SESSION['filter']))
+			$data['filter'] = $_SESSION['filter'];
+		else $data['filter'] = '';
+	*/
+		if (isset($_POST['per_page']))
+			$_SESSION['per_page'] = $_POST['per_page'];
+		$data['per_page'] = $_SESSION['per_page'];
+
+		$data['paging'] = $this->first_toko_warga_m->paging($p,$o);
+		$data['main'] = $this->first_toko_warga_m->list_data($o, $data['paging']->offset, $data['paging']->per_page);
+		//$data['keyword'] = $this->first_toko_warga_m->autocomplete();
 
 		$this->_get_common_data($data);
 
 		$this->set_template('layouts/toko_warga.tpl.php');
 		$this->load->view($this->template, $data);
+
 	}
 
-	// halaman rincian tiap album galeri
-	public function produk_show($gal=0, $p=1)
+/*	public function search_toko($gallery='')
+	{
+		$cari = $this->input->post('cari');
+		if ($cari != '')
+			$_SESSION['cari'] = $cari;
+		else unset($_SESSION['cari']);
+		if ($gallery != '')
+		{
+			redirect("toko_show/produk_show/$gallery");
+		}
+		else
+		{
+			redirect('toko_show');
+		}
+	}
+
+	public function filter_toko($gallery='')
+	{
+		$filter = $this->input->post('filter');
+		if ($filter != 0)
+			$_SESSION['filter'] = $filter;
+		else unset($_SESSION['filter']);
+		if ($gallery != '')
+		{
+			redirect("toko_show/produk/$gallery");
+		}
+		else
+		{
+			redirect('toko_warga');
+		}
+	}
+*/
+	public function produk_show($gal=0, $p=1, $o=0)
 	{
 		$data = $this->includes;
 		$data['p'] = $p;
-		$data['gal'] = $gal;
-		$data['paging'] = $this->first_toko_warga_m->paging2($gal, $p);
-		$data['paging_range'] = 3;
-		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
-		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
-		$data['pages'] = range($data['start_paging'], $data['end_paging']);
+		$data['o'] = $o;
 
-		$data['gallery'] = $this->first_toko_warga_m->produk_show($gal,$data['paging']->offset, $data['paging']->per_page);
-		$data['parrent'] = $this->first_toko_warga_m->get_parrent($gal);
-		$data['mode'] = 1;
+/*		if (isset($_SESSION['cari']))
+			$data['cari'] = $_SESSION['cari'];
+		else $data['cari'] = '';
+
+		if (isset($_SESSION['filter']))
+			$data['filter'] = $_SESSION['filter'];
+		else $data['filter'] = '';
+*/
+		if (isset($_POST['per_page']))
+			$_SESSION['per_page'] = $_POST['per_page'];
+		$data['per_page'] = $_SESSION['per_page'];
+
+		$data['paging'] = $this->first_toko_warga_m->paging2($gal, $p);
+		$data['produk_data'] = $this->first_toko_warga_m->list_produk($gal, $o, $data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $gal;
+		$data['sub'] = $this->first_toko_warga_m->get_toko($gal);
+		//$data['keyword'] = $this->first_toko_warga_m->autocomplete();
+
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
 
 		$this->_get_common_data($data);
 
 		$this->set_template('layouts/toko_warga_produk.tpl.php');
 		$this->load->view($this->template, $data);
 	}
-	
-	public function sub_toko($gal=0, $p=1)
-	{
-		$data = $this->includes;
-		$data['p'] = $p;
-		$data['gal'] = $gal;
-		$data['paging'] = $this->first_toko_warga_m->paging2($gal, $p);
-		$data['paging_range'] = 3;
-		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
-		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
-		$data['pages'] = range($data['start_paging'], $data['end_paging']);
 
-		$data['gallery'] = $this->first_toko_warga_m->produk_show($gal,$data['paging']->offset, $data['paging']->per_page);
-		$data['parrent'] = $this->first_toko_warga_m->get_parrent($gal);
-		$data['mode'] = 1;
-
-		$this->_get_common_data($data);
-
-		$this->set_template('layouts/toko_warga_produk.tpl.php');
-		$this->load->view($this->template, $data);
-	}
 }

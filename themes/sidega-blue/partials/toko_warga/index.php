@@ -1,329 +1,103 @@
-<div class="content-wrapper">
+<?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
+<!-- ======= Portfolio Details Section ======= -->
 
-  <section class="content" id="maincontent">
-
-    <form id="mainformexcel" name="mainformexcel" method="post" class="form-horizontal">
-
-      <div class="row">
-
-        <div class="col-md-12">
-
-          <div class="box box-info">
-
-            <div class="box-header with-border"> </div>
-
-            <div class="box-body">
-
-              <div class="row">
-
-                <div class="col-sm-12">
-
-                  <div class="row">
-
-                    <div class="col-sm-12">
-
-                      <div class="row">
-
-                        <div class="col-sm-2">
-
-                            <select class="form-control input-sm select2" id="tahun" name="tahun" style="width:100%;">
-
-                                <option selected value="semua">Semua Tahun</option>
-
-                                <?php foreach ($list_tahun as $list) : ?>
-
-                                    <option value="<?= $list->tahun_berdiri ?>"><?= $list->tahun_berdiri ?></option>
-
-                                <?php endforeach; ?>
-
-                            </select>
-
-                        </div>
-
-                      </div>
-
-                      <hr>
-
-                      <div id="tabel-tokowarga" class="table">
-
-                        <table id="tabel-tokowarga" class="table table-bordered dataTable table-hover">
-
-                          <thead class="bg-purple">
-
-                            <tr>
-
-                              <th class="text-center">No</th>
-
-                              <th width="230px" class="text-center">Aksi</th>
-
-                              <th class="text-center">Nama Usaha</th>
-
-                              <th class="text-center">Nama Pengelola</th>
-
-                              <th class="text-center">Tahun Berdiri</th>
-
-                              <th class="text-center">Stok terbanyak</th>
-
-                              <th class="text-center">Kategori</th>
-
-                              <th class="text-center">Produk Unggulan</th>
-
-                              <th class="text-center">Omset</th>
-
-                              <th class="text-center">Kepemilikan</th>
-
-                              <th class="text-center">Lokasi</th>
-
-                              <th class="text-center">Foto Toko</th>
-
-                            </tr>
-
-                          </thead>
-
-                          <tbody>
-
-                          </tbody>
-
-                        </table>
-
-                      </div>
-
+    <div class="section-title" data-aos="fade-up">
+        <section id="portfolio-details" class="portfolio-details">
+          <div class="row">
+		  	<?php if($main) : ?>
+            <div class="col-md-8">
+              <div class="portfolio-details-container" data-aos="fade-right" data-aos-delay="300">
+                <div class="owl-carousel portfolio-details-carousel">
+                  
+                  <?php foreach($main as $data) : ?>
+                  <?php if(is_file(LOKASI_GALERI . "kecil_" . $data['gambar'])) : ?>
+                  <?php $link = site_url('first/produk_show/'.$data['id']) ?>
+                  <div class="portfolio-description"> <a class="archive__link" href="#"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>"> </a>
+                    <div class="portfolio-info">
+                      <h3>
+                        <a class="" href="<?= site_url('first/produk_show/'.$data['id']) ?>">
+                        <button class="btn btn-warning"><i class="ri-store-2-fill" style="color:#fff;"></i> UMKM: <?= $data['nama'] ?></button>
+                        </a>
+                      
+                        <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+                        <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
+                        </a>
+                      </h3>
                     </div>
-
                   </div>
-
+                  <?php endif ?>
+                  <?php endforeach ?>
                 </div>
-
               </div>
-
             </div>
+            <div class="col-md-4">
+              <?php $this->load->view($folder_themes .'/partials/toko_warga/qr-code.php') ?>
+            </div>
+            <?php endif ?>
 
           </div>
+        </section>
+      </div>
+        
+    <div class="row" data-aos="fade-up">
+      <div class="col-sm-12">
+      <p class="text-center"><strong>Toko Warga </strong>adalah wadah bagi <strong>UMKM</strong> (Usaha Masyarakat Kecil Menengah) di wilayah
+        <strong><?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?></strong>, yang dikembangkan untuk membantu meningkatkan pertumbuhan ekonomi masyarakat desa.
+      </p> 
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
+        <div class="member" data-aos="fade-up">
+          <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/toko.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px">
+          </div>
+          <div class="member-info">
+            <h4>
+              TOKO LAINNYA
+            </h4>
+            <p> Klik disini untuk melihat semua toko warga yang terdaftar di sistem informasi desa
+            </p>
+            <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
+            
+            
+            <a href="<?= site_url('first/produk_show/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>
+          </div>
         </div>
-
       </div>
 
-    </form>
-
-  </section>
-
-</div>
-
-<?php $this->load->view('global/confirm_delete'); ?>
-
-<script>
-
-	$(document).ready(function() {
-
-		let tabelTokoWarga = $('#tabel-tokowarga').DataTable({
-
-			'processing': true,
-
-			'serverSide': true,
-
-			'autoWidth': false,
-
-			'pageLength': 10,
-
-			'order': [
-
-				[5, 'desc'],
-
-			],
-
-			'columnDefs': [{
-
-				'orderable': false,
-
-				'targets': [0, 1, 10],
-
-			}],
-
-			'ajax': {
-
-				'url': '<?= site_url('toko_warga'); ?>',
-
-				'method': 'POST',
-
-				'data': function(d) {
-
-					d.tahun_berdiri = $('#tahun').val();
-
-				}
-
-			},
-
-			'columns': [
-
-				{
-
-					'data': null,
-
-					'class': 'text-center',
-
-					'orderable': false,
-
-					'searchable': false,
-
-					'render': function (data, type, row, meta) {
-
-						return meta.row+meta.settings._iDisplayStart+1;
-
-					}
-
-				},
-
-				{
-
-					'data': function(data) {
-
-						let status;
-
-						if (data.status == 1) {
-
-							status = `<a href="<?= site_url('toko_warga/lock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Non Aktifkan Toko Warga"><i class="fa fa-unlock"></i></a>`
-
-						} else {
-
-							status = `<a href="<?= site_url('toko_warga/unlock/') ?>${data.id}" class="btn bg-navy btn-box btn-sm" title="Aktifkan Toko Warga"><i class="fa fa-lock"></i></a>`
-
-						}
-
-
-
-						return `
-
-							<a href="<?= site_url('toko_warga/form/'); ?>${data.id}" title="Edit Data"  class="btn bg-orange btn-box btn-sm"><i class="fa fa-edit"></i></a>
-
-							<a href="<?= site_url('toko_warga/lokasi_maps/'); ?>${data.id}" class="btn bg-olive btn-box btn-sm" title="Lokasi Toko Warga"><i class="fa fa-map"></i></a>
-
-							<a href="<?= site_url('toko_warga_produk/show/'); ?>${data.id}" class="btn bg-purple btn-box btn-sm" title="Detil Produk Toko Warga"><i class="fa fa-list-ol"></i></a>
-
-							${status}
-
-							<a href="#" data-href="<?= site_url('toko_warga/delete/'); ?>${data.id}" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
-
-							<a href="<?= site_url('toko_warga/info_toko_warga/'); ?>${data.id}" target="_blank" class="btn bg-blue btn-box btn-sm" title="Lihat Detil"><i class="fa fa-eye"></i></a>
-
-							`
-
-					}
-
-				},
-
-				{
-
-					'data': 'nama_usaha'
-
-				},
-
-				{
-
-					'data': 'nama_pengelola'
-
-				},
-
-				{
-
-					'data': 'tahun_berdiri'
-
-				},
-
-				{
-
-					'data': 'max_persentase'
-
-				},
-
-				{
-
-					'data': 'kategori_toko'
-
-				},
-
-				{
-
-					'data': 'produk_utama'
-
-				},
-
-				{
-
-					'data': 'taksiran_omset',
-
-					'render': $.fn.dataTable.render.number( ',', '.', 0, 'Rp ' )
-
-				},
-
-				{
-
-					'data': 'kepemilikan_tempat_usaha'
-
-				},
-
-				{
-
-					'data': 'alamat'
-
-				},
-
-				{
-
-					'data': function (data) {
-
-						return `<div class="user-panel">
-
-									<div class="image2">
-
-										<img src="<?= base_url(LOKASI_GALERI) ?>${data.foto}" class="img-circle" alt="Gambar Toko">
-
-									</div>
-
-								</div>`
-
-					}
-
-				},
-
-			],
-
-			'language': {
-
-				'url': "<?= base_url('/assets/bootstrap/js/dataTables.indonesian.lang') ?>"
-
-			}
-
-		});
-
-
-
-		tabelTokowarga.on('draw.dt', function() {
-
-			let PageInfo = $('#tabel-tokowarga').DataTable().page.info();
-
-			tableTokowarga.column(0, {
-
-				page: 'current'
-
-			}).nodes().each(function(cell, i) {
-
-				cell.innerHTML = i + 1 + PageInfo.start;
-
-			});
-
-		});
-
-
-
-		$('#tahun').on('select2:select', function (e) {
-
-			tabelTokowarga.ajax.reload();
-
-		});
-
-	});
-
-</script> 
-
+      <?php if($main) : ?>
+      <?php foreach($main as $data) : ?>
+      <?php if(is_file(LOKASI_GALERI . "kecil_" . $data['gambar'])) : ?>
+      <?php $link = site_url('first/produk_show/'.$data['id']) ?>
+      <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
+        <div class="member" data-aos="fade-up">
+          <div class="member-img"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px">
+            <div class="social"> <a href="<?= $data['website'] ?>"><i class="icofont-webiste"></i></a> <a href="https://facebook.com/<?= $data['fb'] ?>"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $data['ig'] ?>"><i class="icofont-instagram"></i></a> <a href="phone:<?= $data['no_hp_toko'] ?>"><i class="icofont-phone"></i></a> </div>
+          </div>
+          <div class="member-info">
+            <h4>
+              <?= $data['nama'] ?>
+            </h4>
+            <span style="color:#666"><i class="ri-store-2-fill" style="color:#e80368"></i> Toko
+            <?= $data['kategori_toko'] ?> - 
+            <br/>Produk unggulan : <?= $data['produk_utama']?>
+            </span> <span style="color:#63C"><i class="icofont-location-pin"></i>
+            
+            <?= $data['nama_pengelola']?> | <?= $data['lokasi'] ?>
+            </span> <br/>
+            
+            <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
+            
+            
+            <a href="<?= site_url('first/produk_show/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>
+          </div>
+        </div>
+      </div>
+      <?php endif ?>
+      <?php endforeach ?>
+      <?php endif ?>
+      
+    </div>
+<!-- End Our Team Section --> 

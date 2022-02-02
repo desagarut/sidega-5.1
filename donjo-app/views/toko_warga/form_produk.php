@@ -20,17 +20,35 @@
 						</div>
 						<div class="box-body">
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="nama">Nama Gambar</label>
+								<label class="control-label col-sm-4" for="nama">Nama Produk</label>
 								<div class="col-sm-6">
-									<input name="nama" class="form-control input-sm nomor_sk" maxlength="50" type="text" value="<?=$gallery['nama']?>"></input>
+									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama Produk" value="<?=$gallery['nama']?>"></input>
 								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="harga">Harga</label>
+								<div class="col-sm-2">
+									<input name="harga" class="form-control input-sm rupiah required" maxlength="20" type="text" placeholder="rupiah" value="<?= $rupiah($gallery['harga'])?>"></input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="diskon">Persen Diskon</label>
+								<div class="col-sm-1">
+									<input name="diskon" class="form-control input-sm required" maxlength="3" type="text" value="<?= $gallery['diskon']?>"></input>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="deskripsi">Deskripsi</label>
+								<div class="col-sm-6">								
+								<textarea name="deskripsi" class="form-control input-sm required" style="height:50px;"><?=$gallery['deskripsi']?></textarea>
+                                </div>
 							</div>
 							<?php if ($gallery['gambar']): ?>
 								<div class="form-group">
 									<label class="control-label col-sm-4" for="nama"></label>
 									<div class="col-sm-6">
 										<input type="hidden" name="old_gambar" value="<?=  $gallery['gambar']?>">
-									  <img class="attachment-img img-responsive img-circle" src="<?= AmbilGaleri($gallery['gambar'], 'sedang') ?>" alt="Gambar Album">
+									  <img class="attachment-img img-responsive img-circle" src="<?= AmbilGaleri($gallery['gambar'], 'sedang') ?>" alt="Gambar Album" width="200px">
 									</div>
 								</div>
 							<?php endif; ?>

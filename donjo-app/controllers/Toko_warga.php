@@ -44,6 +44,11 @@ class Toko_warga extends Admin_Controller {
 
 		$data['paging'] = $this->toko_warga_model->paging($p,$o);
 		$data['main'] = $this->toko_warga_model->list_data($o, $data['paging']->offset, $data['paging']->per_page);
+		
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
 		$data['keyword'] = $this->toko_warga_model->autocomplete();
 
 		$this->render('toko_warga/table', $data);
@@ -57,7 +62,6 @@ class Toko_warga extends Admin_Controller {
 		if ($id)
 		{
 			$data['toko'] = $this->toko_warga_model->get_toko($id);
-			$data['list_lokasi'] = $this->wilayah_model->list_semua_wilayah();
 			$data['sumber_modal'] = $this->referensi_model->list_ref(SUMBER_MODAL);
 			$data['area_usaha'] = $this->referensi_model->list_ref(AREA_USAHA);
 			$data['kelompok_usaha_perdagangan'] = $this->referensi_model->list_ref(KELOMPOK_USAHA_PERDAGANGAN);
@@ -70,7 +74,6 @@ class Toko_warga extends Admin_Controller {
 		else
 		{
 			$data['toko'] = null;
-			$data['list_lokasi'] = $this->wilayah_model->list_semua_wilayah();
 			$data['sumber_modal'] = $this->referensi_model->list_ref(SUMBER_MODAL);
 			$data['area_usaha'] = $this->referensi_model->list_ref(AREA_USAHA);
 			$data['kelompok_usaha_perdagangan'] = $this->referensi_model->list_ref(KELOMPOK_USAHA_PERDAGANGAN);
@@ -80,6 +83,10 @@ class Toko_warga extends Admin_Controller {
 			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
 			$data['form_action'] = site_url("toko_warga/insert");
 		}
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
 
 		$this->render('toko_warga/form', $data);
 	}
@@ -202,6 +209,11 @@ class Toko_warga extends Admin_Controller {
 		$data['sub'] = $this->toko_warga_model->get_toko($gal);
 		$data['keyword'] = $this->toko_warga_model->autocomplete();
 
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
+
 		$this->render('toko_warga/table_produk', $data);
 	}
 
@@ -217,6 +229,11 @@ class Toko_warga extends Admin_Controller {
 			$data['gallery'] = null;
 			$data['form_action'] = site_url("toko_warga/insert_produk/$gallery");
 		}
+		
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
 		$data['album']=$gallery;
 
 		$this->render('toko_warga/form_produk', $data);
@@ -268,5 +285,33 @@ class Toko_warga extends Admin_Controller {
 			redirect("toko_warga/produk/$gallery");
 		else
 			redirect("toko_warga/index");
+	}
+	
+	public function lokasi_maps($id)
+	{
+
+		$data = $this->toko_warga_model->list_data($id);
+
+		if (is_null($data)) show_404();
+
+		// Update lokasi maps
+		if ($request = $this->input->post())
+		{
+			$this->toko_warga_model->update_map($id, $request);
+
+			$this->session->success = 1;
+
+			redirect('toko_warga');
+		}
+		$data['toko'] = $this->toko_warga_model->get_toko($id);
+		$data['desa'] = $this->config_model->get_data($id);
+
+		$this->render('toko_warga/peta',$data);
+	}
+	
+	public function update_map($id = '')
+	{
+		$this->toko_warga_model->update_map($id);
+		redirect("toko_warga");
 	}
 }

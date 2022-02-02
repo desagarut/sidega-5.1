@@ -23,7 +23,7 @@
   <div class="row">
   <div class="col-md-12">
   <div class="box box-info">
-  <div class="box-header with-border"> <a href="<?= site_url("toko_warga/form")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah"> <i class="fa fa-plus"></i> Tambah </a> <a href="#confirm-delete" title="Hapus Data Terpilih" onclick="deleteAllBox('mainform', '<?= site_url("toko_warga/delete_all/$p/$o")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a> <a href="<?= site_url("first/toko_warga")?>" class="btn btn-social btn-box btn-primary btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" target="_blank"  title="Lihat Toko"> <i class="fa fa-eye"></i> Lihat Halaman Depan </a></div>
+  <div class="box-header with-border"> <a href="<?= site_url("toko_warga/form")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah"> <i class="fa fa-plus"></i> Tambah </a> <a href="#confirm-delete" title="Hapus Data Terpilih" onclick="deleteAllBox('mainform', '<?= site_url("toko_warga/delete_all/$p/$o")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a> <a href="<?= site_url("first/toko_show")?>" class="btn btn-social btn-box btn-primary btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" target="_blank"  title="Lihat Toko"> <i class="fa fa-eye"></i> Lihat Halaman Depan </a></div>
   <div class="box-body">
   <div class="row">
   <div class="col-sm-12">
@@ -103,7 +103,8 @@
                 <td align="center"><label data-rel="popover" data-content="<img width=200 height=200 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>"> <img width=50 height=50 class="img-circle" src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>></label></td>
                 <td align="center">
                     <strong><?= $data['nama']?></strong><br/>
-                    <a href="#" data-href="#" class="btn bg-green btn-box btn-sm"  title="Hubungi"><i class="fa fa-whatsapp"></i></a>
+                    <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i></a>
+                    <a href="<?= site_url("toko_warga/lokasi_maps/".$data['id']); ?>" data-href="#" class="btn bg-primary btn-box btn-sm" title="Lokasi"><i class="fa fa-map"></i></a>
 				  <?php if ($data['enabled'] == '2'): ?>
                   <a href="<?= site_url("toko_warga/toko_lock/".$data['id'])?>" class="btn bg-orange btn-box btn-sm"  title="Aktifkan Album"><i class="fa fa-lock"></i></a>
                   <?php elseif ($data['enabled'] == '1'): ?>
@@ -112,10 +113,11 @@
                   </td>
                 <!--<td><?= $data['aktif']?></td>-->
                 <td>Pengelola: <?= $data['nama_pengelola']?> <br/>
-                	Alamat : <?= $data['lokasi']?></td>
+                	Alamat : <?= $data['lokasi']?>
+                    </td>
                 <td align="center"><?= $data['kategori_toko']?></td>
                 <td align="left"><?= $data['produk_utama']?></td>
-                <td align="left"><?= $data['alamat']?></td>
+                <td align="left"><?= $data['lokasi']?></td>
                 <td align="center"><small> daftar: </small><?= tgl_indo($data['created_at'])?><br/>
                 	<small> update: </small><?= tgl_indo($data['updated_at'])?></td>
               </tr>

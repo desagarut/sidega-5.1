@@ -131,8 +131,8 @@
 		$data['kepemilikan_tempat_usaha']	= $this->input->post('kepemilikan_tempat_usaha');
 		$data['jumlah_karyawan']            = $this->input->post('jumlah_karyawan');
 		$data['tahun_berdiri']     			= $this->input->post('tahun_berdiri');
-		$data['id_lokasi']             		= $this->input->post('id_lokasi')?: null;
-		$data['lokasi']             		= $this->input->post('lokasi')?: null;
+		$data['id_lokasi']             		= $this->input->post('id_lokasi');
+		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
 		$data['kelompok_usaha_perdagangan'] = $this->input->post('kelompok_usaha_perdagangan');
 		$data['sarana_berdagang']         	= $this->input->post('sarana_berdagang');
@@ -141,9 +141,10 @@
 		$data['kategori_toko']        		= $this->input->post('kategori_toko');
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['created_at']         		= date('Y-m-d H:i:s');
-		//$data['foto'] 						= $this->upload_gambar_toko_warga('foto');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
+		$data['harga'] 						= $this->input->post('harga');
+		$data['deskripsi'] 						= $this->input->post('deskripsi');
 
 		$data['skdu']     		= $this->input->post('skdu');
 		$data['iud']     		= $this->input->post('iud');
@@ -212,8 +213,8 @@
 		$data['kepemilikan_tempat_usaha']	= $this->input->post('kepemilikan_tempat_usaha');
 		$data['jumlah_karyawan']            = $this->input->post('jumlah_karyawan');
 		$data['tahun_berdiri']     			= $this->input->post('tahun_berdiri');
-		$data['id_lokasi']             		= $this->input->post('id_lokasi')?: null;
-		$data['lokasi']             		= $this->input->post('lokasi')?: null;
+		$data['id_lokasi']             		= $this->input->post('id_lokasi');
+		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
 		$data['kelompok_usaha_perdagangan'] = $this->input->post('kelompok_usaha_perdagangan');
 		$data['sarana_berdagang']         	= $this->input->post('sarana_berdagang');
@@ -221,9 +222,10 @@
 		$data['produk_utama']         		= $this->input->post('produk_utama');
 		$data['kategori_toko']        		= $this->input->post('kategori_toko');
 		$data['updated_at']         		= date('Y-m-d H:i:s');
-		//$data['foto'] 						= $this->upload_gambar_toko_warga('foto');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
+		$data['harga'] 						= $this->input->post('harga');
+		$data['deskripsi'] 						= $this->input->post('deskripsi');
 
 		$data['skdu']     		= $this->input->post('skdu');
 		$data['iud']     		= $this->input->post('iud');
@@ -452,6 +454,10 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
+		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); //pastikan nama album hanya berisi
+		$data['diskon'] = $this->input->post('diskon'); 
+		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => $parrent)) + 1;
 		// Bolehkan isi album tidak ada gambar
 		if (!empty($lokasi_file))
@@ -491,6 +497,10 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
+		$data['harga'] = $this->input->post('harga'); //pastikan harga hanya berisi
+		$data['diskon'] = $this->input->post('diskon'); 
+		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		
 		// Kalau kosong, gambar tidak diubah
 		if (!empty($lokasi_file))
 		{
@@ -517,6 +527,31 @@
   	$subset = !empty($gallery) ? array('parrent' => $gallery) : array('parrent' => 0);
   	$this->urut_model->urut($id, $arah, $subset);
 	}
+		
+	public function update_map($id, array $request)
+	{
+		$post = $this->input->post();
+
+		$data['lat']        = $post['lat'];
+		$data['lng']              = $post['lng'];
+		$data['updated_at']             = $post['updated_at'];
+
+		$this->db->where('id', $id);
+		$outp = $this->db->update('tbl_toko_warga', $data);
+
+		if ($outp) $_SESSION['success'] = 1;
+		else $_SESSION['success'] = -1;
+	}
+
+	public function update_lokasi_maps($id, array $request)
+	{
+		return $this->db->where('id', $id)->update($this->table, [
+			'lat'        => $request['lat'],
+			'lng'        => $request['lng'],
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
+	}
+
 
 }
 ?>

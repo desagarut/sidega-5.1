@@ -40,6 +40,4 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/9.2.1/highcharts.min.js"></script>
 
-
-
-
+<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
