@@ -18,7 +18,7 @@
               <?= $album['nama'] ?>
               | Harga:
               <?= $album['harga'] ?>
-              <a href="https://wa.me/+62<?= $album['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+              <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
               <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
               </a></h3>
           </div>
@@ -54,7 +54,7 @@
           </span> <span style="color:#F09"><i class="icofont-location-pin"></i>
           <?= $sub['lokasi'] ?>
           </span> <br/>
-          <a href="https://wa.me/+62<?= $album['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+          <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
           <button class="btn btn-primary"><i class="icofont-whatsapp"></i> Hubungi</button>
           </a>
           <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_toko'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
@@ -82,7 +82,7 @@
         </h5>
         </p>
         <br/>
-        <a href="https://wa.me/+62<?= $album['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+        <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20<?= $album['nama'] ?>%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
         <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
         </a> </div>
     </div>
