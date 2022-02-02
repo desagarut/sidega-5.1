@@ -35,7 +35,6 @@
      <h2><i class="ri-store-2-fill" style="color:#e80368;"></i> Daftar Produk <strong class="color:#e80368"><?= $sub['nama'] ?></strong></h2>
 
     <div class="row">
-    
       <?php if($produk_data) : ?>
       <?php foreach($produk_data as $album) : ?>
       <?php if(is_file(LOKASI_GALERI . "kecil_" . $album['gambar'])) : ?>
