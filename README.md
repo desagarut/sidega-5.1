@@ -1,2 +1,5 @@
 # sidega-5.1
-sistem informasi desa garut versi 5.1 build 2022
+sistem informasi khusus untuk desa di kabupaten garut
+dikembangkan oleh komunitas desa garut
+website: https://desagarut.id
+versi demo https://demo.desagarut.id
