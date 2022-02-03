@@ -52,10 +52,9 @@ function initMap() {
         <li class="list-group-item"> Pengelola <a class="pull-right">
           <?= $sub['nama_pengelola']?>
           </a> </li>
-        <li class="list-group-item"> Alamat <a class="pull-right">
-          <?= $sub['lokasi']?>
-          </a> </li>
-      </ul>
+          
+      </ul><a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Hubungi</a> 
+      <a href="<?= site_url("first/produk_show/".$sub['id'])?>" target="_blank" class="btn bg-blue btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Lihat Toko</a>
     </div>
   </div>
 </div>
