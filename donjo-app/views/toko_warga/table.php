@@ -56,7 +56,7 @@
               <tr>
                 <th><input type="checkbox" id="checkall"/></th>
                 <th class="text-center">No</th>
-                <th class="text-center" nowrap="nowrap">Aksi</th>
+                <th class="text-center">Aksi</th>
                 <?php if ($o==2): ?>
                 <th class="text-center" colspan="2"><a href="<?= site_url("toko_warga/index/$p/1")?>">Nama Toko <i class='fa fa-sort-asc fa-sm'></i></a></th>
                 <?php elseif ($o==1): ?>
@@ -89,20 +89,23 @@
               <tr>
                 <td><input type="checkbox" name="id_cb[]" value="<?=$data['id']?>" /></td>
                 <td align="center"><?=$data['no']?></td>
-                <td align="center"><a href="<?= site_url("toko_warga/urut/$data[id]/1")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Bawah"><i class="fa fa-arrow-down"></i></a> <a href="<?= site_url("toko_warga/urut/$data[id]/2")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Atas"><i class="fa fa-arrow-up"></i></a> <a href="<?= site_url("toko_warga/produk/$data[id]")?>" class="btn bg-blue btn-box btn-sm"  title="Rincian Produk"><i class="fa fa-eye"></i></a> 
-                  <br/>
-                <a href="<?= site_url("toko_warga/form/$p/$o/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a>
-                  <?php if ($this->CI->cek_hak_akses('h')): ?>
-                  <a href="#" data-href="<?= site_url("toko_warga/delete/$p/$o/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
-                  <?php endif; ?>                  <?php if ($data['slider'] == '1'): ?>
+                <td align="center" nowrap="nowrap"><a href="<?= site_url("toko_warga/urut/$data[id]/1")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Bawah"><i class="fa fa-arrow-down"></i></a> <a href="<?= site_url("toko_warga/urut/$data[id]/2")?>" class="btn bg-olive btn-box btn-sm"  title="Pindah Posisi Ke Atas"><i class="fa fa-arrow-up"></i></a> 
+				  <?php if ($data['slider'] == '1'): ?>
                   <a href="<?= site_url("toko_warga/slider_off/".$data['id'])?>" class="btn bg-gray btn-box btn-sm"  title="Keluarkan Dari Slider"><i class="fa fa-play"></i></a>
                   <?php else: ?>
                   <a href="<?= site_url("toko_warga/slider_on/".$data['id'])?>" class="btn bg-gray btn-box btn-sm"  title="Tampilkan Di Slider"><i class="fa fa-eject"></i></a>
                   <?php endif; ?>
+ 
+                  <br/>
+                <a href="<?= site_url("toko_warga/form/$p/$o/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a>
+                  <?php if ($this->CI->cek_hak_akses('h')): ?>
+                  <a href="#" data-href="<?= site_url("toko_warga/delete/$p/$o/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
+                  <?php endif; ?>                  
 				</td>
                 <td align="center"><label data-rel="popover" data-content="<img width=200 height=200 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>"> <img width=50 height=50 class="img-circle" src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>></label></td>
                 <td align="center">
                     <strong><?= $data['nama']?></strong><br/>
+                    <a href="<?= site_url("toko_warga/produk/$data[id]")?>" class="btn bg-blue btn-box btn-sm"  title="Rincian Produk"><i class="fa fa-list"></i></a>
                     <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i></a>
                     <a href="<?= site_url("toko_warga/lokasi_maps/".$data['id']); ?>" data-href="#" class="btn bg-primary btn-box btn-sm" title="Lokasi"><i class="fa fa-map"></i></a>
 				  <?php if ($data['enabled'] == '2'): ?>
