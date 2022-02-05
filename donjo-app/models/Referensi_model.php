@@ -379,6 +379,48 @@ define("PEKERJAAN_JASA", serialize(array(
 	"Pekerjaan Lainnya" => "Pekerjaan Lainnya",
 )));
 
+define("JENIS_WISATA", serialize(array(
+	"Wisata Pantai" => "Wisata pantai",
+	"Wisata Etnik" => "Wisata Etnik",
+	"Wisata Buru" => "Wisata Buru",
+	"Wisata Olahraga" => "Wisata Olahraga",
+	"Wisata Kuliner" => "Wisata Kuliner",
+	"Wisata Religius" => "Wisata Religius",
+	"Wisata Agro" => "Wisata Agro",
+	"Wisata Gua" => "Wisata Gua",
+	"Wisata Belanja" => "Wisata Belanja",
+	"Wisata Ekologi" => "Wisata Ekologi",
+	"Wisata Budaya" => "Wisata Budaya",
+	"Wisata Lainnya" => "Wisata Lainnya",
+)));
+
+define("KEPEMILIKAN_TEMPAT_WISATA", serialize(array(
+	"Milik Perorangan" => "Milik Perorangan",
+	"Milik Perusahaan" => "Milik Perusahaan",
+	"Milik Pemerintah Desa" => "Milik Pemerintah Desa",
+	"Milik Pemerintah Kabupaten" => "Milik Pemerintah Kabupaten",
+	"Milik Pemerintah Propinsi" => "Milik Pemerintah Propinsi",
+	"Milik Pemerintah Pusat" => "Milik Pemerintah Pusat",
+	"Milik UNESCO" => "Milik UNESCO",
+	"Lainnya" => "Lainnya",
+)));
+
+define("SUMBER_MODAL_WISATA", serialize(array(
+	"Pemerintah Pusat" => "Pemerintah Pusat",
+	"Pemerintah Propinsi" => "Pemerintah Propinsi",
+	"Pemerintah Kabupaten" => "Pemerintah Kabupaten",
+	"Pemerintah Desa" => "Pemerintah Desa",
+	"Swasta" => "Wisata Kuliner",
+	"Wisata Religius" => "Wisata Religius",
+	"Wisata Agro" => "Wisata Agro",
+	"Wisata Gua" => "Wisata Gua",
+	"Wisata Belanja" => "Wisata Belanja",
+	"Wisata Ekologi" => "Wisata Ekologi",
+	"Wisata Budaya" => "Wisata Budaya",
+	"Wisata Lainnya" => "Wisata Lainnya",
+)));
+
+
 
 //--- End Referensi Toko Warga
 

@@ -11,7 +11,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxsKE9ArOZcaNtsfXIMFqr4N-
 
 function initMap() {
 	var myLatlng = new google.maps.LatLng(center.lat, center.lng);
-	var mapOptions = { zoom: 17, center, mapTypeId:google.maps.MapTypeId.HYBRID }
+	var mapOptions = { zoom: 18, center, mapTypeId:google.maps.MapTypeId.HYBRID }
 	var map = new google.maps.Map(document.getElementById("map_penduduk"), mapOptions);
 	
 	// Place a draggable marker on the map
@@ -19,7 +19,7 @@ function initMap() {
 			position: myLatlng,
 			map: map,
 			draggable: true,
-			title: "Lokasi <?=$toko['nama']?>"
+			title: "Lokasi <?=$tukang['nama']?>"
 	});
 
 	marker.addListener('dragend', (e) => {
@@ -43,7 +43,7 @@ function initMap() {
 </style>
 
 <div class="col-sm-3">
-  <div class="box box-primary">
+  <div class="box box-warning">
     <div class="box-body box-profile"> <img class="img-responsive img-circle" src=<?= AmbilGaleri($sub['gambar'], 'kecil') ?>>
       <h3 class="profile-username text-center">
         <?= strtoupper($sub['nama'])?>
@@ -54,12 +54,12 @@ function initMap() {
           </a> </li>
           
       </ul><a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Hubungi</a> 
-      <a href="<?= site_url("first/produk_show/".$sub['id'])?>" target="_blank" class="btn bg-blue btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Lihat Toko</a>
+      <a href="<?= site_url("first/layanan/".$sub['id'])?>" target="_blank" class="btn bg-blue btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Lihat Toko</a>
     </div>
   </div>
 </div>
 <div class="col-sm-9">
-  <div class="box box-primary">
+  <div class="box box-warning">
     <div class="box-body">
       <div id="map_penduduk"></div>
     </div>

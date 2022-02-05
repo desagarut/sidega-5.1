@@ -68,7 +68,7 @@ class Tukang extends Admin_Controller {
 			$data['jenis_pekerjaan'] = $this->referensi_model->list_ref(JENIS_PEKERJAAN);
 			$data['kategori_pekerjaan'] = $this->referensi_model->list_ref(KATEGORI_PEKERJAAN);
 			$data['pekerjaan_jasa'] = $this->referensi_model->list_ref(PEKERJAAN_JASA);
-			$data['status'] = $this->referensi_model->list_ref(STATUS);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
 			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
 			$data['form_action'] = site_url("tukang/update/$id/$p/$o");
 		}
@@ -81,7 +81,7 @@ class Tukang extends Admin_Controller {
 			$data['jenis_pekerjaan'] = $this->referensi_model->list_ref(JENIS_PEKERJAAN);
 			$data['kategori_pekerjaan'] = $this->referensi_model->list_ref(KATEGORI_PEKERJAAN);
 			$data['pekerjaan_jasa'] = $this->referensi_model->list_ref(PEKERJAAN_JASA);
-			$data['status'] = $this->referensi_model->list_ref(STATUS);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
 			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
 			$data['form_action'] = site_url("tukang/insert");
 		}

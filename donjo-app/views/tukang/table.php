@@ -22,7 +22,7 @@
   <form id="mainform" name="mainform" action="" method="post">
   <div class="row">
   <div class="col-md-12">
-  <div class="box box-info">
+  <div class="box box-warning">
   <div class="box-header with-border"> <a href="<?= site_url("tukang/form")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah"> <i class="fa fa-plus"></i> Tambah </a> <a href="#confirm-delete" title="Hapus Data Terpilih" onclick="deleteAllBox('mainform', '<?= site_url("tukang/delete_all/$p/$o")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a> <a href="<?= site_url("first/tukang_show")?>" class="btn btn-social btn-box btn-primary btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" target="_blank"  title="Lihat Tukang"> <i class="fa fa-eye"></i> Lihat Halaman Depan </a></div>
   <div class="box-body">
   <div class="row">

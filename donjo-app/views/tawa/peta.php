@@ -14,7 +14,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxsKE9ArOZcaNtsfXIMFqr4N-
 
 function initMap() {
 	var myLatlng = new google.maps.LatLng(center.lat, center.lng);
-	var mapOptions = { zoom: 17, center, mapTypeId:google.maps.MapTypeId.HYBRID }
+	var mapOptions = { zoom: 18, center, mapTypeId:google.maps.MapTypeId.HYBRID }
 	var map = new google.maps.Map(document.getElementById("map_penduduk"), mapOptions);
 	
 	// Place a draggable marker on the map

@@ -1,11 +1,11 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>Form Produk</h1>
+		<h1>Form Tambah/Ubah</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda')?>"><i class="fa fa-home"></i> Home</a></li>
-			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Toko</a></li>
-			<li><a href='<?= site_url("toko_warga/produk/$album")?>'><i class="fa fa-dashboard"></i> Daftar Produk</a></li>
-			<li class="active">Form Produk</li>
+			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Wisata</a></li>
+			<li><a href='<?= site_url("wisata/fasilitas/$album")?>'><i class="fa fa-dashboard"></i> Daftar fasilitas</a></li>
+			<li class="active">Tambah/Ubah</li>
 		</ol>
 	</section>
 	<section class="content" id="maincontent">
@@ -14,41 +14,35 @@
 				<div class="col-md-12">
 					<div class="box box-info">
             <div class="box-header with-border">
-							<a href="<?= site_url("toko_warga/produk/$album")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
-								<i class="fa fa-arrow-circle-left "></i>Kembali ke Daftar Produk
+							<a href="<?= site_url("wisata/fasilitas/$album")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
+								<i class="fa fa-arrow-circle-left "></i>Kembali
             	</a>
 						</div>
 						<div class="box-body">
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="nama">Nama Produk</label>
+								<label class="control-label col-sm-4" for="nama">Nama Fasilias</label>
 								<div class="col-sm-6">
-									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama Produk" value="<?=$gallery['nama']?>"></input>
+									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama fasilitas" value="<?=$wisata['nama']?>"></input>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="harga">Harga</label>
+								<label class="control-label col-sm-4" for="harga">Tiket/Harga/Biaya</label>
 								<div class="col-sm-2">
-									<input name="harga" class="form-control input-sm rupiah required" maxlength="20" type="text" placeholder="rupiah" value="<?= $rupiah($gallery['harga'])?>"></input>
+									<input name="harga" class="form-control input-sm rupiah required" maxlength="20" type="text" placeholder="rupiah" value="<?= $rupiah($wisata['harga'])?>"></input>
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="diskon">Persen Diskon</label>
-								<div class="col-sm-1">
-									<input name="diskon" class="form-control input-sm required" maxlength="3" type="text" value="<?= $gallery['diskon']?>"></input>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-4" for="deskripsi">Deskripsi</label>
+								<label class="control-label col-sm-4" for="deskripsi">Deskripsi Fasilitas</label>
 								<div class="col-sm-6">								
-								<textarea name="deskripsi" class="form-control input-sm required" style="height:50px;"><?=$gallery['deskripsi']?></textarea>
+								<textarea name="deskripsi" class="form-control input-sm required" style="height:50px;"><?=$wisata['deskripsi']?></textarea>
                                 </div>
 							</div>
-							<?php if ($gallery['gambar']): ?>
+							<?php if ($wisata['gambar']): ?>
 								<div class="form-group">
 									<label class="control-label col-sm-4" for="nama"></label>
 									<div class="col-sm-6">
-										<input type="hidden" name="old_gambar" value="<?=  $gallery['gambar']?>">
-									  <img class="attachment-img img-responsive img-circle" src="<?= AmbilGaleri($gallery['gambar'], 'sedang') ?>" alt="Gambar Album" width="200px">
+										<input type="hidden" name="old_gambar" value="<?=  $wisata['gambar']?>">
+									  <img class="attachment-img img-responsive img-circle" src="<?= AmbilGaleri($wisata['gambar'], 'sedang') ?>" alt="Gambar Album" width="200px">
 									</div>
 								</div>
 							<?php endif; ?>
@@ -56,7 +50,7 @@
 									<label class="control-label col-sm-4" for="upload">Unggah Gambar</label>
 									<div class="col-sm-6">
 										<div class="input-group input-group-sm">
-											<input type="text" class="form-control <?php !($gallery['gambar']) and print('required') ?>" id="file_path">
+											<input type="text" class="form-control <?php !($wisata['gambar']) and print('required') ?>" id="file_path">
 											<input id="file" type="file" class="hidden" name="gambar">
 											<span class="input-group-btn">
 												<button type="button" class="btn btn-info btn-box"  id="file_browser"><i class="fa fa-search"></i> Browse</button>

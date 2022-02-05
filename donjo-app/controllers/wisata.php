@@ -1,13 +1,13 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Toko_warga extends Admin_Controller {
+class Wisata extends Admin_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
 
 		$this->load->model('referensi_model');
-		$this->load->model('toko_warga_model');
+		$this->load->model('wisata_model');
 		$this->load->model('config_model');
 		$this->load->model('wilayah_model');
 		$this->load->model('pamong_model');
@@ -15,14 +15,14 @@ class Toko_warga extends Admin_Controller {
 		$this->load->model('plan_area_model');
 		$this->load->model('plan_garis_model');
 		$this->modul_ini = 400;
-		$this->sub_modul_ini = 401;
+		$this->sub_modul_ini = 404;
 	}
 
 	public function clear()
 	{
 		unset($_SESSION['cari']);
 		unset($_SESSION['filter']);
-		redirect('toko_warga');
+		redirect('wisata');
 	}
 
 	public function index($p=1, $o=0)
@@ -42,16 +42,16 @@ class Toko_warga extends Admin_Controller {
 			$_SESSION['per_page'] = $_POST['per_page'];
 		$data['per_page'] = $_SESSION['per_page'];
 
-		$data['paging'] = $this->toko_warga_model->paging($p,$o);
-		$data['main'] = $this->toko_warga_model->list_data($o, $data['paging']->offset, $data['paging']->per_page);
+		$data['paging'] = $this->wisata_model->paging($p,$o);
+		$data['main'] = $this->wisata_model->list_data($o, $data['paging']->offset, $data['paging']->per_page);
 		
 		$data['rupiah'] = function($angka){
             $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
             return $hasil_rupiah;
         };
-		$data['keyword'] = $this->toko_warga_model->autocomplete();
+		$data['keyword'] = $this->wisata_model->autocomplete();
 
-		$this->render('toko_warga/table', $data);
+		$this->render('wisata/table', $data);
 	}
 
 	public function form($p=1, $o=0, $id='')
@@ -61,34 +61,28 @@ class Toko_warga extends Admin_Controller {
 
 		if ($id)
 		{
-			$data['toko'] = $this->toko_warga_model->get_toko($id);
-			$data['sumber_modal'] = $this->referensi_model->list_ref(SUMBER_MODAL);
-			$data['area_usaha'] = $this->referensi_model->list_ref(AREA_USAHA);
-			$data['kelompok_usaha_perdagangan'] = $this->referensi_model->list_ref(KELOMPOK_USAHA_PERDAGANGAN);
-			$data['sarana_berdagang'] = $this->referensi_model->list_ref(SARANA_BERDAGANG);
-			$data['kategori_toko'] = $this->referensi_model->list_ref(KATEGORI_TOKO);
-			$data['status_toko'] = $this->referensi_model->list_ref(STATUS_TOKO);
-			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
-			$data['form_action'] = site_url("toko_warga/update/$id/$p/$o");
+			$data['wisata'] = $this->wisata_model->get_wisata($id);
+			$data['sumber_dana'] = $this->referensi_model->list_ref(SUMBER_MODAL_WISATA);
+			$data['jenis_wisata'] = $this->referensi_model->list_ref(JENIS_WISATA);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
+			$data['kepemilikan_tempat_wisata'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_WISATA);
+			$data['form_action'] = site_url("wisata/update/$id/$p/$o");
 		}
 		else
 		{
-			$data['toko'] = null;
-			$data['sumber_modal'] = $this->referensi_model->list_ref(SUMBER_MODAL);
-			$data['area_usaha'] = $this->referensi_model->list_ref(AREA_USAHA);
-			$data['kelompok_usaha_perdagangan'] = $this->referensi_model->list_ref(KELOMPOK_USAHA_PERDAGANGAN);
-			$data['sarana_berdagang'] = $this->referensi_model->list_ref(SARANA_BERDAGANG);
-			$data['kategori_toko'] = $this->referensi_model->list_ref(KATEGORI_TOKO);
-			$data['status_toko'] = $this->referensi_model->list_ref(STATUS_TOKO);
-			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
-			$data['form_action'] = site_url("toko_warga/insert");
+			$data['wisata'] = null;
+			$data['sumber_dana'] = $this->referensi_model->list_ref(SUMBER_MODAL_WISATA);
+			$data['jenis_wisata'] = $this->referensi_model->list_ref(JENIS_WISATA);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
+			$data['kepemilikan_tempat_wisata'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_WISATA);
+			$data['form_action'] = site_url("wisata/insert");
 		}
 		$data['rupiah'] = function($angka){
             $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
             return $hasil_rupiah;
         };
 
-		$this->render('toko_warga/form', $data);
+		$this->render('wisata/form', $data);
 	}
 
 	public function search($gallery='')
@@ -99,11 +93,11 @@ class Toko_warga extends Admin_Controller {
 		else unset($_SESSION['cari']);
 		if ($gallery != '')
 		{
-			redirect("toko_warga/produk/$gallery");
+			redirect("wisata/fasilitas/$gallery");
 		}
 		else
 		{
-			redirect('toko_warga');
+			redirect('wisata');
 		}
 	}
 
@@ -115,78 +109,78 @@ class Toko_warga extends Admin_Controller {
 		else unset($_SESSION['filter']);
 		if ($gallery != '')
 		{
-			redirect("toko_warga/produk/$gallery");
+			redirect("wisata/fasilitas/$gallery");
 		}
 		else
 		{
-			redirect('toko_warga');
+			redirect('wisata');
 		}
 	}
 
 	public function insert()
 	{
-		$this->toko_warga_model->insert();
-		redirect('toko_warga');
+		$this->wisata_model->insert();
+		redirect('wisata');
 	}
 
 	public function update($id='', $p=1, $o=0)
 	{
-		$this->toko_warga_model->update($id);
-		redirect("toko_warga/index/$p/$o");
+		$this->wisata_model->update($id);
+		redirect("wisata/index/$p/$o");
 	}
 
 	public function delete($p=1, $o=0, $id='')
 	{
-		$this->redirect_hak_akses('h', "toko_warga/index/$p/$o");
-		$this->toko_warga_model->delete_gallery($id);
-		redirect("toko_warga/index/$p/$o");
+		$this->redirect_hak_akses('h', "wisata/index/$p/$o");
+		$this->wisata_model->delete_gallery($id);
+		redirect("wisata/index/$p/$o");
 	}
 
 	public function delete_all($p=1, $o=0)
 	{
-		$this->redirect_hak_akses('h', "toko_warga/index/$p/$o");
+		$this->redirect_hak_akses('h', "wisata/index/$p/$o");
 		$_SESSION['success'] = 1;
-		$this->toko_warga_model->delete_all_gallery();
-		redirect("toko_warga/index/$p/$o");
+		$this->wisata_model->delete_all_gallery();
+		redirect("wisata/index/$p/$o");
 	}
 
-	public function toko_lock($id='', $gallery='')
+	public function wisata_lock($id='', $gallery='')
 	{
-		$this->toko_warga_model->toko_lock($id, 1);
+		$this->wisata_model->wisata_lock($id, 1);
 		if ($gallery != '')
-			redirect("toko_warga/produk/$gallery/$p");
+			redirect("wisata/fasilitas/$gallery/$p");
 		else
-			redirect("toko_warga/index/$p/$o");
+			redirect("wisata/index/$p/$o");
 	}
 
-	public function toko_unlock($id='', $gallery='')
+	public function wisata_unlock($id='', $gallery='')
 	{
-		$this->toko_warga_model->toko_lock($id, 2);
+		$this->wisata_model->wisata_lock($id, 2);
 		if ($gallery != '')
-			redirect("toko_warga/produk/$gallery/$p");
+			redirect("wisata/fasilitas/$gallery/$p");
 		else
-			redirect("toko_warga/index/$p/$o");
+			redirect("wisata/index/$p/$o");
 	}
 
 	public function slider_on($id='', $gallery='')
 	{
-		$this->toko_warga_model->toko_slider($id, 1);
+		$this->wisata_model->wisata_slider($id, 1);
 		if ($gallery != '')
-			redirect("toko_warga/produk/$gallery/$p");
+			redirect("wisata/fasilitas/$gallery/$p");
 		else
-			redirect("toko_warga/index/$p/$o");
+			redirect("wisata/index/$p/$o");
 	}
 
 	public function slider_off($id='', $gallery='')
 	{
-		$this->toko_warga_model->gallery_slider($id,0);
+		$this->wisata_model->gallery_slider($id,0);
 		if ($gallery != '')
-			redirect("toko_warga/produk/$gallery/$p");
+			redirect("wisata/fasilitas/$gallery/$p");
 		else
-			redirect("toko_warga/index/$p/$o");
+			redirect("wisata/index/$p/$o");
 	}
 	
-	public function produk($gal=0, $p=1, $o=0)
+	public function fasilitas($gal=0, $p=1, $o=0)
 	{
 		$data['p'] = $p;
 		$data['o'] = $o;
@@ -203,31 +197,31 @@ class Toko_warga extends Admin_Controller {
 			$_SESSION['per_page'] = $_POST['per_page'];
 		$data['per_page'] = $_SESSION['per_page'];
 
-		$data['paging'] = $this->toko_warga_model->paging2($gal, $p);
-		$data['produk_data'] = $this->toko_warga_model->list_produk($gal, $o, $data['paging']->offset, $data['paging']->per_page);
+		$data['paging'] = $this->wisata_model->paging2($gal, $p);
+		$data['fasilitas_data'] = $this->wisata_model->list_fasilitas($gal, $o, $data['paging']->offset, $data['paging']->per_page);
 		$data['gallery'] = $gal;
-		$data['sub'] = $this->toko_warga_model->get_toko($gal);
-		$data['keyword'] = $this->toko_warga_model->autocomplete();
+		$data['sub'] = $this->wisata_model->get_wisata($gal);
+		$data['keyword'] = $this->wisata_model->autocomplete();
 
 		$data['rupiah'] = function($angka){
             $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
             return $hasil_rupiah;
         };
 
-		$this->render('toko_warga/table_produk', $data);
+		$this->render('wisata/table_fasilitas', $data);
 	}
 
-	public function form_produk($gallery=0, $id=0)
+	public function form_fasilitas($gallery=0, $id=0)
 	{
 		if ($id)
 		{
-			$data['gallery'] = $this->toko_warga_model->get_toko($id);
-			$data['form_action'] = site_url("toko_warga/update_produk/$gallery/$id");
+			$data['wisata'] = $this->wisata_model->get_wisata($id);
+			$data['form_action'] = site_url("wisata/update_fasilitas/$gallery/$id");
 		}
 		else
 		{
-			$data['gallery'] = null;
-			$data['form_action'] = site_url("toko_warga/insert_produk/$gallery");
+			$data['wisata'] = null;
+			$data['form_action'] = site_url("wisata/insert_fasilitas/$gallery");
 		}
 		
 		$data['rupiah'] = function($angka){
@@ -236,82 +230,82 @@ class Toko_warga extends Admin_Controller {
         };
 		$data['album']=$gallery;
 
-		$this->render('toko_warga/form_produk', $data);
+		$this->render('wisata/form_fasilitas', $data);
 	}
 
-	public function insert_produk($gallery='')
+	public function insert_fasilitas($gallery='')
 	{
-		$this->toko_warga_model->insert_produk($gallery);
-		redirect("toko_warga/produk/$gallery");
+		$this->wisata_model->insert_fasilitas($gallery);
+		redirect("wisata/fasilitas/$gallery");
 	}
 
-	public function update_produk($gallery='', $id='')
+	public function update_fasilitas($gallery='', $id='')
 	{
-		$this->toko_warga_model->update_produk($id);
-		redirect("toko_warga/produk/$gallery");
+		$this->wisata_model->update_fasilitas($id);
+		redirect("wisata/fasilitas/$gallery");
 	}
 
-	public function delete_produk($gallery='', $id='')
+	public function delete_fasilitas($gallery='', $id='')
 	{
-		$this->redirect_hak_akses('h', "toko_warga/produk/$gallery");
-		$this->toko_warga_model->delete($id);
-		redirect("toko_warga/produk/$gallery");
+		$this->redirect_hak_akses('h', "wisata/fasilitas/$gallery");
+		$this->wisata_model->delete($id);
+		redirect("wisata/fasilitas/$gallery");
 	}
 
-	public function delete_all_produk($gallery='')
+	public function delete_all_fasilitas($gallery='')
 	{
-		$this->redirect_hak_akses('h', "toko_warga/produk/$gallery");
+		$this->redirect_hak_akses('h', "wisata/fasilitas/$gallery");
 		$_SESSION['success']=1;
-		$this->toko_warga_model->delete_all();
-		redirect("toko_warga/produk/$gallery");
+		$this->wisata_model->delete_all();
+		redirect("wisata/fasilitas/$gallery");
 	}
 
-	public function toko_lock_produk($gallery='', $id='')
+	public function wisata_lock_fasilitas($gallery='', $id='')
 	{
-		$this->toko_warga_model->toko_lock($id, 1);
-		redirect("toko_warga/produk/$gallery");
+		$this->wisata_model->wisata_lock($id, 1);
+		redirect("wisata/fasilitas/$gallery");
 	}
 
-	public function toko_unlock_produk($gallery='', $id='')
+	public function wisata_unlock_fasilitas($gallery='', $id='')
 	{
-		$this->toko_warga_model->toko_lock($id, 2);
-		redirect("toko_warga/produk/$gallery");
+		$this->wisata_model->wisata_lock($id, 2);
+		redirect("wisata/fasilitas/$gallery");
 	}
 
 	public function urut($id, $arah = 0, $gallery='')
 	{
-		$this->toko_warga_model->urut($id, $arah, $gallery);
+		$this->wisata_model->urut($id, $arah, $gallery);
 		if ($gallery != '')
-			redirect("toko_warga/produk/$gallery");
+			redirect("wisata/fasilitas/$gallery");
 		else
-			redirect("toko_warga/index");
+			redirect("wisata/index");
 	}
 	
 	public function lokasi_maps($id)
 	{
 
-		$data = $this->toko_warga_model->list_data($id);
+		$data = $this->wisata_model->list_data($id);
 
 		if (is_null($data)) show_404();
 
 		// Update lokasi maps
 		if ($request = $this->input->post())
 		{
-			$this->toko_warga_model->update_map($id, $request);
+			$this->wisata_model->update_map($id, $request);
 
 			$this->session->success = 1;
 
-			redirect('toko_warga');
+			redirect('wisata');
 		}
-		$data['toko'] = $this->toko_warga_model->get_toko($id);
+		$data['wisata'] = $this->wisata_model->get_wisata($id);
 		$data['desa'] = $this->config_model->get_data($id);
 
-		$this->render('toko_warga/peta',$data);
+		$this->render('wisata/peta',$data);
 	}
 	
 	public function update_map($id = '')
 	{
-		$this->toko_warga_model->update_map($id);
-		redirect("toko_warga");
+		$this->wisata_model->update_map($id);
+		redirect("wisata");
 	}
 }

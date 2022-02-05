@@ -6,15 +6,15 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxsKE9ArOZcaNtsfXIMFqr4N-
 
 
 <script>
-<?php if (!empty($toko['lat'] && !empty($toko['lng']))): ?>
-	var center = { lat: <?= $toko['lat'].", lng: ".$toko['lng']; ?> };
+<?php if (!empty($tukang['lat'] && !empty($tukang['lng']))): ?>
+	var center = { lat: <?= $tukang['lat'].", lng: ".$tukang['lng']; ?> };
 <?php else: ?>
 	var center = { lat: <?=$desa['lat'].", lng: ".$desa['lng']?> };
 <?php endif; ?>
 
 function initMap() {
 	var myLatlng = new google.maps.LatLng(center.lat, center.lng);
-	var mapOptions = { zoom: 17, center, mapTypeId:google.maps.MapTypeId.HYBRID }
+	var mapOptions = { zoom: 18, center, mapTypeId:google.maps.MapTypeId.HYBRID }
 	var map = new google.maps.Map(document.getElementById("map_penduduk"), mapOptions);
 	
 	// Place a draggable marker on the map
@@ -22,7 +22,7 @@ function initMap() {
 			position: myLatlng,
 			map: map,
 			draggable: true,
-			title: "Lokasi <?=$toko['nama']?>"
+			title: "Lokasi <?=$tukang['nama']?>"
 	});
 
 	marker.addListener('dragend', (e) => {
@@ -48,11 +48,11 @@ function initMap() {
 
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>Lokasi : <?=$toko['nama']?></h1>
+		<h1>Lokasi : <?=$tukang['nama']?></h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda') ?>"><i class="fa fa-home"></i> Home</a></li>
 			<li><a href="<?= site_url('toko_warga') ?>"> Daftar Toko</a></li>
-			<li class="active">Lokasi <?=$toko['nama']?></li>
+			<li class="active">Lokasi <?=$tukang['nama']?></li>
 		</ol>
 	</section>
 	<section class="content">
@@ -69,8 +69,8 @@ function initMap() {
                     <div class="modal-footer">
                         <div class='col-xs-12'>
                            <a href="<?= site_url("toko_warga")?>" class="pull-left"> <button type="#" class="btn btn-social btn-box btn-primary btn-sm"><i class='fa fa-arrow-left'></i> Kembali</button></a>
-                            <input type="text" name="lat" id="lat" value="<?= $toko['lat']?>"/>
-                            <input type="text" name="lng" id="lng" value="<?= $toko['lng']?>" />
+                            <input type="text" name="lat" id="lat" value="<?= $tukang['lat']?>"/>
+                            <input type="text" name="lng" id="lng" value="<?= $tukang['lng']?>" />
                             <button type="reset" class="btn btn-social btn-box btn-danger btn-sm" data-dismiss="modal"><i class='fa fa-refresh'></i> Reset</button>
                             <button type="submit" class="btn btn-social btn-box btn-success btn-sm"><i class='fa fa-check'></i> Simpan</button>
                         </div>
