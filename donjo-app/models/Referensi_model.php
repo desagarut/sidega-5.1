@@ -287,6 +287,14 @@ define("JENIS_USAHA", serialize(array(
 	"Lainnya" => "Lainnya",
 )));
 
+define("KELOMPOK_USAHA", serialize(array(
+	"Perseorangan" => "Perseorangan",
+	"Kelompok Usaha Bersama" => "Kelompok Usaha Bersama",
+	"Perusahaan Transportasi" => "Perusahaan Transportasi",
+	"Lainnya" => "Lainnya",
+)));
+
+
 define("KEPEMILIKAN_KENDARAAN", serialize(array(
 	"Milik Sendiri" => "Milik Sendiri",
 	"Sewa/Kontrak" => "Sewa/Kontrak",
@@ -304,6 +312,71 @@ define("JENIS_VAKSIN", serialize(array(
 	"JANSEN" => "JANSEN",
 	"CONVIDENCIA" => "CONVIDENCIA",
 	"ZIFIVAK" => "ZIFIVAK",
+)));
+
+define("AREA_LAYANAN", serialize(array(
+	"Dalam Desa" => "Dalam Desa",
+	"Dalam Kecamatan" => "Dalam Kecamatan",
+	"Antar Kecamatan" => "Kawasan Pasar",
+	"Dalam Kabupaten" => "Dalam Kabupaten",
+	"Antar Kabupaten"=> "Antar Kabupaten",
+	"Antar Propinsi" => "Antar Propinsi",
+	"Lainnya" => "Lainnya",
+)));
+
+define("JENIS_LAYANAN", serialize(array(
+	"Pemeliharaan" => "Pemeliharaan",
+	"Pembangunan $ Renovasi" => "Pembangunan $ Renovasi",
+	"Desain" => "Desain",
+	"Lainnya" => "Lainnya",
+)));
+
+define("KATEGORI_PEKERJAAN", serialize(array(
+	"Bangunan" => "Bangunan",
+	"Mekanikal $ Elektrikal" => "Mekanikal $ Elektrikal",
+	"Interior" => "Interior",
+	"Landscape" => "Landscape",
+	"Pemeliharaan Rumah" => "Pemeliharaan Rumah",
+	"Kuliner" => "Kuliner",
+	"Lainnya" => "Lainnya",
+)));
+
+define("JENIS_PEKERJAAN", serialize(array(
+	"Pekerjaan Bidang Jasa" => "Pekerjaan Bidang Jasa",
+	"Pekerjaan menghasilkan Barang" => "Pekerjaan menghasilkan Barang",
+	"Pekerjaan Lainnya" => "Pekerjaan Lainnya",
+)));
+
+define("PEKERJAAN_JASA", serialize(array(
+	"Artis" => "Artis",
+	"Bodyguard" => "Bodyguard",
+	"Dokter" => "Dokter",
+	"Perawat" => "Perawat",
+	"Guru" => "Guru",
+	"Pengacara" => "Pengacara",
+	"Pilot" => "Pilot",
+	"Pramugari" => "Pramugari",
+	"Masinis" => "Masinis",
+	"Sopir" => "Sopir",
+	"Ekspedisi" => "Ekspedisi",
+	"Montir" => "Montir",
+	"Keamanan" => "Keamanan",
+	"Pemadam Kebakaran" => "Pemadam Kebakaran",
+	"Tukang Jahit" => "Tukang Jahit",
+	"Tukang Cukur" => "Tukang Cukur",
+	"Tukang Laundry" => "Tukang Laundry",
+	"Tukang Parkir" => "Tukang Parkir",
+	"Tukang Bangunan" => "Tukang Bangunan",
+	"Tukang Sedot WC" => "Tukang Sedot WC",
+	"Tukang listrik" => "Tukang listrik",
+	"Tukang Kebun" => "Tukang Kebun",
+	"Tukang Ternak" => "Tukang Ternak",
+	"Tukang Tani" => "Tukang Tani",
+	"Tukang Masak" => "Tukang Masak",
+	"Tukang Servis Elektronik" => "Tukang Servis Elektronik",
+	"Nelayan" => "Nelayan",
+	"Pelayan" => "Pelayan",
+	"Pekerjaan Lainnya" => "Pekerjaan Lainnya",
 )));
 
 

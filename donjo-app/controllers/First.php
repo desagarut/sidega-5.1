@@ -34,6 +34,7 @@ class First extends Web_Controller {
 		$this->load->model('first_menu_m');
 		$this->load->model('first_toko_warga_m');
 		$this->load->model('first_penduduk_m');
+		$this->load->model('first_tawa_m');
 		
 		$this->load->model('keluarga_model');
 		$this->load->model('keuangan_model');
@@ -788,6 +789,111 @@ class First extends Web_Controller {
 		$this->_get_common_data($data);
 
 		$this->set_template('layouts/toko_warga_produk.tpl.php');
+		$this->load->view($this->template, $data);
+	}
+//-------------------------------------------------------------------
+	// Halaman Transportasi Warga
+/*	public function clear_tawa()
+	{
+		unset($_SESSION['cari']);
+		unset($_SESSION['filter']);
+		redirect('daftar_tawa');
+	}
+*/
+	public function tawa($p=1, $o=0)
+	{
+		$data = $this->includes;
+		
+		$data['p'] = $p;
+		$data['o'] = $o;
+
+	/*	if (isset($_SESSION['cari']))
+			$data['cari'] = $_SESSION['cari'];
+		else $data['cari'] = '';
+
+		if (isset($_SESSION['filter']))
+			$data['filter'] = $_SESSION['filter'];
+		else $data['filter'] = '';
+	*/
+		if (isset($_POST['per_page']))
+			$_SESSION['per_page'] = $_POST['per_page'];
+		$data['per_page'] = $_SESSION['per_page'];
+
+		$data['paging'] = $this->first_tawa_m->paging($p,$o);
+		$data['main'] = $this->first_tawa_m->list_data($o, $data['paging']->offset, $data['paging']->per_page);
+		//$data['keyword'] = $this->first_toko_warga_m->autocomplete();
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/tawa.tpl.php');
+		$this->load->view($this->template, $data);
+
+	}
+
+/*	public function search_toko($gallery='')
+	{
+		$cari = $this->input->post('cari');
+		if ($cari != '')
+			$_SESSION['cari'] = $cari;
+		else unset($_SESSION['cari']);
+		if ($gallery != '')
+		{
+			redirect("toko_show/tawa/$gallery");
+		}
+		else
+		{
+			redirect('toko_show');
+		}
+	}
+
+	public function filter_toko($gallery='')
+	{
+		$filter = $this->input->post('filter');
+		if ($filter != 0)
+			$_SESSION['filter'] = $filter;
+		else unset($_SESSION['filter']);
+		if ($gallery != '')
+		{
+			redirect("toko_show/produk/$gallery");
+		}
+		else
+		{
+			redirect('toko_warga');
+		}
+	}
+*/
+	public function tawa_layanan($gal=0, $p=1, $o=0)
+	{
+		$data = $this->includes;
+		$data['p'] = $p;
+		$data['o'] = $o;
+
+/*		if (isset($_SESSION['cari']))
+			$data['cari'] = $_SESSION['cari'];
+		else $data['cari'] = '';
+
+		if (isset($_SESSION['filter']))
+			$data['filter'] = $_SESSION['filter'];
+		else $data['filter'] = '';
+*/
+		if (isset($_POST['per_page']))
+			$_SESSION['per_page'] = $_POST['per_page'];
+		$data['per_page'] = $_SESSION['per_page'];
+
+		$data['paging'] = $this->first_tawa_m->paging2($gal, $p);
+		$data['produk_data'] = $this->first_tawa_m->list_layanan($gal, $o, $data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $gal;
+		$data['sub'] = $this->first_tawa_m->get_usaha($gal);
+		//$data['keyword'] = $this->first_toko_warga_m->autocomplete();
+
+		$data['rupiah'] = function($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        };
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/tawa_layanan.tpl.php');
 		$this->load->view($this->template, $data);
 	}
 

@@ -1,66 +1,12 @@
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>Form Toko Warga</h1>
+		<h1>Form Tambah/Ubah</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda')?>"><i class="fa fa-home"></i> Home</a></li>
 			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Toko</a></li>
-			<li class="active">Data Toko</li>
+			<li class="active">Tambah/Ubah</li>
 		</ol>
 	</section>
-	<!-- 
-    <section class="content" id="maincontent">
-		<form id="validasi" action="<?= $form_action?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="box box-info">
-            <div class="box-header with-border">
-							<a href="<?= site_url("toko_warga")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
-								<i class="fa fa-arrow-circle-left "></i>Kembali ke Daftar Album
-            	</a>
-						</div>
-						<div class="box-body">
-							<div class="form-group">
-								<label class="control-label col-sm-4" for="nama">Nama Toko</label>
-								<div class="col-sm-6">
-									<input name="nama" class="form-control input-sm nomor_sk" maxlength="50" type="text" value="<?=$toko['nama']?>"></input>
-								</div>
-							</div>
-							<?php if ($toko['gambar']): ?>
-								<div class="form-group">
-									<label class="control-label col-sm-4" for="nama"></label>
-									<div class="col-sm-6">
-										<input type="hidden" name="old_gambar" value="<?=  $toko['gambar']?>">
-									  <img class="attachment-img img-responsive img-circle" src="<?= AmbilGaleri($toko['gambar'], 'sedang') ?>" alt="Gambar Album">
-									</div>
-								</div>
-							<?php endif; ?>
-							<div class="form-group">
-								<label class="control-label col-sm-4" for="upload">Unggah Gambar</label>
-								<div class="col-sm-6">
-									<div class="input-group input-group-sm">
-										<input type="text" class="form-control <?php !($toko['gambar']) and print('') ?>" id="file_path">
-										<input id="file" type="file" class="hidden" name="gambar">
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-info btn-box"  id="file_browser"><i class="fa fa-search"></i> Browse</button>
-										</span>
-									</div>
-									<?php $upload_mb = max_upload();?>
-									<p><label class="control-label">Batas maksimal pengunggahan berkas <strong><?=$upload_mb?> MB.</strong></label></p>
-								</div>
-							</div>
-						</div>
-						<div class='box-footer'>
-							<div class='col-xs-12'>
-								<button type='reset' class='btn btn-social btn-box btn-danger btn-sm' ><i class='fa fa-times'></i> Batal</button>
-								<button type='submit' class='btn btn-social btn-box btn-info btn-sm pull-right confirm'><i class='fa fa-check'></i> Simpan</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</section>
-  -->
 	<section class="content" id="maincontent">
 		<form id="validasi" action="<?= $form_action?>" method="POST" enctype="multipart/form-data" class="form-horizontal">
 			<div class="row">
@@ -211,7 +157,7 @@
 										<label class="col-sm-3 control-label" style="text-align:left; color:#999">KLASIFIKASI USAHA</label>
                                     </div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label" style="text-align:left;" for="kelompok_usaha_perdagangan">Kelompok Usaha Perdagangan</label>
+										<label class="col-sm-3 control-label" style="text-align:left;" for="kelompok_usaha">Kelompok Usaha</label>
 										<div class="col-sm-5">
 											<select class="form-control input-sm select2 required" id="kelompok_usaha_perdagangan" name="kelompok_usaha_perdagangan" style="width:100%;">
 												<?php foreach ($kelompok_usaha_perdagangan as $value) : ?>
@@ -267,6 +213,9 @@
                                             <input maxlength="50" class="form-control input-sm" name="email_toko" id="email_toko" value="<?= $toko['email_toko'] ?>" type="text" placeholder="Email" />
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label" style="text-align:left; color:#999">SOSIAL MEDIA</label>
+                                    </div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label" style="text-align:left;" for="website">Website</label>
 										<div class="col-sm-5">

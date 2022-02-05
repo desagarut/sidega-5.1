@@ -1,4 +1,4 @@
-<?php class Tukang_model extends MY_Model {
+<?php class Tawa_model extends MY_Model {
 
 	private $urut_model;
 
@@ -6,12 +6,12 @@
 	{
 		parent::__construct();
 	  require_once APPPATH.'/models/Urut_model.php';
-		$this->urut_model = new Urut_Model('tbl_tukang');
+		$this->urut_model = new Urut_Model('tbl_tawa');
 	}
 
 	public function autocomplete()
 	{
-		return $this->autocomplete_str('nama', 'tbl_tukang');
+		return $this->autocomplete_str('nama', 'tbl_tawa');
 	}
 
 	private function search_sql()
@@ -54,7 +54,7 @@
 
 	private function list_data_sql()
 	{
-		$sql = " FROM tbl_tukang WHERE tipe = 0  ";
+		$sql = " FROM tbl_tawa WHERE tipe = 0  ";
 		$sql .= $this->search_sql();
 		$sql .= $this->filter_sql();
 		return $sql;
@@ -119,8 +119,7 @@
 		$data['nama_pengelola'] 			= $this->input->post('nama_pengelola');
 		$data['nik']        				= $this->input->post('nik');
 		$data['alamat_tinggal']     		= $this->input->post('alamat_tinggal');
-		$data['no_hp_pengelola']        				= $this->input->post('no_hp_pengelola');
-		$data['no_hp_tukang']        				= $this->input->post('no_hp_tukang');
+		$data['no_hp']        				= $this->input->post('no_hp');
 		$data['email']        				= $this->input->post('email');
 		$data['website']        			= $this->input->post('website');
 		$data['fb']        					= $this->input->post('fb');
@@ -134,12 +133,9 @@
 		$data['id_lokasi']             		= $this->input->post('id_lokasi');
 		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
-		
-		$data['jenis_layanan']				= $this->input->post('jenis_layanan');
-		$data['jenis_pekerjaan']				= $this->input->post('jenis_pekerjaan');
-		$data['kategori_pekerjaan']				= $this->input->post('kategori_pekerjaan');
+		$data['jenis_usaha']				= $this->input->post('jenis_usaha');
+		$data['kelompok_usaha']				= $this->input->post('kelompok_usaha');
 		$data['area']         				= $this->input->post('area');
-		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['created_at']         		= date('Y-m-d H:i:s');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
@@ -179,7 +175,7 @@
 			$data['enabled'] = 2;
 		}
 
-		$outp = $this->db->insert('tbl_tukang', $data);
+		$outp = $this->db->insert('tbl_tawa', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -202,8 +198,7 @@
 		$data['nama_pengelola'] 			= $this->input->post('nama_pengelola');
 		$data['nik']        				= $this->input->post('nik');
 		$data['alamat_tinggal']     		= $this->input->post('alamat_tinggal');
-		$data['no_hp_pengelola']        				= $this->input->post('no_hp_pengelola');
-		$data['no_hp_tukang']        				= $this->input->post('no_hp_tukang');
+		$data['no_hp']        				= $this->input->post('no_hp');
 		$data['email']        			= $this->input->post('email');
 		$data['website']        			= $this->input->post('website');
 		$data['fb']        					= $this->input->post('fb');
@@ -217,12 +212,9 @@
 		$data['id_lokasi']             		= $this->input->post('id_lokasi');
 		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
-		
-		$data['jenis_layanan']				= $this->input->post('jenis_layanan');
-		$data['jenis_pekerjaan'] 			= $this->input->post('jenis_pekerjaan');
-		$data['kategori_pekerjaan']				= $this->input->post('kategori_pekerjaan');
+		$data['jenis_usaha']				= $this->input->post('jenis_usaha');
+		$data['kelompok_usaha'] 			= $this->input->post('kelompok_usaha');
 		$data['area']         				= $this->input->post('area');
-		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
@@ -261,7 +253,7 @@
 		}
 
 		unset($data['old_gambar']);
-		$outp = $this->db->where('id', $id)->update('tbl_tukang', $data);
+		$outp = $this->db->where('id', $id)->update('tbl_tawa', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -272,7 +264,7 @@
 		$this->delete($id);
 		$sub_gallery = $this->db->select('id')->
 			where('parrent', $id)->
-			get('tbl_tukang')->result_array();
+			get('tbl_tawa')->result_array();
 		foreach ($sub_gallery as $gallery)
 		{
 			$this->delete($gallery['id']);
@@ -300,7 +292,7 @@
 		// judul gallery
 		$this->delete_gallery_image($id);
 
-		$outp = $this->db->where('id', $id)->delete('tbl_tukang');
+		$outp = $this->db->where('id', $id)->delete('tbl_tawa');
 
 		status_sukses($outp, $gagal_saja=true); //Tampilkan Pesan
 	}
@@ -319,7 +311,7 @@
 	public function delete_gallery_image($id)
 	{
 		$image = $this->db->select('gambar')->
-			get_where('tbl_tukang', array('id'=>$id))->
+			get_where('tbl_tawa', array('id'=>$id))->
 			row()->gambar;
 		$prefix = array('kecil_', 'sedang_');
 		foreach ($prefix as $pref)
@@ -329,7 +321,7 @@
 		}
 	}
 
-	public function tukang_lock($id='', $val=0)
+	public function toko_lock($id='', $val=0)
 	{
 		// Jangan kunci jika digunakan untuk slider
 		if ($val == 2)
@@ -343,7 +335,7 @@
 		$outp = $this->db
 			->where('id', $id)
 			->set('enabled', $val)
-			->update('tbl_tukang');
+			->update('tbl_tawa');
 		status_sukses($outp); //Tampilkan Pesan
 	}
 
@@ -354,18 +346,18 @@
 			// Hanya satu gallery yang boleh tampil di slider
 			$this->db->where('slider', 1)
 				->set('slider', 0)
-				->update('tbl_tukang');
+				->update('tbl_tawa');
 			// Aktifkan galeri kalau digunakan untuk slider
 			$this->db->set('enabled', 1);
 		}
 		$this->db->where('id', $id)
 			->set('slider', $val)
-			->update('tbl_tukang');
+			->update('tbl_tawa');
 	}
 
-	public function get_tukang($id=0)
+	public function get_usaha($id=0)
 	{
-		$sql = "SELECT * FROM tbl_tukang WHERE id = ?";
+		$sql = "SELECT * FROM tbl_tawa WHERE id = ?";
 		$query = $this->db->query($sql, $id);
 		$data = $query->row_array();
 		return $data;
@@ -376,18 +368,18 @@
 		$gallery_slide_id = $this->db->select('id')
 			->where('slider', 1)
 			->limit(1)
-			->get('tbl_tukang')->row()->id;
+			->get('tbl_tawa')->row()->id;
 		$slide_galeri = $this->db->select('id, nama as judul, gambar')
 			->where('parrent', $gallery_slide_id)
 			->where('tipe', 2)
 			->where('enabled', 1)
-			->get('tbl_tukang')->result_array();
+			->get('tbl_tawa')->result_array();
 		return $slide_galeri;
 	}
 
 	public function paging2($gal=0, $p=1)
 	{
-		$sql = "SELECT COUNT(*) AS jml " . $this->list_layanan_sql();
+		$sql = "SELECT COUNT(*) AS jml " . $this->list_produk_sql();
 		$query = $this->db->query($sql,$gal);
 		$row = $query->row_array();
 		$jml_data = $row['jml'];
@@ -401,15 +393,15 @@
 		return $this->paging;
 	}
 
-	private function list_layanan_sql()
+	private function list_produk_sql()
 	{
-		$sql = " FROM tbl_tukang WHERE parrent = ? AND tipe = 2 ";
+		$sql = " FROM tbl_tawa WHERE parrent = ? AND tipe = 2 ";
 		$sql .= $this->search_sql();
 		$sql .= $this->filter_sql();
 		return $sql;
 	}
 
-	public function list_layanan($gal=1, $o=0, $offset=0, $limit=500)
+	public function list_produk($gal=1, $o=0, $offset=0, $limit=500)
 	{
 		switch($o)
 		{
@@ -424,7 +416,7 @@
 
 		$paging_sql = ' LIMIT ' .$offset. ',' .$limit;
 
-		$sql = "SELECT * " . $this->list_layanan_sql();
+		$sql = "SELECT * " . $this->list_produk_sql();
 		$sql .= $order_sql;
 		$sql .= $paging_sql;
 		$query = $this->db->query($sql, $gal);
@@ -442,7 +434,7 @@
 		return $data;
 	}
 
-	public function insert_layanan($parrent=0)
+	public function insert_produk($parrent=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -481,11 +473,11 @@
 
 		$data['parrent'] = $parrent;
 		$data['tipe'] = 2;
-		$outp = $this->db->insert('tbl_tukang', $data);
+		$outp = $this->db->insert('tbl_tawa', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
-	public function update_layanan($id=0)
+	public function update_produk($id=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -517,7 +509,7 @@
 		}
 
 		unset($data['old_gambar']);
-		$outp = $this->db->where('id', $id)->update('tbl_tukang', $data);
+		$outp = $this->db->where('id', $id)->update('tbl_tawa', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -539,7 +531,7 @@
 		$data['updated_at']             = $post['updated_at'];
 
 		$this->db->where('id', $id);
-		$outp = $this->db->update('tbl_tukang', $data);
+		$outp = $this->db->update('tbl_tawa', $data);
 
 		if ($outp) $_SESSION['success'] = 1;
 		else $_SESSION['success'] = -1;
