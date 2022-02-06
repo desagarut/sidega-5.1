@@ -11,15 +11,15 @@
           <div class="owl-carousel portfolio-details-carousel">
             <?php foreach($main as $data) : ?>
             <?php if(is_file(LOKASI_GALERI . "kecil_" . $data['gambar'])) : ?>
-            <?php $link = site_url('first/tawa_layanan/'.$data['id']) ?>
+            <?php $link = site_url('first/tukang_layanan/'.$data['id']) ?>
             <div class="portfolio-description"> <a class="archive__link" href="#"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>"> </a>
               <div class="portfolio-info">
-                <h3> <a class="" href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>">
+                <h3> <a class="" href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>">
                   <button class="btn btn-warning"><i class="ri-store-2-fill" style="color:#fff;"></i> UMKM:
                   <?= $data['nama'] ?>
                   </button>
-                  </a> <a href="https://wa.me/+62<?= $data['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20<?= $data['nama'] ?>%20masih%20buka%3F" target="_blank" title="pesan">
-                  <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
+                  </a> <a href="https://wa.me/+62<?= $data['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+                  <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
                   </a> </h3>
               </div>
             </div>
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <?php $this->load->view($folder_themes .'/partials/tawa/qr-code.php') ?>
+        <?php $this->load->view($folder_themes .'/partials/tukang/qr-code.php') ?>
       </div>
       <?php endif ?>
     </div>
@@ -38,22 +38,22 @@
 <div class="row">
   <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
     <div class="member" data-aos="fade-up">
-      <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/transport.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px"> </div>
-      <div class="member-info" style="background-color:#B7FFDB">
-        <h4> <strong style="color:#C00">TOWA</strong>: TRANSPORTASI WARGA </h4>
+      <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/tukang.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px"> </div>
+      <div class="member-info" style="background-color:#FFC">
+        <h4> <strong style="color:#C00">TUKANG</strong> WARGA</h4>
         <p class="text-center"><strong>adalah </strong> wadah bagi <strong>UMKM</strong> (Usaha Masyarakat Kecil Menengah) di wilayah <strong>
           <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>
           </strong>, yang dikembangkan untuk membantu meningkatkan pertumbuhan ekonomi masyarakat desa.</p>
-        <!--<a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
+        <!--<a href="https://wa.me/+62<?= $data['no_hp_tukang'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
             
-            <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>--> 
+            <a href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>--> 
       </div>
     </div>
   </div>
   <?php if($main) : ?>
   <?php foreach($main as $data) : ?>
   <?php if(is_file(LOKASI_GALERI . "kecil_" . $data['gambar'])) : ?>
-  <?php $link = site_url('first/tawa_layanan/'.$data['id']) ?>
+  <?php $link = site_url('first/tukang_layanan/'.$data['id']) ?>
   <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
     <div class="member" data-aos="fade-up">
       <div class="member-img"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px">
@@ -66,7 +66,7 @@
         <span style="color:#F60"><i class="icofont-user"></i>
         <strong><?= $data['nama_pengelola']?></strong>
 		<span style="color:#03F"><i class="icofont-long-drive"></i>
-        <?= $data['jenis_usaha'] ?>
+        <?= $data['jenis_layanan'] ?>
         </span> 
         <span style="color:#63F"><i class="icofont-map-pins"></i> Area
         <?= $data['area']?>
@@ -77,9 +77,9 @@
         <span style="color:#F09"><i class="icofont-location-pin"></i>
         <?= $data['lokasi'] ?>
         </span> <br/>
-        <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20<?= $data['nama'] ?>%20masih%20buka%3F%" target="_blank" title="pesan">
+        <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
         <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
-        </a> <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Produk">
+        </a> <a href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"  title="Produk">
         <button class="btn btn-primary"><i class="icofont-info"></i> Layanan</button>
         </a> </div>
     </div>

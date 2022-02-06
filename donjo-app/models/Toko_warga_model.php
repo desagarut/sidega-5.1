@@ -141,9 +141,12 @@
 		$data['kategori_toko']        		= $this->input->post('kategori_toko');
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['created_at']         		= date('Y-m-d H:i:s');
+		
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
 		$data['harga'] 						= $this->input->post('harga');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		$data['deskripsi'] 						= $this->input->post('deskripsi');
 
 		$data['skdu']     		= $this->input->post('skdu');
@@ -222,9 +225,12 @@
 		$data['produk_utama']         		= $this->input->post('produk_utama');
 		$data['kategori_toko']        		= $this->input->post('kategori_toko');
 		$data['updated_at']         		= date('Y-m-d H:i:s');
+		
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
 		$data['harga'] 						= $this->input->post('harga');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		$data['deskripsi'] 						= $this->input->post('deskripsi');
 
 		$data['skdu']     		= $this->input->post('skdu');
@@ -454,7 +460,10 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
-		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); //pastikan nama album hanya berisi
+		$data['harga'] = $this->input->post('harga'); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
+
 		$data['diskon'] = $this->input->post('diskon'); 
 		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
 		
@@ -498,6 +507,8 @@
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
 		$data['harga'] = $this->input->post('harga'); //pastikan harga hanya berisi
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
 		$data['diskon'] = $this->input->post('diskon'); 
 		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
 		

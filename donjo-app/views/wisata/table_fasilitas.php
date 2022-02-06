@@ -269,7 +269,7 @@
                                 <td><label data-rel="popover" data-content="<img width=200 height=134 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>">
                                     <?= $data['nama']?>
                                   </label></td>
-                                <td><?= $rupiah($data['harga'])?></td>
+                                <td><?= $data['sebutan_biaya']?> <?= $rupiah($data['harga'])?> / <?= $data['sebutan_ukuran']?></td>
                                 <td><?=$data['deskripsi']?></td>
                                 <td><?= $data['aktif']?></td>
                                 <td nowrap><?= tgl_indo2($data['tgl_upload'])?></td>

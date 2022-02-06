@@ -222,11 +222,15 @@ class Toko_warga extends Admin_Controller {
 		if ($id)
 		{
 			$data['gallery'] = $this->toko_warga_model->get_toko($id);
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
 			$data['form_action'] = site_url("toko_warga/update_produk/$gallery/$id");
 		}
 		else
 		{
 			$data['gallery'] = null;
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
 			$data['form_action'] = site_url("toko_warga/insert_produk/$gallery");
 		}
 		

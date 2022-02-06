@@ -54,6 +54,7 @@
           </span> <span style="color:#F09"><i class="icofont-location-pin"></i>
           <?= $sub['lokasi'] ?>
           </span> <br/>
+            <a href="<?= site_url('first/tawa') ?>" ><button class="btn btn-danger"><i class="icofont-reply-all"></i></button></a>
           <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
           <button class="btn btn-primary"><i class="icofont-whatsapp"></i> Hubungi</button>
           </a>

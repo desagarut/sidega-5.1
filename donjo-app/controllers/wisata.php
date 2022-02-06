@@ -216,11 +216,15 @@ class Wisata extends Admin_Controller {
 		if ($id)
 		{
 			$data['wisata'] = $this->wisata_model->get_wisata($id);
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
 			$data['form_action'] = site_url("wisata/update_fasilitas/$gallery/$id");
 		}
 		else
 		{
 			$data['wisata'] = null;
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
 			$data['form_action'] = site_url("wisata/insert_fasilitas/$gallery");
 		}
 		

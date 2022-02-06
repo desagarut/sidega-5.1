@@ -141,6 +141,8 @@
 		$data['jarak_tempuh']				= $this->input->post('jarak_tempuh');
 		$data['waktu_tempuh']				= $this->input->post('waktu_tempuh');
 		$data['cara_tempuh']         				= $this->input->post('cara_tempuh');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['created_at']         		= date('Y-m-d H:i:s');
@@ -226,6 +228,8 @@
 		$data['jarak_tempuh']				= $this->input->post('jarak_tempuh');
 		$data['waktu_tempuh']				= $this->input->post('waktu_tempuh');
 		$data['cara_tempuh']         				= $this->input->post('cara_tempuh');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
@@ -460,8 +464,10 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
-		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); //pastikan nama album hanya berisi
+		$data['harga'] = $this->input->post('harga'); //pastikan nama album hanya berisi
 		$data['diskon'] = $this->input->post('diskon'); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
 		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
 		
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => $parrent)) + 1;
@@ -505,6 +511,8 @@
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
 		$data['harga'] = $this->input->post('harga'); //pastikan harga hanya berisi
 		$data['diskon'] = $this->input->post('diskon'); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
 		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
 		
 		// Kalau kosong, gambar tidak diubah

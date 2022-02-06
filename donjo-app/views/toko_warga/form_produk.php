@@ -25,12 +25,36 @@
 									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama Produk" value="<?=$gallery['nama']?>"></input>
 								</div>
 							</div>
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_biaya">Sebutan Biaya</label>
+                                <div class="col-sm-2">
+                                  <select class="form-control input-sm select2 required" id="sebutan_biaya" name="sebutan_biaya" style="width:100%;">
+                                    <?php foreach ($sebutan_biaya as $value) : ?>
+                                    <option <?= $value === $gallery['sebutan_biaya'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                  </select>
+                                </div>
+                              </div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="harga">Harga</label>
 								<div class="col-sm-2">
-									<input name="harga" class="form-control input-sm rupiah required" maxlength="20" type="text" placeholder="rupiah" value="<?= $rupiah($gallery['harga'])?>"></input>
+									<input name="harga" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['harga']?>"></input>
 								</div>
 							</div>
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_ukuran">Sebutan Ukuran</label>
+                                <div class="col-sm-2">
+                                  <select class="form-control input-sm select2 required" id="sebutan_ukuran" name="sebutan_ukuran" style="width:100%;">
+                                    <?php foreach ($sebutan_ukuran as $value) : ?>
+                                    <option <?= $value === $gallery['sebutan_ukuran'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                  </select>
+                                </div>
+                              </div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="diskon">Persen Diskon</label>
 								<div class="col-sm-1">
