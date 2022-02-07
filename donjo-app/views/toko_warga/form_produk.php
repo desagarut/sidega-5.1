@@ -38,7 +38,7 @@
                                 </div>
                               </div>
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="harga">Harga</label>
+								<label class="control-label col-sm-4" for="harga">Nominal</label>
 								<div class="col-sm-2">
 									<input name="harga" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['harga']?>"></input>
 								</div>

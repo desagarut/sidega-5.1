@@ -18,7 +18,7 @@
                   <button class="btn btn-warning"><i class="ri-store-2-fill" style="color:#fff;"></i> WISATA:
                   <strong><?= $data['nama'] ?></strong>
                   </button>
-                  </a> <a href="https://wa.me/+62<?= $data['no_hp_wisata'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20desa%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F" target="_blank" title="pesan">
+                  </a> <a href="https://wa.me/+62<?= $data['no_hp_wisata'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F" target="_blank" title="pesan">
                   <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi	</button>
                   </a> </h3>
               </div>

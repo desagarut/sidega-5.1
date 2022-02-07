@@ -138,6 +138,9 @@
 		$data['jenis_layanan']				= $this->input->post('jenis_layanan');
 		$data['jenis_pekerjaan']				= $this->input->post('jenis_pekerjaan');
 		$data['kategori_pekerjaan']				= $this->input->post('kategori_pekerjaan');
+		$data['spesifikasi_pekerjaan']				= $this->input->post('spesifikasi_pekerjaan');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		$data['area']         				= $this->input->post('area');
 		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
@@ -221,6 +224,9 @@
 		$data['jenis_layanan']				= $this->input->post('jenis_layanan');
 		$data['jenis_pekerjaan'] 			= $this->input->post('jenis_pekerjaan');
 		$data['kategori_pekerjaan']				= $this->input->post('kategori_pekerjaan');
+		$data['spesifikasi_pekerjaan']				= $this->input->post('spesifikasi_pekerjaan');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
 		$data['area']         				= $this->input->post('area');
 		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
@@ -456,9 +462,11 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
-		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); //pastikan nama album hanya berisi
+		$data['harga'] = $this->input->post('harga'); //pastikan nama album hanya berisi
 		$data['diskon'] = $this->input->post('diskon'); 
-		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['deskripsi'] = $this->input->post('deskripsi'); 
 		
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => $parrent)) + 1;
 		// Bolehkan isi album tidak ada gambar
@@ -501,7 +509,9 @@
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
 		$data['harga'] = $this->input->post('harga'); //pastikan harga hanya berisi
 		$data['diskon'] = $this->input->post('diskon'); 
-		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['deskripsi'] = $this->input->post('deskripsi'); 
 		
 		// Kalau kosong, gambar tidak diubah
 		if (!empty($lokasi_file))

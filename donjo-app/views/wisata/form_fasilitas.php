@@ -61,7 +61,7 @@
 								<label class="control-label col-sm-4" for="deskripsi">Deskripsi Fasilitas</label>
 								<div class="col-sm-6">								
 								<textarea name="deskripsi" class="form-control input-sm required" style="height:50px;"><?=$wisata['deskripsi']?></textarea>
-                                </div>
+                                </div>                          
 							</div>
 							<?php if ($wisata['gambar']): ?>
 								<div class="form-group">

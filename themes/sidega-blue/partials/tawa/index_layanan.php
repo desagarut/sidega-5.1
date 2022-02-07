@@ -19,7 +19,7 @@
               | Harga:
               <?= $album['harga'] ?>
               <a href="https://wa.me/+62<?= $sub['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
-              <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
+              <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
               </a></h3>
           </div>
           </div>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <?php $this->load->view($folder_themes .'/partials/tawa/info_towa.php') ?>
+      <?php $this->load->view($folder_themes .'/partials/tawa/info_transportasi.php') ?>
     </div>
   </div>
 </section>
@@ -84,7 +84,7 @@
         </p>
         <br/>
         <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20<?= $album['nama'] ?>%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
-        <button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button>
+        <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
         </a> </div>
     </div>
   </div>

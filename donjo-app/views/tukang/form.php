@@ -154,7 +154,7 @@
                   <!-- Start Klasifikasi Usaha -->
                   
                   <div class="form-group">
-                    <label class="col-sm-3 control-label" style="text-align:left; color:#999">KLASIFIKASI USAHA</label>
+                    <label class="col-sm-3 control-label" style="text-align:left; color:#999">INFORMASI USAHA</label>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label" style="text-align:left;" for="jenis_layanan">Jenis Layanan</label>
@@ -193,6 +193,18 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align:left;" for="spesifikasi_pekerjaan">Spesifikasi Pekerjaan</label>
+                    <div class="col-sm-5">
+                      <select class="form-control input-sm select2 required" id="spesifikasi_pekerjaan" name="spesifikasi_pekerjaan" style="width:100%;">
+                        <?php foreach ($spesifikasi_pekerjaan as $value) : ?>
+                        <option <?= $value === $tukang['spesifikasi_pekerjaan'] ? 'selected' : '' ?> value="<?= $value ?>">
+                        <?= $value ?>
+                        </option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label class="col-sm-3 control-label" style="text-align:left;" for="area">Area Layanan</label>
                     <div class="col-sm-5">
                       <select class="form-control input-sm select2" id="area" name="area" style="width:100%;">
@@ -224,7 +236,7 @@
                   
                   <!-- Start Klasifikasi Usaha -->
                   <div class="form-group">
-                    <label class="col-sm-3 control-label" style="text-align:left; color:#999">SOSIAL MEDIA</label>
+                    <label class="col-sm-3 control-label" style="text-align:left; color:#999">INFORMASI SOSIAL MEDIA</label>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 control-label" style="text-align:left;" for="no_hp_tukang">Nomor HP</label>

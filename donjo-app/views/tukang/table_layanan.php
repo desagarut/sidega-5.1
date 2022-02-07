@@ -31,14 +31,14 @@
               </div>
               
               <div class="row">
-                <?php $this->load->view($folder_themes .'/tukang/peta_view.php') ?>
+                <?php $this->load->view($folder_themes .'/tukang/peta.php') ?>
               </div>
           </div>
       </div>
       
-      <div class="box box-warning">
+      <div class="box box-warning collapsed-box">
         <div class="box-header"> <i class="fa fa-calendar"></i>
-          <h3 class="box-title"><strong>INFO UMKM</strong></h3>
+          <h3 class="box-title"><strong>INFORMASI UMKM</strong></h3>
           <!-- tools box -->
           <div class="pull-right box-tools"> 
             <!-- button with a dropdown -->
@@ -55,7 +55,7 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped dataTable table-hover">
                 <thead class="bg-gray disabled color-palette">
-                <h5><strong>INFO USAHA</strong></h5>
+                <h5><strong>INFORMASI TUKANG</strong></h5>
                   </thead>
                 
                 <tbody>
@@ -97,7 +97,7 @@
               
               <table class="table table-bordered table-striped dataTable table-hover">
                 <thead class="bg-orange disabled color-palette">
-                <h5><strong>SOSIAL MEDIA</strong></h5>
+                <h5><strong>INFORMASI SOSIAL MEDIA</strong></h5>
                   </thead>
                 
                 <tbody>
@@ -122,7 +122,7 @@
               
               <table class="table table-bordered table-striped dataTable table-hover">
                 <thead class="bg-gray disabled color-palette">
-                <h5><strong>PERIZINAN</strong></h5>
+                <h5><strong>INFORMASI PERIZINAN</strong></h5>
                   </thead>
                 
                 <tbody>
@@ -261,7 +261,7 @@
                                 <td><label data-rel="popover" data-content="<img width=200 height=134 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>">
                                     <?= $data['nama']?>
                                   </label></td>
-                                <td><?= $rupiah($data['harga'])?></td>
+                                <td><?= $rupiah($data['harga'])?> / <?= $data['sebutan_ukuran']?></td>
                                 <td><?=$data['deskripsi']?></td>
                                 <td><?= $data['aktif']?></td>
                                 <td nowrap><?= tgl_indo2($data['tgl_upload'])?></td>

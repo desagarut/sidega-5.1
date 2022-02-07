@@ -36,7 +36,7 @@
           </div>
       </div>
       
-      <div class="box box-warning">
+      <div class="box box-warning collapsed-box">
         <div class="box-header"> <i class="fa fa-calendar"></i>
           <h3 class="box-title"><strong>INFO UMKM</strong></h3>
           <!-- tools box -->
@@ -55,7 +55,7 @@
             <div class="table-responsive">
               <table class="table table-bordered table-striped dataTable table-hover">
                 <thead class="bg-gray disabled color-palette">
-                <h5><strong>INFO WISATA</strong></h5>
+                <h5><strong>INFORMASI OBJEK WISATA</strong></h5>
                   </thead>
                 
                 <tbody>
@@ -105,7 +105,7 @@
               
               <table class="table table-bordered table-striped dataTable table-hover">
                 <thead class="bg-orange disabled color-palette">
-                <h5><strong>SOSIAL MEDIA</strong></h5>
+                <h5><strong>INFORMASI SOSIAL MEDIA</strong></h5>
                   </thead>
                 
                 <tbody>

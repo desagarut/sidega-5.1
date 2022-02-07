@@ -315,13 +315,19 @@ define("JENIS_VAKSIN", serialize(array(
 )));
 
 define("AREA_LAYANAN", serialize(array(
-	"Dalam Desa" => "Dalam Desa",
-	"Dalam Kecamatan" => "Dalam Kecamatan",
-	"Antar Kecamatan" => "Kawasan Pasar",
-	"Dalam Kabupaten" => "Dalam Kabupaten",
-	"Antar Kabupaten"=> "Antar Kabupaten",
-	"Antar Propinsi" => "Antar Propinsi",
+	"Sekitar Desa" => "Sekitar Desa",
+	"Sekitar Kecamatan" => "Sekitar Kecamatan",
+	"Sekitar Kabupaten" => "Sekitar Kabupaten",
+	"Sekitar Propinsi" => "Sekitar Propinsi",
+	"Luar Propinsi" => "Luar Propinsi",
+	"Luar Negara" => "Luar Negara",
 	"Lainnya" => "Lainnya",
+)));
+
+define("JENIS_PEKERJAAN", serialize(array(
+	"Pekerjaan Bidang Jasa" => "Pekerjaan Bidang Jasa",
+	"Pekerjaan menghasilkan Barang" => "Pekerjaan menghasilkan Barang",
+	"Pekerjaan Lainnya" => "Pekerjaan Lainnya",
 )));
 
 define("JENIS_LAYANAN", serialize(array(
@@ -339,12 +345,6 @@ define("KATEGORI_PEKERJAAN", serialize(array(
 	"Pemeliharaan Rumah" => "Pemeliharaan Rumah",
 	"Kuliner" => "Kuliner",
 	"Lainnya" => "Lainnya",
-)));
-
-define("JENIS_PEKERJAAN", serialize(array(
-	"Pekerjaan Bidang Jasa" => "Pekerjaan Bidang Jasa",
-	"Pekerjaan menghasilkan Barang" => "Pekerjaan menghasilkan Barang",
-	"Pekerjaan Lainnya" => "Pekerjaan Lainnya",
 )));
 
 define("PEKERJAAN_JASA", serialize(array(
@@ -380,17 +380,20 @@ define("PEKERJAAN_JASA", serialize(array(
 )));
 
 define("JENIS_WISATA", serialize(array(
+	"Wisata Alam" => "Wisata Alam",
 	"Wisata Pantai" => "Wisata pantai",
+	"Wisata Sungai" => "Wisata Sungai",
+	"Wisata Air Terjun" => "Wisata Air Terjun",
+	"Wisata Gua" => "Wisata Gua",
+	"Wisata Ekologi" => "Wisata Ekologi",
+	"Wisata Budaya" => "Wisata Budaya",
 	"Wisata Etnik" => "Wisata Etnik",
 	"Wisata Buru" => "Wisata Buru",
 	"Wisata Olahraga" => "Wisata Olahraga",
 	"Wisata Kuliner" => "Wisata Kuliner",
 	"Wisata Religius" => "Wisata Religius",
 	"Wisata Agro" => "Wisata Agro",
-	"Wisata Gua" => "Wisata Gua",
 	"Wisata Belanja" => "Wisata Belanja",
-	"Wisata Ekologi" => "Wisata Ekologi",
-	"Wisata Budaya" => "Wisata Budaya",
 	"Wisata Lainnya" => "Wisata Lainnya",
 )));
 
@@ -410,14 +413,9 @@ define("SUMBER_MODAL_WISATA", serialize(array(
 	"Pemerintah Propinsi" => "Pemerintah Propinsi",
 	"Pemerintah Kabupaten" => "Pemerintah Kabupaten",
 	"Pemerintah Desa" => "Pemerintah Desa",
-	"Swasta" => "Wisata Kuliner",
-	"Wisata Religius" => "Wisata Religius",
-	"Wisata Agro" => "Wisata Agro",
-	"Wisata Gua" => "Wisata Gua",
-	"Wisata Belanja" => "Wisata Belanja",
-	"Wisata Ekologi" => "Wisata Ekologi",
-	"Wisata Budaya" => "Wisata Budaya",
-	"Wisata Lainnya" => "Wisata Lainnya",
+	"Swasta" => "Swasta",
+	"Sumber Luar Negeri" => "Sumber Luar Negeri",
+	"Sumber Lainnya" => "Sumber Lainnya",
 )));
 
 define("SEBUTAN_BIAYA", serialize(array(
@@ -428,6 +426,7 @@ define("SEBUTAN_BIAYA", serialize(array(
 	"Ongkir" => "Ongkir",
 	"Biaya" => "Biaya",
 	"Upah" => "Upah",
+	"Honor" => "Honor",
 	"Tarif" => "Tarif",
 	"Tiket" => "Tiket",
 	"Sewa" => "Sewa",

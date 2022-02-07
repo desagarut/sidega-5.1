@@ -115,7 +115,7 @@
 			->update('tbl_tukang');
 	}
 
-	public function get_usaha($id=0)
+	public function get_tukang($id=0)
 	{
 		$sql = "SELECT * FROM tbl_tukang WHERE id = ?";
 		$query = $this->db->query($sql, $id);

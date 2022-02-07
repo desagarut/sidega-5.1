@@ -34,7 +34,7 @@
   <div class="row">
     <?php $this->load->view($folder_themes .'/toko_warga/peta_view.php') ?>
   </div>
-  <div class="box-body">
+  <div class="box-body collapsed-box">
     <div class="row">
       <div class="col-sm-12">
         <div class="table-responsive">

@@ -1,13 +1,10 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
 <script async defer
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxsKE9ArOZcaNtsfXIMFqr4N-UCsmp-Ng&callback=initMap">
 </script>
-
-
 <script>
-<?php if (!empty($tukang['lat'] && !empty($tukang['lng']))): ?>
-	var center = { lat: <?= $tukang['lat'].", lng: ".$tukang['lng']; ?> };
+<?php if (!empty($sub['lat'] && !empty($sub['lng']))): ?>
+	var center = { lat: <?= $sub['lat'].", lng: ".$sub['lng']; ?> };
 <?php else: ?>
 	var center = { lat: <?=$desa['lat'].", lng: ".$desa['lng']?> };
 <?php endif; ?>
@@ -36,49 +33,35 @@ function initMap() {
 }
 </script>
 <style>
-  #map_penduduk
-  {
+#map_penduduk {
 	z-index: 1;
-    width: 100%;
-    height: 400px;
-    border: none;
-	margin-top:auto;
-  }
+	width: 100%;
+	height: 400px;
+	border: none;
+	margin-top: auto;
+}
 </style>
 
-<div class="content-wrapper">
-	<section class="content-header">
-		<h1>Lokasi : <?=$tukang['nama']?></h1>
-		<ol class="breadcrumb">
-			<li><a href="<?= site_url('beranda') ?>"><i class="fa fa-home"></i> Home</a></li>
-			<li><a href="<?= site_url('toko_warga') ?>"> Daftar Toko</a></li>
-			<li class="active">Lokasi <?=$tukang['nama']?></li>
-		</ol>
-	</section>
-	<section class="content">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="box box-info">
-                <form id="validasi1" action="<?= $form_action?>" method="POST" enctype="multipart/form-data" class="form-horizontal">	
-                <div class='modal-body'>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div id="map_penduduk"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class='col-xs-12'>
-                           <a href="<?= site_url("toko_warga")?>" class="pull-left"> <button type="#" class="btn btn-social btn-box btn-primary btn-sm"><i class='fa fa-arrow-left'></i> Kembali</button></a>
-                            <input type="text" name="lat" id="lat" value="<?= $tukang['lat']?>"/>
-                            <input type="text" name="lng" id="lng" value="<?= $tukang['lng']?>" />
-                            <button type="reset" class="btn btn-social btn-box btn-danger btn-sm" data-dismiss="modal"><i class='fa fa-refresh'></i> Reset</button>
-                            <button type="submit" class="btn btn-social btn-box btn-success btn-sm"><i class='fa fa-check'></i> Simpan</button>
-                        </div>
-                    </div>
-                </div>
-                </form>
-				</div>
-            </div>
-        </div>
-	</section>
+<div class="col-sm-3">
+  <div class="box box-warning">
+    <div class="box-body box-profile"> <img class="img-responsive img-circle" src=<?= AmbilGaleri($sub['gambar'], 'kecil') ?>>
+      <h3 class="profile-username text-center">
+        <?= strtoupper($sub['nama'])?>
+      </h3>
+      <ul class="list-group list-group-unbordered" >
+        <li class="list-group-item"> Pengelola <a class="pull-right">
+          <?= $sub['nama_pengelola']?>
+          </a> </li>
+          
+      </ul><a href="https://wa.me/+62<?= $data['no_hp_tukang'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Hubungi</a> 
+      <a href="<?= site_url("first/tukang_layanan/".$sub['id'])?>" target="_blank" class="btn bg-blue btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i> Lihat</a>
+    </div>
+  </div>
+</div>
+<div class="col-sm-9">
+  <div class="box box-warning">
+    <div class="box-body">
+      <div id="map_penduduk"></div>
+    </div>
+  </div>
 </div>
