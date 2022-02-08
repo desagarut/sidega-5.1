@@ -16,8 +16,8 @@
           <div class="portfolio-info">
             <h3 style="color:#FFF">
               <?= $album['nama'] ?>
-              | Harga:
-              <?= $album['harga'] ?>
+              | <small style="color:#FFC; font-size:12px"><?= $album['sebutan_biaya'] ?>:</small>
+              <?= $rupiah($album['harga']) ?>
               <a href="https://wa.me/+62<?= $sub['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
               <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
               </a></h3>
@@ -79,7 +79,7 @@
         <p class="text-justify member-info-detail">
           <?= $album['deskripsi'] ?>
         <h5 style="color:#C00">
-          <?= $album['harga'] ?>
+          <small style="color:#03F; font-size:12px"><?= $album['sebutan_biaya'] ?></small> <?= $rupiah($album['harga']) ?><i><small style="color:#666; font-size:10px"> / <?= $album['sebutan_ukuran'] ?></small></i>
         </h5>
         </p>
         <br/>

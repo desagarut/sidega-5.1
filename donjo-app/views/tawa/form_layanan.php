@@ -3,8 +3,8 @@
 		<h1>Form Tambah/Ubah</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda')?>"><i class="fa fa-home"></i> Home</a></li>
-			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Transportasi Warga</a></li>
-			<li><a href='<?= site_url("toko_warga/produk/$album")?>'><i class="fa fa-dashboard"></i> Daftar Layanan</a></li>
+			<li><a href="<?= site_url('tawa')?>"><i class="fa fa-dashboard"></i> Daftar Transportasi Warga</a></li>
+			<li><a href='<?= site_url("tawa/layanan/$album")?>'><i class="fa fa-dashboard"></i> Daftar Layanan</a></li>
 			<li class="active">Tambah/Ubah</li>
 		</ol>
 	</section>
@@ -14,7 +14,7 @@
 				<div class="col-md-12">
 					<div class="box box-info">
             <div class="box-header with-border">
-							<a href="<?= site_url("toko_warga/produk/$album")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
+							<a href="<?= site_url("tawa/layanan/$album")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
 								<i class="fa fa-arrow-circle-left "></i>Kembali
             	</a>
 						</div>
@@ -25,12 +25,36 @@
 									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama Layanan" value="<?=$gallery['nama']?>"></input>
 								</div>
 							</div>
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_biaya">Sebutan Biaya</label>
+                                <div class="col-sm-2">
+                                  <select class="form-control input-sm select2 required" id="sebutan_biaya" name="sebutan_biaya" style="width:100%;">
+                                    <?php foreach ($sebutan_biaya as $value) : ?>
+                                    <option <?= $value === $gallery['sebutan_biaya'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                  </select>
+                                </div>
+                              </div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="harga">Harga/Biaya</label>
 								<div class="col-sm-2">
-									<input name="harga" class="form-control input-sm rupiah required" maxlength="20" type="text" placeholder="rupiah" value="<?= $rupiah($gallery['harga'])?>"></input>
+									<input name="harga" class="form-control input-sm required" maxlength="20" type="text" placeholder="rupiah" value="<?= $gallery['harga']?>"></input>
 								</div>
 							</div>
+                              <div class="form-group">
+                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_ukuran">Sebutan Ukuran</label>
+                                <div class="col-sm-2">
+                                  <select class="form-control input-sm select2 required" id="sebutan_ukuran" name="sebutan_ukuran" style="width:100%;">
+                                    <?php foreach ($sebutan_ukuran as $value) : ?>
+                                    <option <?= $value === $gallery['sebutan_ukuran'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                  </select>
+                                </div>
+                              </div>
 							<div class="form-group">
 								<label class="control-label col-sm-4" for="diskon">Persen Diskon</label>
 								<div class="col-sm-1">

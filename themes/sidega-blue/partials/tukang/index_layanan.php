@@ -16,7 +16,6 @@
           <div class="portfolio-info">
             <h3 style="color:#FFF">
               <?= $album['nama'] ?>
-              | Harga:
               | <small style="color:#FFC; font-size:12px"><?= $album['sebutan_biaya'] ?>:</small>
               <?= $rupiah($album['harga']) ?>
         <a href="https://wa.me/+62<?= $data['no_hp_pengelola'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20keahlian%20anda%20tentang%20<?= $album['nama'] ?>%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Saya%20ada%20pekerjaan%20yang%20mungkin%20cocok%20dengan%20keahlian%20anda.%20Apakah%20kita%20dapat%20membicarakannya%20lebih%20lanjut%3F" target="_blank" title="pesan">
@@ -35,14 +34,19 @@
     </div>
   </div>
 </section>
-<h2><i class="ri-store-2-fill" style="color:#e80368;"></i> SPESIALISASI <strong class="color:#e80368">
-  <?= $sub['nama'] ?>
-  </strong></h2>
+</div>
+<div class="row">
+  <div class="col-md-12" data-aos="fade-left">
+    <h5 align="center"><i class="ri-map-2-fill" style="color:#F90;"></i> SPESIALISASI <strong class="color:#60C">
+      <?= $sub['nama'] ?>
+      </strong></h5>
+  </div>
+</div>
 <div class="row">
   <div class="col-lg-3 col-md-6 align-items-stretch">
     <div class="member" data-aos="fade-right">
       <div class="member-img"> <img src="<?= AmbilGaleri($sub['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $sub['nama'] ?>" style="width:100%; height:225px">
-        <div class="member-info">
+        <div class="member-info"  style="background-color:#FFC">
         <h4> <strong style="color:#F60"><?= $sub['nama'] ?></strong></h4>
           <span style="color:#666" class="text-justify member-info-detail">
           <strong>Pengelola</strong> : <?= $sub['nama_pengelola']?>

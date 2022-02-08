@@ -67,8 +67,9 @@ class Tawa extends Admin_Controller {
 			$data['jenis_usaha'] = $this->referensi_model->list_ref(JENIS_USAHA);
 			$data['kelompok_usaha'] = $this->referensi_model->list_ref(KELOMPOK_USAHA);
 			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
-			$data['status'] = $this->referensi_model->list_ref(STATUS_TOKO);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
 			$data['kepemilikan_kendaraan'] = $this->referensi_model->list_ref(KEPEMILIKAN_KENDARAAN);
+			$data['kategori_jasa_transportasi'] = $this->referensi_model->list_ref(KATEGORI_JASA_TRANSPORTASI);
 			$data['form_action'] = site_url("tawa/update/$id/$p/$o");
 		}
 		else
@@ -79,8 +80,9 @@ class Tawa extends Admin_Controller {
 			$data['jenis_usaha'] = $this->referensi_model->list_ref(JENIS_USAHA);
 			$data['kelompok_usaha'] = $this->referensi_model->list_ref(KELOMPOK_USAHA);
 			$data['kepemilikan_tempat_usaha'] = $this->referensi_model->list_ref(KEPEMILIKAN_TEMPAT_USAHA);
-			$data['status'] = $this->referensi_model->list_ref(STATUS_TOKO);
+			$data['status'] = $this->referensi_model->list_ref(STATUS_AKTIF);
 			$data['kepemilikan_kendaraan'] = $this->referensi_model->list_ref(KEPEMILIKAN_KENDARAAN);
+			$data['kategori_jasa_transportasi'] = $this->referensi_model->list_ref(KATEGORI_JASA_TRANSPORTASI);
 			$data['form_action'] = site_url("tawa/insert");
 		}
 		$data['rupiah'] = function($angka){
@@ -99,7 +101,7 @@ class Tawa extends Admin_Controller {
 		else unset($_SESSION['cari']);
 		if ($gallery != '')
 		{
-			redirect("tawa/produk/$gallery");
+			redirect("tawa/layanan/$gallery");
 		}
 		else
 		{
@@ -115,7 +117,7 @@ class Tawa extends Admin_Controller {
 		else unset($_SESSION['filter']);
 		if ($gallery != '')
 		{
-			redirect("tawa/produk/$gallery");
+			redirect("tawa/layanan/$gallery");
 		}
 		else
 		{
@@ -154,7 +156,7 @@ class Tawa extends Admin_Controller {
 	{
 		$this->tawa_model->toko_lock($id, 1);
 		if ($gallery != '')
-			redirect("tawa/produk/$gallery/$p");
+			redirect("tawa/layanan/$gallery/$p");
 		else
 			redirect("tawa/index/$p/$o");
 	}
@@ -163,7 +165,7 @@ class Tawa extends Admin_Controller {
 	{
 		$this->tawa_model->toko_lock($id, 2);
 		if ($gallery != '')
-			redirect("tawa/produk/$gallery/$p");
+			redirect("tawa/layanan/$gallery/$p");
 		else
 			redirect("tawa/index/$p/$o");
 	}
@@ -172,7 +174,7 @@ class Tawa extends Admin_Controller {
 	{
 		$this->tawa_model->toko_slider($id, 1);
 		if ($gallery != '')
-			redirect("tawa/produk/$gallery/$p");
+			redirect("tawa/layanan/$gallery/$p");
 		else
 			redirect("tawa/index/$p/$o");
 	}
@@ -181,12 +183,12 @@ class Tawa extends Admin_Controller {
 	{
 		$this->tawa_model->gallery_slider($id,0);
 		if ($gallery != '')
-			redirect("tawa/produk/$gallery/$p");
+			redirect("tawa/layanan/$gallery/$p");
 		else
 			redirect("tawa/index/$p/$o");
 	}
 	
-	public function produk($gal=0, $p=1, $o=0)
+	public function layanan($gal=0, $p=1, $o=0)
 	{
 		$data['p'] = $p;
 		$data['o'] = $o;
@@ -204,7 +206,7 @@ class Tawa extends Admin_Controller {
 		$data['per_page'] = $_SESSION['per_page'];
 
 		$data['paging'] = $this->tawa_model->paging2($gal, $p);
-		$data['produk_data'] = $this->tawa_model->list_produk($gal, $o, $data['paging']->offset, $data['paging']->per_page);
+		$data['layanan_data'] = $this->tawa_model->list_layanan($gal, $o, $data['paging']->offset, $data['paging']->per_page);
 		$data['gallery'] = $gal;
 		$data['sub'] = $this->tawa_model->get_usaha($gal);
 		$data['keyword'] = $this->tawa_model->autocomplete();
@@ -214,20 +216,24 @@ class Tawa extends Admin_Controller {
             return $hasil_rupiah;
         };
 
-		$this->render('tawa/table_produk', $data);
+		$this->render('tawa/table_layanan', $data);
 	}
 
-	public function form_produk($gallery=0, $id=0)
+	public function form_layanan($gallery=0, $id=0)
 	{
 		if ($id)
 		{
 			$data['gallery'] = $this->tawa_model->get_usaha($id);
-			$data['form_action'] = site_url("tawa/update_produk/$gallery/$id");
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
+			$data['form_action'] = site_url("tawa/update_layanan/$gallery/$id");
 		}
 		else
 		{
 			$data['gallery'] = null;
-			$data['form_action'] = site_url("tawa/insert_produk/$gallery");
+			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
+			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
+			$data['form_action'] = site_url("tawa/insert_layanan/$gallery");
 		}
 		
 		$data['rupiah'] = function($angka){
@@ -236,53 +242,53 @@ class Tawa extends Admin_Controller {
         };
 		$data['album']=$gallery;
 
-		$this->render('tawa/form_produk', $data);
+		$this->render('tawa/form_layanan', $data);
 	}
 
-	public function insert_produk($gallery='')
+	public function insert_layanan($gallery='')
 	{
-		$this->tawa_model->insert_produk($gallery);
-		redirect("tawa/produk/$gallery");
+		$this->tawa_model->insert_layanan($gallery);
+		redirect("tawa/layanan/$gallery");
 	}
 
-	public function update_produk($gallery='', $id='')
+	public function update_layanan($gallery='', $id='')
 	{
-		$this->tawa_model->update_produk($id);
-		redirect("tawa/produk/$gallery");
+		$this->tawa_model->update_layanan($id);
+		redirect("tawa/layanan/$gallery");
 	}
 
-	public function delete_produk($gallery='', $id='')
+	public function delete_layanan($gallery='', $id='')
 	{
-		$this->redirect_hak_akses('h', "tawa/produk/$gallery");
+		$this->redirect_hak_akses('h', "tawa/layanan/$gallery");
 		$this->tawa_model->delete($id);
-		redirect("tawa/produk/$gallery");
+		redirect("tawa/layanan/$gallery");
 	}
 
-	public function delete_all_produk($gallery='')
+	public function delete_all_layanan($gallery='')
 	{
-		$this->redirect_hak_akses('h', "tawa/produk/$gallery");
+		$this->redirect_hak_akses('h', "tawa/layanan/$gallery");
 		$_SESSION['success']=1;
 		$this->tawa_model->delete_all();
-		redirect("tawa/produk/$gallery");
+		redirect("tawa/layanan/$gallery");
 	}
 
-	public function toko_lock_produk($gallery='', $id='')
+	public function toko_lock_layanan($gallery='', $id='')
 	{
 		$this->tawa_model->toko_lock($id, 1);
-		redirect("tawa/produk/$gallery");
+		redirect("tawa/layanan/$gallery");
 	}
 
-	public function toko_unlock_produk($gallery='', $id='')
+	public function toko_unlock_layanan($gallery='', $id='')
 	{
 		$this->tawa_model->toko_lock($id, 2);
-		redirect("tawa/produk/$gallery");
+		redirect("tawa/layanan/$gallery");
 	}
 
 	public function urut($id, $arah = 0, $gallery='')
 	{
 		$this->tawa_model->urut($id, $arah, $gallery);
 		if ($gallery != '')
-			redirect("tawa/produk/$gallery");
+			redirect("tawa/layanan/$gallery");
 		else
 			redirect("tawa/index");
 	}

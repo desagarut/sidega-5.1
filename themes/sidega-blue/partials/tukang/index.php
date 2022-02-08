@@ -41,9 +41,10 @@
       <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/tukang.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px"> </div>
       <div class="member-info" style="background-color:#FFC">
         <h4> <strong style="color:#C00">TUKANG</strong> WARGA</h4>
-        <p class="text-center"><strong>adalah </strong> wadah bagi <strong>UMKM</strong> (Usaha Masyarakat Kecil Menengah) di wilayah <strong>
+        <p class="text-center"><strong>adalah </strong> wadah bagi masyarakat <strong>
           <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>
-          </strong>, yang dikembangkan untuk membantu meningkatkan pertumbuhan ekonomi masyarakat desa.</p>
+          </strong> yang <strong>memiliki keahlian dibidang jasa</strong>.<br/> <strong>Melalui aplikasi Tukang</strong> diharapkan setiap individu warga dapat mempromosikan keahliannya kepada publik, sehingga dapat mempermudah para Tukang dalam memperoleh pekerjaan, serta membuka peluang kerja bagi angkatan kerja baru. <br/>Melalui aplikasi ini, <strong>Para Pemberi Kerja</strong> dapat dengan <strong>mudah memilih tenaga kerja</strong> sesuai dengan kebutuhkan pekerjaan, <strong>dengan cara menghubungi langsung kepada Para Tukang</strong> yang ada di wilayah desa kami.<br/>
+          Dengan adanya aplikasi ini diharapkan dapat membantu meningkatkan pertumbuhan ekonomi masyarakat desa.</p>
         <!--<a href="https://wa.me/+62<?= $data['no_hp_tukang'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
             
             <a href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>--> 

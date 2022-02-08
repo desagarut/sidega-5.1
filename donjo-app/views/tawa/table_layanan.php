@@ -26,9 +26,9 @@
   <div class="row">
   <div class="col-md-12">
   <div class="box box-info">
-  <div class="box-header with-border"> <a href="<?= site_url("tawa/form_produk/$gallery")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Produk"> <i class="fa fa-plus"></i> Tambah Produk </a>
+  <div class="box-header with-border"> <a href="<?= site_url("tawa/form_layanan/$gallery")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah layanan"> <i class="fa fa-plus"></i> Tambah layanan </a>
     <?php if ($this->CI->cek_hak_akses('h')): ?>
-    <a href="#confirm-delete" title="Hapus Data" onclick="deleteAllBox('mainform', '<?= site_url("tawa/delete_all_produk/$gallery")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a>
+    <a href="#confirm-delete" title="Hapus Data" onclick="deleteAllBox('mainform', '<?= site_url("tawa/delete_all_layanan/$gallery")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a>
     <?php endif; ?>
     <a href="<?= site_url("tawa")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Kembali Ke Daftar Album"> <i class="fa fa-arrow-circle-left "></i>Kembali </a> </div>
   <div class="row">
@@ -45,7 +45,7 @@
             <tbody>
             <tr>
                 <td width="8%">Nama Usaha</td><td width="17%"> <?=$sub['nama']?></td>
-                <td width="8%">Nomor Telepon</td><td width="17%"> 0<?=$sub['no_hp']?></td>
+                <td width="8%">Nomor Telepon</td><td width="17%"> 0<?=$sub['no_hp_pengelola']?></td>
                 <td width="8%">Jumlah Karyawan</td><td width="17%"> <?=$sub['jumlah_karyawan']?></td>
 			</tr>
             <tr>
@@ -118,7 +118,7 @@
       <div class="col-sm-6">
         <div class="box-tools">
           <div class="input-group input-group-sm pull-right">
-            <input name="cari" id="cari" class="form-control" placeholder="Cari..." type="text" value="<?=html_escape($cari)?>" onkeypress="if (event.keyCode == 13):$('#'+'mainform').attr('action', '<?= site_url('toko_warga/search/$gallery')?>');$('#'+'mainform').submit();endif">
+            <input name="cari" id="cari" class="form-control" placeholder="Cari..." type="text" value="<?=html_escape($cari)?>" onkeypress="if (event.keyCode == 13):$('#'+'mainform').attr('action', '<?= site_url('tawa/search/$gallery')?>');$('#'+'mainform').submit();endif">
             <div class="input-group-btn">
               <button type="submit" class="btn btn-default" onclick="$('#'+'mainform').attr('action', '<?= site_url("tawa/search/$gallery")?>');$('#'+'mainform').submit();"><i class="fa fa-search"></i></button>
             </div>
@@ -137,33 +137,33 @@
                 <th>Aksi</th>
                 <th>Foto</th>
                 <?php if ($o==2): ?>
-                <th><a href="<?= site_url("tawa/produk/$gallery/$p/1")?>">Nama Layanan <i class='fa fa-sort-asc fa-sm'></i></a></th>
+                <th><a href="<?= site_url("tawa/layanan/$gallery/$p/1")?>">Nama Layanan <i class='fa fa-sort-asc fa-sm'></i></a></th>
                 <?php elseif ($o==1): ?>
-                <th><a href="<?= site_url("tawa/produk/$gallery/$p/2")?>">Nama Layanan <i class='fa fa-sort-desc fa-sm'></i></a></th>
+                <th><a href="<?= site_url("tawa/layanan/$gallery/$p/2")?>">Nama Layanan <i class='fa fa-sort-desc fa-sm'></i></a></th>
                 <?php else: ?>
-                <th><a href="<?= site_url("tawa/produk/$gallery/$p/1")?>">Nama Layanan <i class='fa fa-sort fa-sm'></i></a></th>
+                <th><a href="<?= site_url("tawa/layanan/$gallery/$p/1")?>">Nama Layanan <i class='fa fa-sort fa-sm'></i></a></th>
                 <?php endif; ?>
                 <th>Harga</th>
                 <th>Diskon</th>
                 <th>Deskripsi</th>
                 <?php if ($o==4): ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/3")?>">Aktif <i class='fa fa-sort-asc fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/3")?>">Aktif <i class='fa fa-sort-asc fa-sm'></i></a></th>
                 <?php elseif ($o==3): ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/4")?>">Aktif <i class='fa fa-sort-desc fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/4")?>">Aktif <i class='fa fa-sort-desc fa-sm'></i></a></th>
                 <?php else: ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/3")?>">Aktif <i class='fa fa-sort fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/3")?>">Aktif <i class='fa fa-sort fa-sm'></i></a></th>
                 <?php endif; ?>
                 <?php if ($o==6): ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/5")?>">Dimuat Pada <i class='fa fa-sort-asc fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/5")?>">Dimuat Pada <i class='fa fa-sort-asc fa-sm'></i></a></th>
                 <?php elseif ($o==5): ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/6")?>">Dimuat Pada <i class='fa fa-sort-desc fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/6")?>">Dimuat Pada <i class='fa fa-sort-desc fa-sm'></i></a></th>
                 <?php else: ?>
-                <th nowrap><a href="<?= site_url("tawa/produk/$gallery/$p/5")?>">Dimuat Pada <i class='fa fa-sort fa-sm'></i></a></th>
+                <th nowrap><a href="<?= site_url("tawa/layanan/$gallery/$p/5")?>">Dimuat Pada <i class='fa fa-sort fa-sm'></i></a></th>
                 <?php endif; ?>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($produk_data as $data): ?>
+              <?php foreach ($layanan_data as $data): ?>
               <tr>
                 <td><input type="checkbox" name="id_cb[]" value="<?=$data['id']?>" /></td>
                 <td><?=$data['no']?></td>
@@ -175,13 +175,13 @@
                   <?php endif ?>
                   <br/>
                   <?php if ($this->CI->cek_hak_akses('h')): ?>
-                  <a href="<?= site_url("tawa/form_produk/$gallery/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a> <a href="#" data-href="<?= site_url("tawa/delete_produk/$gallery/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
+                  <a href="<?= site_url("tawa/form_layanan/$gallery/$data[id]")?>" class="btn btn-warning btn-box btn-sm"  title="Ubah"><i class="fa fa-edit"></i></a> <a href="#" data-href="<?= site_url("tawa/delete_layanan/$gallery/$data[id]")?>" class="btn bg-maroon btn-box btn-sm"  title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash-o"></i></a>
                   <?php endif; ?></td>
                 <td align="center"><label data-rel="popover" data-content="<img width=200 height=200 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>"> <img width=50 height=50 class="img-circle" src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>></label></td>
                 <td><label data-rel="popover" data-content="<img width=200 height=134 src=<?= AmbilGaleri($data['gambar'], 'kecil') ?>>">
                     <?= $data['nama']?>
                   </label></td>
-                <td><?= $rupiah($data['harga'])?></td>
+                <td><?= $rupiah($data['harga'])?> / <?= $data['sebutan_ukuran']?></td>
                 <td><?= $data['diskon']?>
                   %</td>
                 <td><?=$data['deskripsi']?></td>
@@ -198,7 +198,7 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="dataTables_length">
-        <form id="paging" action="<?= site_url("tawa/produk/$gallery")?>" method="post" class="form-horizontal">
+        <form id="paging" action="<?= site_url("tawa/layanan/$gallery")?>" method="post" class="form-horizontal">
           <label> Tampilkan
             <select name="per_page" class="form-control input-sm" onchange="$('#paging').submit()">
               <option value="20" <?php selected($per_page, 20); ?> >20</option>
@@ -215,21 +215,21 @@
       <div class="dataTables_paginate paging_simple_numbers">
         <ul class="pagination">
           <?php if ($paging->start_link): ?>
-          <li><a href="<?= site_url("tawa/produk/$toko_warga/$paging->start_link/$o")?>" aria-label="First"><span aria-hidden="true">Awal</span></a></li>
+          <li><a href="<?= site_url("tawa/layanan/$tawa/$paging->start_link/$o")?>" aria-label="First"><span aria-hidden="true">Awal</span></a></li>
           <?php endif; ?>
           <?php if ($paging->prev): ?>
-          <li><a href="<?= site_url("tawa/produk/$toko_warga/$paging->prev/$o")?>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+          <li><a href="<?= site_url("tawa/layanan/$tawa/$paging->prev/$o")?>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
           <?php endif; ?>
           <?php for ($i=$paging->start_link;$i<=$paging->end_link;$i++): ?>
-          <li <?=jecho($p, $i, "class='active'")?>><a href="<?= site_url("tawa/produk/$toko_warga/$i/$o")?>">
+          <li <?=jecho($p, $i, "class='active'")?>><a href="<?= site_url("tawa/layanan/$tawa/$i/$o")?>">
             <?= $i?>
             </a></li>
           <?php endfor; ?>
           <?php if ($paging->next): ?>
-          <li><a href="<?= site_url("tawa/produk/$toko_warga/$paging->next/$o")?>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+          <li><a href="<?= site_url("tawa/layanan/$tawa/$paging->next/$o")?>" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
           <?php endif; ?>
           <?php if ($paging->end_link): ?>
-          <li><a href="<?= site_url("tawa/produk/$toko_warga/$paging->end_link/$o")?>" aria-label="Last"><span aria-hidden="true">Akhir</span></a></li>
+          <li><a href="<?= site_url("tawa/layanan/$tawa/$paging->end_link/$o")?>" aria-label="Last"><span aria-hidden="true">Akhir</span></a></li>
           <?php endif; ?>
         </ul>
       </div>

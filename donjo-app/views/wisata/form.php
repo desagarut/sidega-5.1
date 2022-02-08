@@ -204,12 +204,6 @@
                     <label class="col-sm-3 control-label" style="text-align:left; color:#999">SOSIAL MEDIA</label>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label" style="text-align:left;" for="no_hp_wisata">Nomor HP</label>
-                    <div class="col-sm-5">
-                      <input maxlength="50" class="form-control input-sm required" name="no_hp_wisata" id="no_hp_wisata" value="<?= $wisata['no_hp_wisata'] ?>" type="text" placeholder="Contoh: 82317883161" />
-                    </div>
-                  </div>
-                  <div class="form-group">
                     <label class="col-sm-3 control-label" style="text-align:left;" for="email">Email</label>
                     <div class="col-sm-5">
                       <input maxlength="50" class="form-control input-sm" name="email" id="email" value="<?= $wisata['email'] ?>" type="text" placeholder="Email" />

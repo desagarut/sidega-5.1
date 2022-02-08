@@ -34,14 +34,19 @@
     </div>
   </div>
 </section>
-<h2><i class="ri-map-2-fill" style="color:#60C;"></i> INFORMASI SEPUTAR <strong class="color:#60C">
-  <?= $sub['nama'] ?>
-  </strong></h2>
+</div>
+<div class="row">
+  <div class="col-md-12" data-aos="fade-left">
+    <h5 align="center"><i class="ri-map-2-fill" style="color:#60C;"></i> INFORMASI SEPUTAR <strong class="color:#60C">
+      <?= $sub['nama'] ?>
+      </strong></h5>
+  </div>
+</div>
 <div class="row">
   <div class="col-lg-3 col-md-6 align-items-stretch">
     <div class="member" data-aos="fade-right">
       <div class="member-img"> <img src="<?= AmbilGaleri($sub['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $sub['nama'] ?>" style="width:100%; height:225px">
-        <div class="member-info">
+        <div class="member-info" style="background-color:#EFDFFF">
         <h4> <strong style="color:#60C"><?= $sub['nama'] ?></strong></h4>
           <span style="color:#666" class="text-justify member-info-detail">
           <strong>Kategori</strong> : <?= $sub['jenis_wisata'] ?>
@@ -53,10 +58,10 @@
           <strong>Lokasi</strong> : <br/><i><?= $sub['lokasi'] ?></i><br/><strong>Dari kantor <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?></strong> :<br/> berjarak <?= $sub['jarak_tempuh']?> km, waktu <?= $sub['waktu_tempuh']?> menit          
           </span> <br/>
             <a href="<?= site_url('first/wisata') ?>" ><button class="btn btn-danger"><i class="icofont-reply-all"></i></button></a>
-            <a href="https://wa.me/+62<?= $sub['no_hp_wisata'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $sub['nama'] ?>%20yang%20ada%20di%20desa%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $sub['nama'] ?>%3F%20<?= site_url('first/wisata/'.$sub['id']) ?>" target="_blank" title="Hubungi">
+            <a href="https://wa.me/+62<?= $sub['no_hp_pengelola'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $sub['nama'] ?>%20yang%20ada%20di%20desa%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $sub['nama'] ?>%3F%20<?= site_url('first/wisata/'.$sub['id']) ?>" target="_blank" title="Hubungi">
             <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
             </a>
-          <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_toko'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
+          <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_pengelola'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
         </div>
       </div>
     </div>
@@ -71,7 +76,7 @@
         <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>"><i class="icofont-globe" target="_blank"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_toko'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
       </div>
       <div class="member-info">
-        <h4> <strong style="color:#60C"><?= $album['nama'] ?></strong></h4>
+        <h4> <strong style="color:#C6C"><?= $album['nama'] ?></strong></h4>
         <p class="text-justify member-info-detail">
           <?= $album['deskripsi'] ?>
         <h5 style="color:#C00">

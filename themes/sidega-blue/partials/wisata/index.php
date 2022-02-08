@@ -18,7 +18,7 @@
                   <button class="btn btn-warning"><i class="ri-store-2-fill" style="color:#fff;"></i> WISATA:
                   <strong><?= $data['nama'] ?></strong>
                   </button>
-                  </a> <a href="https://wa.me/+62<?= $data['no_hp_wisata'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F" target="_blank" title="pesan">
+                  </a> <a href="https://wa.me/+62<?= $data['no_hp_pengelola'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F" target="_blank" title="pesan">
                   <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi	</button>
                   </a> </h3>
               </div>
@@ -35,6 +35,9 @@
     </div>
   </section>
 </div>
+<h2><i class="ri-map-2-fill" style="color:#60C;"></i> DAFTAR OBJEK WISATA <strong class="color:#60C">
+  <?= $desa['nama'] ?>
+  </strong></h2>
 <div class="row">
   <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
     <div class="member" data-aos="fade-up">
@@ -67,7 +70,7 @@
           </span> <span style="color:#666" class="text-justify member-info-detail">
           <strong>Lokasi</strong> : <br/><i><?= $data['lokasi'] ?></i><br/><strong>Dari kantor <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?></strong> :<br/> berjarak <?= $sub['jarak_tempuh']?> km, waktu <?= $data['waktu_tempuh']?> menit          
           </span> <br/>
-        <a href="https://wa.me/+62<?= $data['no_hp_wisata'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F%20<?= site_url('first/wisata/'.$data['id']) ?>" target="_blank" title="pesan">
+        <a href="https://wa.me/+62<?= $data['no_hp_pengelola'] ?>?text=Assalamu'alaikum%2C%20Saya%20tertarik%20dengan%20<?= $data['nama'] ?>%20yang%20ada%20di%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Dapatkah%20saya%20memperoleh%20informasi%20lebih%20banyak%20tentang%20<?= $data['nama'] ?>%3F%20<?= site_url('first/wisata/'.$data['id']) ?>" target="_blank" title="pesan">
         <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
         </a> <a href="<?= site_url('first/wisata_fasilitas/'.$data['id']) ?>"  title="Fasilitas">
         <button class="btn btn-primary"><i class="icofont-info"></i> Detail</button>

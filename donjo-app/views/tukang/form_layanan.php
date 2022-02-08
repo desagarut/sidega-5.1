@@ -3,8 +3,8 @@
 		<h1>Form Tambah/Ubah</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda')?>"><i class="fa fa-home"></i> Home</a></li>
-			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Transportasi Warga</a></li>
-			<li><a href='<?= site_url("toko_warga/layanan/$album")?>'><i class="fa fa-dashboard"></i> Daftar Layanan</a></li>
+			<li><a href="<?= site_url('tukang')?>"><i class="fa fa-dashboard"></i> Daftar Tukang</a></li>
+			<li><a href='<?= site_url("tukang/layanan/$album")?>'><i class="fa fa-dashboard"></i> Daftar Layanan</a></li>
 			<li class="active">Tambah/Ubah</li>
 		</ol>
 	</section>

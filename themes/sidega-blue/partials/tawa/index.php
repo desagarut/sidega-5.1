@@ -40,7 +40,7 @@
     <div class="member" data-aos="fade-up">
       <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/transport.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px"> </div>
       <div class="member-info" style="background-color:#B7FFDB">
-        <h4> <strong style="color:#C00">TOWA</strong>: TRANSPORTASI WARGA </h4>
+        <h4> <strong style="color:#C00">TAWA</strong>: TRANSPORTASI WARGA </h4>
         <p class="text-center"><strong>adalah </strong> wadah bagi <strong>UMKM</strong> (Usaha Masyarakat Kecil Menengah) di wilayah <strong>
           <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>
           </strong>, yang dikembangkan untuk membantu meningkatkan pertumbuhan ekonomi masyarakat desa.</p>

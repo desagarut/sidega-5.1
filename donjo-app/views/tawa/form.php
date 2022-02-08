@@ -3,7 +3,7 @@
 		<h1>Form Tambah/Ubah</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?= site_url('beranda')?>"><i class="fa fa-home"></i> Home</a></li>
-			<li><a href="<?= site_url('toko_warga')?>"><i class="fa fa-dashboard"></i> Daftar Transportasi</a></li>
+			<li><a href="<?= site_url('tawa')?>"><i class="fa fa-dashboard"></i> Daftar Transportasi</a></li>
 			<li class="active">Tambah/Ubah</li>
 		</ol>
 	</section>
@@ -13,7 +13,7 @@
 				<div class="col-md-12">
 					<div class="box box-info">
 						<div class="box-header with-border">
-							<a href="<?= site_url('toko_warga') ?>" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
+							<a href="<?= site_url('tawa') ?>" class="btn btn-social btn-flat btn-info btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i class="fa fa-arrow-circle-left"></i> Kembali</a>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -180,9 +180,9 @@
 										</div>
 									</div>
 									<!--<div class="form-group">
-										<label class="col-sm-3 control-label" style="text-align:left;">Produk utama</label>
+										<label class="col-sm-3 control-label" style="text-align:left;">layanan utama</label>
 										<div class="col-sm-5">
-											<input maxlength="50" class="form-control input-sm required" name="produk_utama" id="produk_utama" value="<?= $usaha['produk_utama'] ?>" type="text" placeholder="Produk Utama" />
+											<input maxlength="50" class="form-control input-sm required" name="layanan_utama" id="layanan_utama" value="<?= $usaha['layanan_utama'] ?>" type="text" placeholder="layanan Utama" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -202,9 +202,9 @@
 										<label class="col-sm-3 control-label" style="text-align:left; color:#999">SOSIAL MEDIA</label>
                                     </div>
 									<div class="form-group">
-                                        <label class="col-sm-3 control-label" style="text-align:left;" for="email">Nomor HP</label>
+                                        <label class="col-sm-3 control-label" style="text-align:left;" for="email">Telepon</label>
                                         <div class="col-sm-5">
-                                            <input maxlength="50" class="form-control input-sm required" name="no_hp" id="no_hp" value="<?= $usaha['no_hp'] ?>" type="text" placeholder="Contoh: 82317883161" />
+                                            <input maxlength="50" class="form-control input-sm required" name="no_hp_pengelola" id="no_hp_pengelola" value="<?= $usaha['no_hp_pengelola'] ?>" type="text" placeholder="Contoh: 82317883161" />
                                         </div>
                                     </div>
                                     <div class="form-group">

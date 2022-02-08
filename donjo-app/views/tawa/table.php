@@ -105,8 +105,8 @@
                   <?php endif; ?>                  
 				</td>
                 <td align="center">
-                    <a href="<?= site_url("tawa/produk/$data[id]")?>" class="btn bg-purple btn-box btn-sm"  title="Data Produk"><i class="fa fa-list"></i></a>
-                    <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i></a>
+                    <a href="<?= site_url("tawa/layanan/$data[id]")?>" class="btn bg-purple btn-box btn-sm"  title="Data layanan"><i class="fa fa-list"></i></a>
+                    <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20layanan%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20layanannya%20masih%20tersedia%3F" class="btn bg-green btn-box btn-sm"  target="_blank" title="Hubungi"><i class="fa fa-whatsapp"></i></a>
                     <a href="<?= site_url("tawa/lokasi_maps/".$data['id']); ?>" data-href="#" class="btn bg-primary btn-box btn-sm" title="Lokasi"><i class="fa fa-map"></i></a>
 				  <?php if ($data['enabled'] == '2'): ?>
                   <a href="<?= site_url("tawa/toko_lock/".$data['id'])?>" class="btn bg-orange btn-box btn-sm"  title="Aktifkan Album"><i class="fa fa-lock"></i></a>

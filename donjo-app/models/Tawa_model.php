@@ -119,7 +119,7 @@
 		$data['nama_pengelola'] 			= $this->input->post('nama_pengelola');
 		$data['nik']        				= $this->input->post('nik');
 		$data['alamat_tinggal']     		= $this->input->post('alamat_tinggal');
-		$data['no_hp']        				= $this->input->post('no_hp');
+		$data['no_hp_pengelola']        				= $this->input->post('no_hp_pengelola');
 		$data['email']        				= $this->input->post('email');
 		$data['website']        			= $this->input->post('website');
 		$data['fb']        					= $this->input->post('fb');
@@ -133,9 +133,14 @@
 		$data['id_lokasi']             		= $this->input->post('id_lokasi');
 		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
+		
 		$data['jenis_usaha']				= $this->input->post('jenis_usaha');
 		$data['kelompok_usaha']				= $this->input->post('kelompok_usaha');
 		$data['area']         				= $this->input->post('area');
+		$data['kategori_jasa_transportasi']    = $this->input->post('kategori_jasa_transportasi');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
+		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['created_at']         		= date('Y-m-d H:i:s');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
@@ -198,7 +203,7 @@
 		$data['nama_pengelola'] 			= $this->input->post('nama_pengelola');
 		$data['nik']        				= $this->input->post('nik');
 		$data['alamat_tinggal']     		= $this->input->post('alamat_tinggal');
-		$data['no_hp']        				= $this->input->post('no_hp');
+		$data['no_hp_pengelola']        				= $this->input->post('no_hp_pengelola');
 		$data['email']        			= $this->input->post('email');
 		$data['website']        			= $this->input->post('website');
 		$data['fb']        					= $this->input->post('fb');
@@ -212,9 +217,14 @@
 		$data['id_lokasi']             		= $this->input->post('id_lokasi');
 		$data['lokasi']             		= $this->input->post('lokasi');
 		$data['keterangan_lokasi']         	= $this->input->post('keterangan_lokasi');
+		
 		$data['jenis_usaha']				= $this->input->post('jenis_usaha');
 		$data['kelompok_usaha'] 			= $this->input->post('kelompok_usaha');
 		$data['area']         				= $this->input->post('area');
+		$data['kategori_jasa_transportasi']    = $this->input->post('kategori_jasa_transportasi');
+		$data['sebutan_biaya']         				= $this->input->post('sebutan_biaya');
+		$data['sebutan_ukuran']         				= $this->input->post('sebutan_ukuran');
+		
 		$data['updated_at']         		= date('Y-m-d H:i:s');
 		$data['taksiran_modal']     		= $this->input->post('taksiran_modal');
 		$data['taksiran_omset']     		= $this->input->post('taksiran_omset');
@@ -379,7 +389,7 @@
 
 	public function paging2($gal=0, $p=1)
 	{
-		$sql = "SELECT COUNT(*) AS jml " . $this->list_produk_sql();
+		$sql = "SELECT COUNT(*) AS jml " . $this->list_layanan_sql();
 		$query = $this->db->query($sql,$gal);
 		$row = $query->row_array();
 		$jml_data = $row['jml'];
@@ -393,7 +403,7 @@
 		return $this->paging;
 	}
 
-	private function list_produk_sql()
+	private function list_layanan_sql()
 	{
 		$sql = " FROM tbl_tawa WHERE parrent = ? AND tipe = 2 ";
 		$sql .= $this->search_sql();
@@ -401,7 +411,7 @@
 		return $sql;
 	}
 
-	public function list_produk($gal=1, $o=0, $offset=0, $limit=500)
+	public function list_layanan($gal=1, $o=0, $offset=0, $limit=500)
 	{
 		switch($o)
 		{
@@ -416,7 +426,7 @@
 
 		$paging_sql = ' LIMIT ' .$offset. ',' .$limit;
 
-		$sql = "SELECT * " . $this->list_produk_sql();
+		$sql = "SELECT * " . $this->list_layanan_sql();
 		$sql .= $order_sql;
 		$sql .= $paging_sql;
 		$query = $this->db->query($sql, $gal);
@@ -434,7 +444,7 @@
 		return $data;
 	}
 
-	public function insert_produk($parrent=0)
+	public function insert_layanan($parrent=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -448,9 +458,11 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
-		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); //pastikan nama album hanya berisi
+		$data['harga'] = nomor_surat_keputusan($this->input->post('harga')); 
 		$data['diskon'] = $this->input->post('diskon'); 
-		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
+		$data['deskripsi'] = $this->input->post('deskripsi'); 
 		
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => $parrent)) + 1;
 		// Bolehkan isi album tidak ada gambar
@@ -477,7 +489,7 @@
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
-	public function update_produk($id=0)
+	public function update_layanan($id=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -491,9 +503,11 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
-		$data['harga'] = $this->input->post('harga'); //pastikan harga hanya berisi
+		$data['harga'] = $this->input->post('harga'); 
 		$data['diskon'] = $this->input->post('diskon'); 
-		$data['deskripsi'] = nomor_surat_keputusan($this->input->post('deskripsi')); 
+		$data['sebutan_biaya'] = $this->input->post('sebutan_biaya'); 
+		$data['sebutan_ukuran'] = $this->input->post('sebutan_ukuran'); 
+		$data['deskripsi'] = $this->input->post('deskripsi'); 
 		
 		// Kalau kosong, gambar tidak diubah
 		if (!empty($lokasi_file))

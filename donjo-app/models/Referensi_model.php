@@ -280,6 +280,12 @@ define("JENIS_KENDARAAN", serialize(array(
 	"Pesawat" => "Pesawat",
 )));
 
+define("KATEGORI_JASA_TRANSPORTASI", serialize(array(
+	"Angkutan Orang" => "Angkutan Orang",
+	"Angkutan Barang" => "Angkutan Barang",
+	"Sewa Kendaraan" => "Sewa Kendaraan",
+)));
+
 define("JENIS_USAHA", serialize(array(
 	"Sewa Kendaraan" => "Sewa Kendaraan",
 	"Jasa Angkutan Penumpang" => "Jasa Angkutan Penumpang",
@@ -435,6 +441,7 @@ define("SEBUTAN_BIAYA", serialize(array(
 
 define("SEBUTAN_UKURAN", serialize(array(
 	"---" => "---",
+	"Orang" => "Orang",
 	"Inch" => "Inch",
 	"Yard" => "Yard",
 	"CM" => "CM",
