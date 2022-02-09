@@ -56,7 +56,7 @@
   <?php $link = site_url('first/tawa_layanan/'.$data['id']) ?>
   <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
     <div class="member" data-aos="fade-up">
-      <div class="member-img"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px">
+      <div class="member-img"><a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px"></a>
           <div class="social"> <a href="https://youtube.com/channel/<?= $data['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $data['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $data['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $data['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $data['no_hp'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
       </div>
       <div class="member-info">
@@ -79,7 +79,7 @@
         </span> <br/>
         <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20<?= $data['nama'] ?>%20masih%20buka%3F%" target="_blank" title="pesan">
         <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
-        </a> <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Produk">
+        </a> <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan">
         <button class="btn btn-primary"><i class="icofont-info"></i> Layanan</button>
         </a> </div>
     </div>
