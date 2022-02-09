@@ -18,7 +18,7 @@
               <?= $album['nama'] ?>
               | <small style="color:#FFC; font-size:12px"><?= $album['sebutan_biaya'] ?>:</small>
               <?= $rupiah($album['harga']) ?>
-              <a href="https://wa.me/+62<?= $sub['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+              <a href="https://wa.me/+62<?= $sub['no_hp'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20layanan%20yang%20anda%20tawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20layanannya%20masih%20tersedia%3F" target="_blank" title="pesan">
               <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
               </a></h3>
           </div>
@@ -45,17 +45,14 @@
           <h5><i class="ri-store-2-fill" style="color: #e80368;"></i>
             <?= $sub['nama'] ?>
           </h5>
-          <span style="color:#03F"><i class="ri-store-2-fill"></i> Kategori
-          <?= $sub['kategori_toko'] ?>
-          </span> <span style="color:#0C0"><i class="icofont-gift" ></i> Unggulan :
-          <?= $sub['produk_utama']?>
-          </span> <span style="color:#F60"><i class="icofont-user"></i>
-          <?= $sub['nama_pengelola']?>
-          </span> <span style="color:#F09"><i class="icofont-location-pin"></i>
-          <?= $sub['lokasi'] ?>
-          </span> <br/>
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-user" style="color:darkorange"></i><strong> Nama :</strong> <?= $sub['nama_pengelola']?></span>
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-long-drive" style="color:#03F"></i><strong> Kategori :</strong> <?= $sub['jenis_usaha'] ?></span> 
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-gift" style="color:#066"></i><strong> Usaha :</strong> <?= $sub['kelompok_usaha']?></span> 
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-map-pins" style="color:#63F"></i><strong> Layanan :</strong> <?= $sub['area']?></span> 
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-map-pins" style="color:#63F"></i><strong> Tayek :</strong> <?= $sub['trayek']?></span> 
+          <span style="color:darkslateblue" class="text-left"><i class="icofont-location-pin" style="color:#F09"></i><strong> Lokasi : </strong> <?= $sub['lokasi'] ?></span> <br/>
             <a href="<?= site_url('first/tawa') ?>" ><button class="btn btn-danger"><i class="icofont-reply-all"></i></button></a>
-          <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+          <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20layanan%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20layanannya%20masih%20tersedia%3F" target="_blank" title="pesan">
           <button class="btn btn-primary"><i class="icofont-whatsapp"></i> Hubungi</button>
           </a>
           <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_toko'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
@@ -73,17 +70,23 @@
         <div class="social"> <a href="https://youtube.com/channel/<?= $sub['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $sub['website'] ?>"><i class="icofont-globe" target="_blank"></i></a> <a href="https://facebook.com/<?= $sub['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $sub['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $sub['no_hp_toko'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
       </div>
       <div class="member-info">
-        <h4 style="color:#63F">
+      <h4 style="color:#C00">
           <?= $album['nama'] ?>
-        </h4>
+      </h4>
         <p class="text-justify member-info-detail">
-          <?= $album['deskripsi'] ?>
-        <h5 style="color:#C00">
+          <span><strong style="color:darkslateblue"> Jenis :</strong><a style="color: #03F;"> <?= $album['jenis_kendaraan']?></a></span>
+          <span><strong style="color:darkslateblue"> Merek : </strong><a style="color: #03F;"> <?= $album['merek']?></a></span>
+          <span><strong style="color:darkslateblue"> Kapasitas Muat : </strong><a style="color: #03F;"> <?= $album['kapasitas']?></a></span>
+          <span><strong style="color:darkslateblue"> Warna Kendaraan : </strong><a style="color: #03F;"> <?= $album['warna_kendaraan']?></a></span>
+          <span><strong style="color:darkslateblue"> Bahan Bakar : </strong><a style="color: #03F;"> <?= $album['bahan_bakar']?></a></span>
+          <span><strong style="color:darkslateblue"> Deskripsi:</strong><br/><a style="color: #03F;"> <?= $album['deskripsi'] ?></a></span>
+          <h5 style="color:#C00">
           <small style="color:#03F; font-size:12px"><?= $album['sebutan_biaya'] ?></small> <?= $rupiah($album['harga']) ?><i><small style="color:#666; font-size:10px"> / <?= $album['sebutan_ukuran'] ?></small></i>
         </h5>
+
         </p>
         <br/>
-        <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20<?= $album['nama'] ?>%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan">
+        <a href="https://wa.me/+62<?= $sub['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20layanan%20<?= $album['nama'] ?>%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20layanannya%20masih%20tersedia%3F" target="_blank" title="pesan">
         <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
         </a> </div>
     </div>

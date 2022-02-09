@@ -15,8 +15,7 @@
 					<div class="box box-info">
             <div class="box-header with-border">
 							<a href="<?= site_url("tawa/layanan/$album")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Artikel">
-								<i class="fa fa-arrow-circle-left "></i>Kembali
-            	</a>
+								<i class="fa fa-arrow-circle-left "></i>Kembali</a>
 						</div>
 						<div class="box-body">
 							<div class="form-group">
@@ -25,9 +24,14 @@
 									<input name="nama" class="form-control input-sm nomor_sk required" maxlength="50" type="text" placeholder="Nama Layanan" value="<?=$gallery['nama']?>"></input>
 								</div>
 							</div>
-                              <div class="form-group">
-                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_biaya">Sebutan Biaya</label>
-                                <div class="col-sm-2">
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="nama_pengendara">Nama Pengendara</label>
+								<div class="col-sm-6">
+									<input name="nama_pengendara" class="form-control input-sm" maxlength="50" type="text" placeholder="Nama Pengendara" value="<?=$gallery['nama_pengendara']?>"></input>
+								</div>
+							</div>							<div class="form-group">
+								<label class="control-label col-sm-4" for="harga">Harga/Biaya</label>
+								<div class="col-sm-2">
                                   <select class="form-control input-sm select2 required" id="sebutan_biaya" name="sebutan_biaya" style="width:100%;">
                                     <?php foreach ($sebutan_biaya as $value) : ?>
                                     <option <?= $value === $gallery['sebutan_biaya'] ? 'selected' : '' ?> value="<?= $value ?>">
@@ -36,16 +40,10 @@
                                     <?php endforeach; ?>
                                   </select>
                                 </div>
-                              </div>
-							<div class="form-group">
-								<label class="control-label col-sm-4" for="harga">Harga/Biaya</label>
 								<div class="col-sm-2">
 									<input name="harga" class="form-control input-sm required" maxlength="20" type="text" placeholder="rupiah" value="<?= $gallery['harga']?>"></input>
-								</div>
-							</div>
-                              <div class="form-group">
-                                <label class="col-sm-4 control-label" style="text-align:left;" for="sebutan_ukuran">Sebutan Ukuran</label>
-                                <div class="col-sm-2">
+								</div> 
+								<div class="col-sm-1">
                                   <select class="form-control input-sm select2 required" id="sebutan_ukuran" name="sebutan_ukuran" style="width:100%;">
                                     <?php foreach ($sebutan_ukuran as $value) : ?>
                                     <option <?= $value === $gallery['sebutan_ukuran'] ? 'selected' : '' ?> value="<?= $value ?>">
@@ -54,11 +52,94 @@
                                     <?php endforeach; ?>
                                   </select>
                                 </div>
-                              </div>
+							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-4" for="diskon">Persen Diskon</label>
-								<div class="col-sm-1">
-									<input name="diskon" class="form-control input-sm required" maxlength="3" type="text" value="<?= $gallery['diskon']?>"></input>
+								<label class="control-label col-sm-4" for="diskon">Jenis Kendaraan</label>
+								<div class="col-sm-2">
+								<select class="form-control input-sm select2 required" id="jenis_kendaraan" name="jenis_kendaraan" style="width:100%;">
+                                    <?php foreach ($jenis_kendaraan as $value) : ?>
+                                    <option <?= $value === $gallery['jenis_kendaraan'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                </select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="kapasitas">Kapasitas Muatan</label>
+								<div class="col-sm-2">
+								<input name="kapasitas" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['kapasitas']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="merek">Merek/Tipe Kendaraan</label>
+								<div class="col-sm-2">
+								<input name="merek" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['merek']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="jenis_kendaraan">Jenis/Model Kendaraan</label>
+								<div class="col-sm-2">
+								<input name="jenis_kendaraan" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['jenis_kendaraan']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="tahun_pembuatan">Tahun Pembuatan</label>
+								<div class="col-sm-2">
+								<input name="tahun_pembuatan" class="form-control input-sm required" maxlength="20" type="text" placeholder="XXXX" value="<?= $gallery['tahun_pembuatan']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="warna_kendaraan">Warna Kendaraan</label>
+								<div class="col-sm-2">
+								<input name="warna_kendaraan" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['warna_kendaraan']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="warna_plat_nomor">Warna Plat Nomor </label>
+								<div class="col-sm-2">
+								<input name="warna_plat_nomor" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['warna_plat_nomor']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="isi_silinder">Isi Silinder</label>
+								<div class="col-sm-2">
+								<input name="isi_silinder" class="form-control input-sm required" maxlength="20" type="text" placeholder="" value="<?= $gallery['isi_silinder']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="bahan_bakar">Bahan Bakar</label>
+								<div class="col-sm-2">
+								<select class="form-control input-sm select2 required" id="bahan_bakar" name="bahan_bakar" style="width:100%;">
+                                    <?php foreach ($bahan_bakar as $value) : ?>
+                                    <option <?= $value === $gallery['bahan_bakar'] ? 'selected' : '' ?> value="<?= $value ?>">
+                                    <?= $value ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                </select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="no_pol">Nomor Polisi</label>
+								<div class="col-sm-2">
+								<input name="no_pol" class="form-control input-sm required" maxlength="20" type="text" placeholder="Contoh: Z XXXX DA" value="<?= $gallery['no_pol']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="no_bpkb">Nomor BPKB</label>
+								<div class="col-sm-2">
+								<input name="no_bpkb" class="form-control input-sm required" maxlength="20" type="text" placeholder="Contoh: XXXXXXXX" value="<?= $gallery['no_bpkb']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="no_rangka">Nomor Rangka</label>
+								<div class="col-sm-2">
+								<input name="no_rangka" class="form-control input-sm required" maxlength="20" type="text" placeholder="Contoh: XXXXXXXX" value="<?= $gallery['no_rangka']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="no_mesin">Nomor Mesin</label>
+								<div class="col-sm-2">
+								<input name="no_mesin" class="form-control input-sm required" maxlength="20" type="text" placeholder="Contoh: XXXXXX" value="<?= $gallery['no_mesin']?>"></input>								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-4 control-label" style="text-align:left;" for="area">Area Layanan</label>
+								<div class="col-sm-3">
+									<select class="form-control input-sm select2" id="area" name="area" style="width:100%;">
+										<?php foreach ($area as $value) : ?>
+											<option <?= $value === $usaha['area'] ? 'selected' : '' ?> value="<?= $value ?>"><?= $value ?></option>
+										<?php endforeach; ?>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -87,7 +168,7 @@
 											</span>
 										</div>
 										<?php $upload_mb = max_upload();?>
-										<p><label class="control-label">Batas maksimal pengunggahan berkas <strong><?=$upload_mb?> MB.</strong></label></p>
+										<p><label class="control-label"><code>Unggah Foto Kendaraan bersama Pengendara. Batas maksimal File berkas <strong><?=$upload_mb?> MB.</strong></code></label></p>
 									</div>
 								</div>
 						</div>

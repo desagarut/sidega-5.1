@@ -168,7 +168,6 @@
 											</select>
 										</div>
 									</div>
-									
                                     <div class="form-group">
 										<label class="col-sm-3 control-label" style="text-align:left;" for="area">Area Layanan</label>
 										<div class="col-sm-5">
@@ -179,13 +178,13 @@
 											</select>
 										</div>
 									</div>
-									<!--<div class="form-group">
-										<label class="col-sm-3 control-label" style="text-align:left;">layanan utama</label>
+									<div class="form-group">
+										<label class="col-sm-3 control-label" style="text-align:left;">Trayek Tujuan</label>
 										<div class="col-sm-5">
-											<input maxlength="50" class="form-control input-sm required" name="layanan_utama" id="layanan_utama" value="<?= $usaha['layanan_utama'] ?>" type="text" placeholder="layanan Utama" />
+											<input maxlength="50" class="form-control input-sm required" name="trayek" id="trayek" value="<?= $usaha['trayek'] ?>" type="text" placeholder="Contoh: Garut - Bandung" />
 										</div>
 									</div>
-									<div class="form-group">
+									<!--<div class="form-group">
 										<label class="col-sm-3 control-label" style="text-align:left;" for="kategori_toko">Kategori Toko</label>
 										<div class="col-sm-5">
 											<select class="form-control input-sm select2 required" id="kategori_toko" name="kategori_toko" style="width:100%;">

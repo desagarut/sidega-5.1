@@ -307,6 +307,14 @@ define("KEPEMILIKAN_KENDARAAN", serialize(array(
 	"lainnya" => "Lainnya",
 )));
 
+define("BAHAN_BAKAR", serialize(array(
+	"Listrik" => "Listrik",
+	"Bensin" => "Bensin",
+	"Solar" => "Solar",
+	"lainnya" => "Lainnya",
+)));
+
+
 define("JENIS_VAKSIN", serialize(array(
 	"SINOVAC" => "SINOVAC",
 	"ASTRAZENECA" => "ASTRAZENECA",
@@ -321,10 +329,10 @@ define("JENIS_VAKSIN", serialize(array(
 )));
 
 define("AREA_LAYANAN", serialize(array(
-	"Sekitar Desa" => "Sekitar Desa",
-	"Sekitar Kecamatan" => "Sekitar Kecamatan",
-	"Sekitar Kabupaten" => "Sekitar Kabupaten",
-	"Sekitar Propinsi" => "Sekitar Propinsi",
+	"Wilayah Desa" => "Wilayah Desa",
+	"Wilayah Kecamatan" => "Wilayah Kecamatan",
+	"Wilayah Kabupaten" => "Wilayah Kabupaten",
+	"Wilayah Propinsi" => "Wilayah Propinsi",
 	"Luar Propinsi" => "Luar Propinsi",
 	"Luar Negara" => "Luar Negara",
 	"Lainnya" => "Lainnya",
@@ -425,7 +433,6 @@ define("SUMBER_MODAL_WISATA", serialize(array(
 )));
 
 define("SEBUTAN_BIAYA", serialize(array(
-	"---" => "---",
 	"Gratis" => "Gratis",
 	"Harga" => "Harga",
 	"Ongkos" => "Ongkos",
@@ -440,7 +447,6 @@ define("SEBUTAN_BIAYA", serialize(array(
 )));
 
 define("SEBUTAN_UKURAN", serialize(array(
-	"---" => "---",
 	"Orang" => "Orang",
 	"Inch" => "Inch",
 	"Yard" => "Yard",
@@ -479,6 +485,7 @@ define("SEBUTAN_UKURAN", serialize(array(
 	"Pergi Pulang" => "Pergi Pulang",
 	"Putaran" => "Putaran",
 )));
+
 
 //--- End Referensi Toko Warga
 

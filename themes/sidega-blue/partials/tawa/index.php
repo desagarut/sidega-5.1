@@ -41,9 +41,8 @@
       <div class="member-img"> <img src="<?= base_url("$this->theme_folder/$this->theme/assets/img/transport.png" ) ?>" class="img-fluid" alt="" style="width:100%; height:225px"> </div>
       <div class="member-info" style="background-color:#B7FFDB">
         <h4> <strong style="color:#C00">TAWA</strong>: TRANSPORTASI WARGA </h4>
-        <p class="text-center"><strong>adalah </strong> wadah bagi <strong>UMKM</strong> (Usaha Masyarakat Kecil Menengah) di wilayah <strong>
-          <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>
-          </strong>, yang dikembangkan untuk membantu meningkatkan pertumbuhan ekonomi masyarakat desa.</p>
+        <p class="text-center"><strong>adalah </strong> wadah bagi masyarakat <strong><?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?></strong>, yang bertujuan untuk fasilitasi seluruh aktivitas warga, baik warga desa atau pendatang yang ingin melakukan perjalanan, <br/>
+        selain itu melalui aplikasi ini dapat memberikan peluang bagi masyarakat untuk meningkatkan penghasilan keluarga serta sebagai salah satu upaya dalam mengurangi angka pengangguran di desa, dengan demikian diharapkan dapat membantu meningkatkan pertumbuhan ekonomi masyarakat <strong><?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?></strong>.</p>
         <!--<a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20desa.%20Apakah%20produknya%20masih%20tersedia%3F" target="_blank" title="pesan"><button class="btn btn-success"><i class="icofont-whatsapp"></i> Pesan</button></a>
             
             <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Produk"><button class="btn btn-primary"><i class="icofont-info"></i> Produk</button></a>--> 
@@ -61,29 +60,24 @@
       </div>
       <div class="member-info">
         <h4 style="color:#C00">
-        <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan">
+        <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Detail Layanan <?= $data['nama'] ?>">
         <?= $data['nama'] ?>
         </a>
         </h4>
-        <span style="color:#F60"><i class="icofont-user"></i>
-        <strong><?= $data['nama_pengelola']?></strong>
-		    <span style="color:#03F"><i class="icofont-long-drive"></i>
-        <?= $data['jenis_usaha'] ?>
-        </span> 
-        <span style="color:#63F"><i class="icofont-map-pins"></i> Area
-        <?= $data['area']?>
-        </span> 
-        <span style="color:#066"><i class="icofont-gift" ></i>
-        <?= $data['kelompok_usaha']?>
-        </span> 
-        <span style="color:#F09"><i class="icofont-location-pin"></i>
-        <?= $data['lokasi'] ?>
-        </span> <br/>
-        <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20<?= $data['nama'] ?>%20masih%20buka%3F%" target="_blank" title="pesan">
-        <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
-        </a> <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan">
-        <button class="btn btn-primary"><i class="icofont-info"></i> Layanan</button>
-        </a> </div>
+        <p class="text-left member-info-detail">
+          <span style="color:darkslateblue"><i class="icofont-user" style="color:darkorange"></i><strong> Nama :</strong> <?= $data['nama_pengelola']?></span>
+          <span style="color:darkslateblue"><i class="icofont-long-drive" style="color:#03F"></i><strong> Kategori :</strong> <?= $data['jenis_usaha'] ?></span> 
+          <span style="color:darkslateblue"><i class="icofont-gift" style="color:#066"></i><strong> Usaha :</strong> <?= $data['kelompok_usaha']?></span> 
+          <span style="color:darkslateblue"><i class="icofont-map-pins" style="color:#63F"></i><strong> Layanan :</strong> <?= $data['area']?></span> 
+          <span style="color:darkslateblue"><i class="icofont-map-pins" style="color:#63F"></i><strong> Tujuan :</strong> <?= $data['trayek']?></span> 
+          <span style="color:darkslateblue"><i class="icofont-location-pin" style="color:#F09"></i><strong> Lokasi : </strong> <?= $data['lokasi'] ?></span> <br/>
+        </p>
+          <a href="https://wa.me/+62<?= $data['no_hp_toko'] ?>?text=Assalamu'alaikum%2C%20halo%20saya%20tertarik%20dengan%20produk%20anda%20yang%20ditawarkan%20di%20website%20<?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>.%20Apakah%20<?= $data['nama'] ?>%20masih%20buka%3F%" target="_blank" title="pesan">
+          <button class="btn btn-success"><i class="icofont-whatsapp"></i> Hubungi</button>
+          </a> <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan">
+          <button class="btn btn-primary"><i class="icofont-info"></i> Layanan</button>
+          </a> 
+        </div>
     </div>
   </div>
   <?php endif ?>

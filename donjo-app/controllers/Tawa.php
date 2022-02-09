@@ -226,6 +226,9 @@ class Tawa extends Admin_Controller {
 			$data['gallery'] = $this->tawa_model->get_usaha($id);
 			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
 			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
+			$data['jenis_kendaraan'] = $this->referensi_model->list_ref(JENIS_KENDARAAN);
+			$data['bahan_bakar'] = $this->referensi_model->list_ref(BAHAN_BAKAR);
+			$data['area'] = $this->referensi_model->list_ref(AREA_LAYANAN);
 			$data['form_action'] = site_url("tawa/update_layanan/$gallery/$id");
 		}
 		else
@@ -233,6 +236,9 @@ class Tawa extends Admin_Controller {
 			$data['gallery'] = null;
 			$data['sebutan_biaya'] = $this->referensi_model->list_ref(SEBUTAN_BIAYA);
 			$data['sebutan_ukuran'] = $this->referensi_model->list_ref(SEBUTAN_UKURAN);
+			$data['jenis_kendaraan'] = $this->referensi_model->list_ref(JENIS_KENDARAAN);
+			$data['bahan_bakar'] = $this->referensi_model->list_ref(BAHAN_BAKAR);
+			$data['area'] = $this->referensi_model->list_ref(AREA_LAYANAN);
 			$data['form_action'] = site_url("tawa/insert_layanan/$gallery");
 		}
 		
