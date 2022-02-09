@@ -61,11 +61,13 @@
       </div>
       <div class="member-info">
         <h4 style="color:#C00">
-          <?= $data['nama'] ?>
+        <a href="<?= site_url('first/tawa_layanan/'.$data['id']) ?>"  title="Layanan">
+        <?= $data['nama'] ?>
+        </a>
         </h4>
         <span style="color:#F60"><i class="icofont-user"></i>
         <strong><?= $data['nama_pengelola']?></strong>
-		<span style="color:#03F"><i class="icofont-long-drive"></i>
+		    <span style="color:#03F"><i class="icofont-long-drive"></i>
         <?= $data['jenis_usaha'] ?>
         </span> 
         <span style="color:#63F"><i class="icofont-map-pins"></i> Area
