@@ -1,11 +1,11 @@
 /*
- * File ini berisi CSS ubahan desa untuk tampilan siteman
- * Letakkan file ini di: desa/css/siteman.css
+ * File ini berisi CSS ubahan deskel untuk tampilan sidega_in
+ * Letakkan file ini di: deskel/css/sidega_in.css
 */
 
 /* Sebagai contoh:
- * - Perubahan css di bawah memungkinkan penggunaan gambar untuk latar belakang halaman siteman.
- *   Gambar yang digunakan harus ditempatkan di desa/css/images/img1.jpg
+ * - Perubahan css di bawah memungkinkan penggunaan gambar untuk latar belakang halaman sidega_in.
+ *   Gambar yang digunakan harus ditempatkan di deskel/css/images/img1.jpg
  *
 */
 body.login{

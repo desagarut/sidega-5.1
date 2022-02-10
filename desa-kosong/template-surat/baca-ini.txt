@@ -1,9 +1,9 @@
 *******************************
-Folder: desa/template-surat/
+Folder: deskel/template-surat/
 *******************************
 
 Folder ini tempat menyimpan semua surat cetak yang telah disesuaikan
-dengan kebutuhan desa.
+dengan kebutuhan deskel.
 
 Semua komponen surat disimpan bersama-sama dalam sub-folder yang namanya sama
 dengan URL surat (misalnya surat_ket_pindah_penduduk).

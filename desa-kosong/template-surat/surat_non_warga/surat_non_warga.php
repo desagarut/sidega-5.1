@@ -131,10 +131,10 @@
 									<input  id="alamat_usaha" class="form-control input-sm required" type="text" placeholder="Alamat Usaha" name="alamat_usaha">
 								</div>
 							</div>
-							<?php include("donjo-app/views/surat/form/_pamong.php"); ?>
+							<?php include("../../../deskel/template-surat/surat_non_warga/sidega-app/views/surat/form/_pamong.php"); ?>
 						</form>
 					</div>
-					<?php include("donjo-app/views/surat/form/tombol_cetak.php"); ?>
+					<?php include("../../../deskel/template-surat/surat_non_warga/sidega-app/views/surat/form/tombol_cetak.php"); ?>
 				</div>
 			</div>
 		</div>

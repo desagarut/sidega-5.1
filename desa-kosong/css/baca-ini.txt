@@ -1,9 +1,9 @@
 *******************************
-Folder: desa/css
+Folder: deskel/css
 *******************************
 
 Folder ini tempat menyimpan semua perubahan stylesheets/css dan image yang dilakukan
-desa untuk mengubah penampilan aplikasi SID web maupun modul administrasi.
+deskel untuk mengubah penampilan aplikasi SIDeGa web maupun modul administrasi.
 
 Styles/css yang ada di folder ini akan menggantikan css yang sama di file css
-asli SID.
+asli SIDeGa.

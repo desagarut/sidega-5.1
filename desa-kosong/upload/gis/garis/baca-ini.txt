@@ -1,5 +1,5 @@
 *******************************
-Folder: desa/upload/gis/garis
+Folder: deskel/upload/gis/garis
 *******************************
 
 Folder ini tempat menyimpan semua gambar yang diunggah sebagai foto garis.
