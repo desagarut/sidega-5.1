@@ -21,87 +21,116 @@
       </li>
     </ol>
   </section>
+
   <section class="content" id="maincontent">
   <form id="mainform" name="mainform" action="" method="post">
-  <div class="row">
-  <div class="col-md-12">
-  <div class="box box-info">
-  <div class="box-header with-border"> <a href="<?= site_url("toko_warga/form_produk/$gallery")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Produk"> <i class="fa fa-plus"></i> Tambah Produk </a>
-    <?php if ($this->CI->cek_hak_akses('h')): ?>
-    <a href="#confirm-delete" title="Hapus Data" onclick="deleteAllBox('mainform', '<?= site_url("toko_warga/delete_all_produk/$gallery")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a>
-    <?php endif; ?>
-    <a href="<?= site_url("toko_warga")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Kembali Ke Daftar Album"> <i class="fa fa-arrow-circle-left "></i>Kembali ke Daftar Toko </a> </div>
-  <div class="row">
-    <?php $this->load->view($folder_themes .'/toko_warga/peta_view.php') ?>
-  </div>
-  <div class="box-body collapsed-box">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="table-responsive">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="box box-warning">
+                <div class="box-header with-border"> <a href="<?= site_url("toko_warga/form_produk/$gallery")?>" class="btn btn-social btn-box btn-success btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Tambah Produk"> <i class="fa fa-plus"></i> Tambah Produk </a>
+                <?php if ($this->CI->cek_hak_akses('h')): ?>
+                <a href="#confirm-delete" title="Hapus Data" onclick="deleteAllBox('mainform', '<?= site_url("toko_warga/delete_all_produk/$gallery")?>')" class="btn btn-social btn-box btn-danger btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block hapus-terpilih"><i class='fa fa-trash-o'></i> Hapus Data Terpilih</a>
+                <?php endif; ?>
+                <a href="<?= site_url("toko_warga")?>" class="btn btn-social btn-box btn-info btn-sm btn-sm visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"  title="Kembali Ke Daftar Album"> <i class="fa fa-arrow-circle-left "></i>Kembali ke Daftar Toko </a> </div>
+              </div>
+              <div class="row">
+                <?php $this->load->view($folder_themes .'/toko_warga/peta_view.php') ?>
+              </div>
+          </div>
+      </div>
+  
+  
+<div class="box box-warning collapsed-box">
+    <div class="box-header"> <i class="fa fa-calendar"></i>
+      <h3 class="box-title"><strong>INFO UMKM</strong></h3>
+      <!-- tools box -->
+      <div class="pull-right box-tools"> 
+        <!-- button with a dropdown -->
+        <div class="btn-group"> </div>
+        <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+        <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i> </button>
+      </div>
+      <!-- /. tools --> 
+    </div>
+
+    <div class="box-body no-padding"> 
+          <!--The calendar -->
+          <div class="col-sm-12">
+            <div class="table-responsive">
           <table class="table table-bordered table-striped dataTable table-hover">
             <thead class="bg-gray disabled color-palette">
-            <h4>INFO UMKM</h4>
             </thead>
             <tbody>
             <tr>
                 <td width="8%">Nama Toko</td><td width="17%"> <?=$sub['nama']?></td>
                 <td width="8%">Nomor Telepon</td><td width="17%"> 0<?=$sub['no_hp_toko']?></td>
                 <td width="8%">Jumlah Karyawan</td><td width="17%"> <?=$sub['jumlah_karyawan']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">Kepemilikan Tempat Usaha</td><td width="17%"> <?=$sub['kepemilikan_tempat_usaha']?></td>
                 <td width="8%">Lokasi Usaha</td><td width="17%"> <?=$sub['lokasi']?></td>
                 <td width="8%">Keterangan Lokasi Usaha</td><td width="17%"> <?=$sub['keterangan_lokasi']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">Sumber Modal</td><td width="17%"> <?=$sub['sumber_modal']?></td>
                 <td width="8%">Taksiran Modal/Aset</td><td width="17%"> <?=$sub['taksiran_modal']?></td>
                 <td width="8%">Taksiran Omset</td><td width="17%"> <?=$sub['taksiran_omset']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">Kelompok Usaha Perdagangan</td><td width="17%"> <?=$sub['kelompok_usaha_perdagangan']?></td>
                 <td width="8%">Sarana Berdagang</td><td width="17%"> <?=$sub['sarana_berdagang']?></td>
                 <td width="8%">Area/Kawasan Usaha</td><td width="17%"> <?=$sub['area_usaha']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">Kategori Toko</td><td width="17%"> <?=$sub['kategori_toko']?></td>
                 <td width="8%">Website</td><td width="17%"> <?=$sub['website']?></td>
                 <td width="8%">Facebook</td><td width="17%"> <?=$sub['fb']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">Instagram</td><td width="17%"> <?=$sub['ig']?></td>
                 <td width="8%">Channel Youtube</td><td width="17%"> <?=$sub['youtube']?></td>
                 <td width="8%">-</td><td width="17%"> <?=$sub['']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">SKDU</td><td width="17%"> <?=$sub['skdu']?></td>
                 <td width="8%">IUD</td><td width="17%"> <?=$sub['iud']?></td>
                 <td width="8%">NPWP</td><td width="17%"> <?=$sub['npwp']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">SITU</td><td width="17%"> <?=$sub['situ']?></td>
                 <td width="8%">SIUI</td><td width="17%"> <?=$sub['siui']?></td>
                 <td width="8%">SIP</td><td width="17%"> <?=$sub['sip']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">SIUP</td><td width="17%"> <?=$sub['siup']?></td>
                 <td width="8%">TDP</td><td width="17%"> <?=$sub['tdp']?></td>
                 <td width="8%">TDI</td><td width="17%"> <?=$sub['tdi']?></td>
-			</tr>
+			      </tr>
             <tr>
                 <td width="8%">IMB</td><td width="17%"> <?=$sub['imb']?></td>
                 <td width="8%">BPOM</td><td width="17%"> <?=$sub['bpom']?></td>
                 <td width="8%">HO</td><td width="17%"> <?=$sub['ho']?></td>
-			</tr>
+			      </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
+</div>
+
+<div class="box box-warning">
+    <div class="box-header with-border"><i class="fa fa-list"></i>
+      <h3 class="box-title"><strong>DETAIL PRODUK</strong></h3>
+      <!-- tools box -->
+    <div class="pull-right box-tools"> 
+      <!-- button with a dropdown -->
+    <div class="btn-group"> </div>
+      <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i> </button>
+      <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i> </button>
+    </div>
+      <!-- /. tools --> 
   </div>
-  <div class="box-header with-border">
-    <h3 class="box-title"><strong>DAFTAR PRODUK</strong></h3>
-  </div>
+
   <div class="box-body">
   <div class="row">
   <div class="col-sm-12">
@@ -240,6 +269,7 @@
 </div>
 </div>
 </div>
+
 </div>
 </div>
 </form>

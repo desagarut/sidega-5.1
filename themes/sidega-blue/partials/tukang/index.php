@@ -12,7 +12,7 @@
             <?php foreach($main as $data) : ?>
             <?php if(is_file(LOKASI_GALERI . "kecil_" . $data['gambar'])) : ?>
             <?php $link = site_url('first/tukang_layanan/'.$data['id']) ?>
-            <div class="portfolio-description"> <a class="archive__link" href="#"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>"> </a>
+            <div class="portfolio-description"> <a class="archive__link" href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>"> </a>
               <div class="portfolio-info">
                 <h3> <a class="" href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>">
                   <button class="btn btn-warning"><i class="ri-store-2-fill" style="color:#fff;"></i> UMKM:
@@ -57,12 +57,12 @@
   <?php $link = site_url('first/tukang_layanan/'.$data['id']) ?>
   <div class="col-lg-3 col-md-6 align-items-stretch owl-carousel portfolio-details-carousel">
     <div class="member" data-aos="fade-up">
-      <div class="member-img"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px">
+      <div class="member-img"><a class="" href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"> <img src="<?= AmbilGaleri($data['gambar'],'kecil') ?>" class="img-fluid" alt="<?= $data['nama'] ?>" style="width:100%; height:225px"></a>
           <div class="social"> <a href="https://youtube.com/channel/<?= $data['youtube'] ?>" target="_blank"><i class="icofont-youtube"></i></a> <a href="<?= $data['website'] ?>" target="_blank"><i class="icofont-globe"></i></a> <a href="https://facebook.com/<?= $data['fb'] ?>" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://instagram.com/<?= $data['ig'] ?>" target="_blank"><i class="icofont-instagram"></i></a> <a href="phone:<?= $data['no_hp'] ?>" target="_blank"><i class="icofont-phone"></i></a> </div>
       </div>
       <div class="member-info">
         <h4 style="color:#C00">
-          <?= $data['nama'] ?>
+          <a class="" href="<?= site_url('first/tukang_layanan/'.$data['id']) ?>"><?= $data['nama'] ?></a>
         </h4>
         <span style="color:#F60"><i class="icofont-user"></i>
         <strong><?= $data['nama_pengelola']?></strong>
