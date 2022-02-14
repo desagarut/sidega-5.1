@@ -91,11 +91,11 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
   <div class="container d-md-flex py-4">
     <div class="mr-md-auto text-center text-md-left">
-      <div><strong><a href="https://desagarut.net" target="_blank">SIDeSCi
+      <div><strong><a href="https://desagarut.net" target="_blank">SIDeGa
         <?= AmbilVersi()?> | Tema SIDeGa Blue <?= THEME_VERSION ?>
-        </span></strong></a> | By <a href="https://desagarut.net/"> Komunitas Desa Garut</a></div>
-      <div class="copyright"><?= ucfirst($this->setting->sebutan_kecamatan).' '.ucwords($desa['nama_kecamatan']) ?> &copy;
-        <?= date('Y') ?> | Diberdayakan Oleh Rakhmat Alamsyah
+        </span></strong></a> | By <a href="https://desagarut.id/"> Komunitas Desa Garut</a></div>
+        <div class="copyright"><?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?> <?= ucfirst($this->setting->sebutan_kecamatan).' '.ucwords($desa['nama_kecamatan']) ?> &copy;
+        <?= date('Y') ?> | Diberdayakan Oleh Desa Garut
       </div>
     </div>
     <br />
