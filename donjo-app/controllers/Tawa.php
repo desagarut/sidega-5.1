@@ -22,7 +22,7 @@ class Tawa extends Admin_Controller {
 	{
 		unset($_SESSION['cari']);
 		unset($_SESSION['filter']);
-		redirect('index');
+		redirect('tawa');
 	}
 
 	public function index($p=1, $o=0)
