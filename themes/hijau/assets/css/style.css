@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   visibility: hidden;
   padding: 10px 0;
-  background: rgb(194, 245, 127);;
+  background: rgb(219, 253, 175);;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-top: 2px solid rgb(3, 90, 7);
@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   font-weight: 500;
   text-transform: none;
-  color: rgb(155, 153, 153);
+  color: rgb(119, 119, 119);
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
