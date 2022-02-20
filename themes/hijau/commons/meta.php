@@ -1,8 +1,6 @@
 <?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-
-
-<?php defined('THEME_VERSION') or define('THEME_VERSION', 'V4.4') ?>
+<?php defined('THEME_VERSION') or define('THEME_VERSION', 'V4.5') ?>
 
 <?php $desa_title = trim(ucwords($this->setting->sebutan_desa) . ' ' . $desa['nama_desa'].' '.$this->setting->sebutan_kecamatan_singkat . ' ' . $desa['nama_kecamatan'].' '.$this->setting->sebutan_kabupaten_singkat . ' ' . $desa['nama_kabupaten']); ?>
 
@@ -22,7 +20,7 @@
 
     <meta name="theme:version" content="<?= THEME_VERSION ?>" />
 
-    <meta name="theme-color" content="#007bff" />
+    <meta name="theme-color" content="#00880b" />
 
     <meta name="keywords" content="sidega, SIDEGA, SIDeGa, sistem informasi desa garut, web, blog, informasi, website, tema sidega-blue, desa garut, kelurahan garut, kecamatan garut, kabupaten garut, Jawa Barat, indonesia"/>
 
@@ -31,9 +29,6 @@
     <meta property="og:type" content="article"/>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-
 
 
 <?php if(isset($single_artikel)): ?>
