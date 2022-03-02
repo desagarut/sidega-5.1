@@ -9,7 +9,6 @@
 </head>
 
 
-
 <body>
 
 	<?php $this->load->view($folder_themes .'/commons/header') ?>

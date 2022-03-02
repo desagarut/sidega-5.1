@@ -1,7 +1,6 @@
 <?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <!-- ======= Header ======= -->
-
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
   <img src="<?= gambar_desa($desa['logo']) ?>" alt="Logo <?= ucfirst($this->setting->sebutan_desa).' '.ucwords($desa['nama_desa']) ?>" class="img-fluid" width="35px" height="35px">&nbsp;&nbsp;

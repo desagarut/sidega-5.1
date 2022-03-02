@@ -99,7 +99,7 @@
       </div>
     </div>
     <br />
-    <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0 navbar-dark bg-primary navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom" style="color:#007bff; opacity:0.7">
+    <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0 navbar-dark bg-success navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom" style="color:#007bff; opacity:0.7">
     <ul class="navbar-nav nav-justified w-100">
       <li class="nav-item"><small> <a href="<?= site_url('first') ?>" class="nav-link" title="Home"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;">
         <path d="M3 13h1v7c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-7h1a1 1 0 0 0 .707-1.707l-9-9a.999.999 0 0 0-1.414 0l-9 9A1 1 0 0 0 3 13zm9-8.586 6 6V15l.001 5H6v-9.585l6-6.001z"></path>
