@@ -1,6 +1,8 @@
 <?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-<div class="portfolio-details" data-aos="fade-left">
+<div class="container">
+
+<div class="portfolio-details" style="padding-top: 80px;">
   <?php foreach ($teks_berjalan AS $teks): ?>
   <div class="row">
     <div class="col-md-12">
@@ -19,4 +21,5 @@
     </div>
   </div>
   <?php endforeach; ?>
+</div>
 </div>

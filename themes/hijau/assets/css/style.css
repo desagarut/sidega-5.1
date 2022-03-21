@@ -1505,7 +1505,7 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 .portfolio-details .portfolio-details-container {
@@ -1516,7 +1516,7 @@ section {
   position: static;
   z-index: 1;
 }
-/*
+
 .portfolio-details .portfolio-details-carousel .owl-nav, .portfolio-details .portfolio-details-carousel .owl-dots {
   margin-top: 5px;
   text-align: center;
@@ -1532,8 +1532,8 @@ section {
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #0098ff !important;
-}*/
+  background-color: #0aad49 !important;
+}
 
 .portfolio-details .portfolio-info {
   padding: 20px 20px 20px 20px;
