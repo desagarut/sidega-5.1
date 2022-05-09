@@ -12,7 +12,7 @@
             <?php foreach ($slider_gambar['gambar'] as $gambar) : ?>
             <?php $file_gambar = $slider_gambar['lokasi'] . 'sedang_' . $gambar['gambar']; ?>
             <?php if(is_file($file_gambar)) : ?>
-            <div class="portfolio-description"> <a class="archive__link" href="<?='artikel/'.buat_slug($gambar); ?>"> <img src="<?php echo base_url().$slider_gambar['lokasi'].'sedang_'.$gambar['gambar']?>" class="entry-img" alt="<?= $gambar['judul'] ?>"> </a>
+            <div class="portfolio-description img-fluid"> <a class="archive__link" href="<?='artikel/'.buat_slug($gambar); ?>"> <img src="<?php echo base_url().$slider_gambar['lokasi'].'sedang_'.$gambar['gambar']?>" class="entry-image" alt="<?= $gambar['judul'] ?>"> </a>
               <div class="portfolio-info">
                 <h3> <a class="archive__link" href="<?='artikel/'.buat_slug($gambar); ?>">
                   <?= $gambar['judul'] ?>

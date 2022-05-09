@@ -42,7 +42,7 @@ function initMap() {
 }
 </style>
 
-<div class="col-sm-12">
+<div class="col-sm-12" style="padding-top:20px">
   <div id="map_penduduk"></div>
   <div class="col-lg-12 col-md-4 mt-1">
     <div class="icon-box">

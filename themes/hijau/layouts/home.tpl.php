@@ -32,3 +32,10 @@
 
 <?php // if ($this->setting->covid_data) $this->load->view($folder_themes."/partials/covid.php")?>
 <?php // if ($this->setting->covid_desa) $this->load->view($folder_themes."/partials/covid_local.php");?>
+<?php //$this->load->view($folder_themes .'/partials/news_list') ?>
+<?php //$this->load->view($folder_themes .'/partials/testimonials') ?>
+<?php //$this->load->view($folder_themes .'/partials/client') ?>
+<?php //$this->load->view($folder_themes .'/partials/pricing') ?>
+<?php //$this->load->view($folder_themes .'/partials/faq') ?>
+<?php //$this->load->view($folder_themes .'/partials/running_text') ?>
+<?php // $this->load->view($folder_themes .'/partials/contact') ?>

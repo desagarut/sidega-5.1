@@ -643,6 +643,117 @@ section {
     display: inline-block;
   }
 }
+/*--------------------------------------------------------------
+# Breadcrumbs2
+--------------------------------------------------------------*/
+.breadcrumbs2 {
+  padding: 15px 0;
+  background: none;
+  min-height: 40px;
+  margin-top: 78px;
+}
+
+.breadcrumbs2 h2 {
+  font-size: 26px;
+  font-weight: 300;
+  color:#666;
+}
+
+.breadcrumbs2 ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #666;
+}
+
+.breadcrumbs2 ol a {
+  color: #666;
+}
+
+.breadcrumbs2 ol li + li {
+  padding-left: 10px;
+}
+
+.breadcrumbs2 ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #666;
+  content: "|";
+}
+
+@media (max-width: 991px) {
+  .breadcrumbs2 {
+    margin-top: 58px;
+  }
+  .breadcrumbs2 .d-flex {
+    display: block !important;
+  }
+  .breadcrumbs2 ol {
+    display: block;
+  }
+  .breadcrumbs2 ol li {
+    display: inline-block;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Running Text
+--------------------------------------------------------------*/
+.runningtext {
+  padding: 15px 0;
+  background: none;
+  min-height: 40px;
+  margin-top: 68px;
+}
+
+.runningtext h2 {
+  font-size: 26px;
+  font-weight: 300;
+  color:#666;
+}
+
+.runningtext ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #666;
+}
+
+.runningtext ol a {
+  color: #666;
+}
+
+.runningtext ol li + li {
+  padding-left: 10px;
+}
+
+.runningtext ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #666;
+  content: "|";
+}
+
+@media (max-width: 991px) {
+  .runningtext {
+    margin-top: 58px;
+  }
+  .runningtext .d-flex {
+    display: block !important;
+  }
+  .runningtext ol {
+    display: block;
+  }
+  .runningtext ol li {
+    display: inline-block;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Services
@@ -1505,7 +1616,7 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 .portfolio-details {
-  padding: 2px 0;
+  padding: 20px 0;
 }
 
 .portfolio-details .portfolio-details-container {
@@ -1516,7 +1627,7 @@ section {
   position: static;
   z-index: 1;
 }
-
+/*
 .portfolio-details .portfolio-details-carousel .owl-nav, .portfolio-details .portfolio-details-carousel .owl-dots {
   margin-top: 5px;
   text-align: center;
@@ -1532,8 +1643,8 @@ section {
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #0aad49 !important;
-}
+  background-color: #0098ff !important;
+}*/
 
 .portfolio-details .portfolio-info {
   padding: 20px 20px 20px 20px;
