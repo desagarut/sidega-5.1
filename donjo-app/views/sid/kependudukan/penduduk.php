@@ -1,22 +1,27 @@
 <script>
-	$( function() {
-		$( "#cari" ).autocomplete( {
-			source: function( request, response ) {
-				$.ajax( {
-					type: "POST",
-					url: '<?= site_url("penduduk/autocomplete"); ?>',
-					dataType: "json",
-					data: {
-						cari: request.term
-					},
-					success: function( data ) {
-						response( JSON.parse( data ));
-					}
-				} );
-			},
-			minLength: 2,
-		} );
+$(document).ready(function()
+{
+	$('#cari').focus();
+});
+
+$( function() {
+	$( "#cari" ).autocomplete( {
+		source: function( request, response ) {
+			$.ajax( {
+				type: "POST",
+				url: '<?= site_url("penduduk/autocomplete"); ?>',
+				dataType: "json",
+				data: {
+					cari: request.term
+				},
+				success: function( data ) {
+					response( JSON.parse( data ));
+				}
+			} );
+		},
+		minLength: 2,
 	} );
+} );
 </script>
 
 <style>
@@ -137,7 +142,7 @@
 												<th>Pendidikan</th>
 												<th >Pekerjaan</th>
 												<th>Perkawinan</th>
-												<!--<th><? //= url_order($o, "{$this->controller}/{$func}/$p", 9, 'Tgl Terdaftar'); ?></th>-->
+												<th><?= url_order($o, "{$this->controller}/{$func}/$p", 11, 'Di Input Oleh'); ?></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -168,8 +173,8 @@
 																		<?php endif; ?>
                                                                         </li>
                                                                         <li>
-                                                                            <!--<a href="<?= site_url("penduduk/ajax_penduduk_maps/$p/$o/$data[id]/0"); ?>" data-remote="false" data-toggle="modal" data-target="#modalBox" title="Lokasi <?= $data['nama']?> " data-title="Lokasi <?= $data['nama']?> - <?= strtoupper($data['dusun']); ?>, RW <?= $data['rw']; ?> / RT <?= $data['rt']; ?>" class="btn btn-social btn-box btn-block btn-sm"><i class='fa fa-map-marker'></i> Lokasi Tempat Tinggal</a>-->
-                                                                            <a href="<?= site_url("penduduk/ajax_penduduk_maps/$p/$o/$data[id]/0"); ?>" title="Lokasi <?= $data['nama']?> - <?= strtoupper($data['dusun']); ?>, RW <?= $data['rw']; ?> / RT <?= $data['rt']; ?>" class="btn btn-social btn-box btn-block btn-sm"><i class='fa fa-map-marker'></i> Lokasi Tempat Tinggal</a>
+                                                                            <a href="<?= site_url("penduduk/ajax_penduduk_maps_google/$p/$o/$data[id]/0"); ?>" data-remote="false" data-toggle="modal" data-target="#modalBox" title="Lokasi <?= $data['nama']?> " data-title="Lokasi <?= $data['nama']?> - <?= strtoupper($data['dusun']); ?>, RW <?= $data['rw']; ?> / RT <?= $data['rt']; ?>" class="btn btn-social btn-box btn-block btn-sm"><i class='fa fa-map-marker'></i> Lokasi Tempat Tinggal</a>
+                                                                            <!--<a href="<?= site_url("penduduk/ajax_penduduk_maps_google/$p/$o/$data[id]/0"); ?>" title="Lokasi <?= $data['nama']?> - <?= strtoupper($data['dusun']); ?>, RW <?= $data['rw']; ?> / RT <?= $data['rt']; ?>" class="btn btn-social btn-box btn-block btn-sm"><i class='fa fa-map-marker'></i> Lokasi Tempat Tinggal</a>-->
                                                                         </li>
 																		<li>
                                                                         <?php if ($this->CI->cek_hak_akses('h')): ?>
@@ -197,7 +202,9 @@
 														<td class="padat">
 															<div class="user-panel">
 																<div class="image2">
-																	<img src="<?= ! empty($data['foto']) ? AmbilFoto($data['foto']) : base_url('assets/files/user_pict/kuser.png') ?>" style="width:40px; height:45px" class="img-circle" alt="Foto Penduduk"/>
+																	<img class="img-circle" alt="Foto Penduduk"
+																		src="<?= AmbilFoto($data['foto'], '', $data['id_sex']) ?>"
+																	/>
 																</div>
 															</div>
 														</td>
@@ -226,7 +233,7 @@
 														<td><?= $data['pendidikan']; ?></td>
 														<td><?= $data['pekerjaan']; ?></td>
 														<td nowrap><?= $data['kawin']; ?></td>
-														<!--<td><?= tgl_indo($data['created_at']); ?></td>-->
+														<td><?= $data['nama_pendaftar']; ?><br/><?= $data['created_at']; ?></td>
 													</tr>
 												<?php endforeach; ?>
 											<?php else: ?>
@@ -246,7 +253,10 @@
 		</div>
 	</section>
 </div>
+
 <?php $this->load->view('global/confirm_delete'); ?>
+<?php $this->load->view('global/konfirmasi'); ?>
+
 <div class='modal fade' id='confirm-status' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 	<div class='modal-dialog'>
 		<div class='modal-content'>

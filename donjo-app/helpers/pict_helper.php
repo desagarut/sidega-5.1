@@ -1,6 +1,7 @@
 <?php
 
-define("FOTO_DEFAULT", base_url() . 'assets/files/user_pict/kuser.png');
+define("FOTO_DEFAULT_PRIA", base_url() . 'assets/files/user_pict/kuser.png');
+define("FOTO_DEFAULT_WANITA", base_url() . 'assets/files/user_pict/wuser.png');
 
 define ('MIME_TYPE_SIMBOL', serialize (array(
 	'image/png',  'image/x-png' )));
@@ -64,6 +65,8 @@ define ('EXT_TOKO_PRODUK', serialize(array(
 	".jpg", ".jpeg", ".png", "application/x-download",	"application/pdf",
 )));
 
+// include 2D barcode class
+require_once 'vendor/html2pdf/vendor/tecnickcom/tcpdf/tcpdf_barcodes_2d_include.php';
 
 /**
 * Tambahkan suffix unik ke nama file
@@ -98,17 +101,30 @@ function tambahSuffixUniqueKeNamaFile($namaFile, $urlEncode = TRUE, $delimiter =
 	return $namaFileUnik;
 }
 
-function AmbilFoto($foto, $ukuran="kecil_")
+function AmbilFoto($foto, $ukuran = "kecil_", $sex = '1')
 {
-	if (empty($foto) OR $foto == 'kuser.png')
-		$file_foto = FOTO_DEFAULT;
-	else
+	$sex = $sex ?: 1;
+	$file_foto = Foto_Default($foto, $sex);
+
+	if ($foto == $file_foto)
 	{
 		$ukuran = ($ukuran == "kecil_") ? "kecil_" : "";
 		$file_foto = base_url() . LOKASI_USER_PICT . $ukuran . $foto;
-		if (!file_exists(FCPATH . LOKASI_USER_PICT . $ukuran . $foto)) $file_foto = FOTO_DEFAULT;
+		
+		if ( ! file_exists(FCPATH . LOKASI_USER_PICT . $ukuran . $foto))
+		{
+			$file_foto = Foto_Default(null, $sex);
+		}
 	}
+
 	return $file_foto;
+}
+
+function Foto_Default($foto, $sex = 1)
+{
+	if ( ! in_array($foto, ['kuser.png', 'wuser.png']) && ! empty($foto)) return $foto;
+	if (($foto == 'kuser.png') || $sex == 1) return FOTO_DEFAULT_PRIA;
+	if (($foto == 'wuser.png') || $sex == 2) return FOTO_DEFAULT_WANITA;
 }
 
 function UploadGambarWidget($nama_file, $lokasi_file, $old_gambar)
@@ -684,6 +700,7 @@ function UploadSimbol($fupload_name)
 	move_uploaded_file($_FILES["simbol"]["tmp_name"], $vfile_upload);
 }
 
+// Upload umum. Parameter lokasi dan file di $_FILES
 function AmbilDokumen($dokumen)
 {
 	$file_dokumen = base_url() . LOKASI_DOKUMEN . $dokumen;
@@ -926,6 +943,41 @@ function UploadTokoProduk2($fupload_name)
 
 	//unlink($vfile_upload);
 	return true;
+}
+
+function upload_foto_penduduk($id = 0, $nik)
+{
+	$foto = $_POST['foto'];
+	$old_foto = $_POST['old_foto'];
+	$nama_file = ($nik ?: '0') . '-' . $id;
+
+	if ($_FILES['foto']['tmp_name'])
+	{
+		$nama_file = $nama_file . get_extension($_FILES['foto']['name']);
+		UploadFoto($nama_file, $old_foto);
+	}
+	elseif ($foto)
+	{
+		$nama_file = $nama_file . '.png';
+		$foto = str_replace('data:image/png;base64,', '', $foto);
+		$foto = base64_decode($foto, true);
+
+		if ($old_foto != '')
+		{
+			// Hapus old_foto
+			unlink(LOKASI_USER_PICT . $old_foto);
+			unlink(LOKASI_USER_PICT . 'kecil_' . $old_foto);
+		}
+
+		file_put_contents(LOKASI_USER_PICT . $nama_file, $foto);
+		file_put_contents(LOKASI_USER_PICT . 'kecil_' . $nama_file, $foto);
+	}
+	else
+	{
+		$nama_file = null;
+	}
+
+	return $nama_file;
 }
 
 

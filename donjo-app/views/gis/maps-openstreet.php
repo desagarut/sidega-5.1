@@ -12,7 +12,7 @@
 			var posisi = wilayah_desa[0][0];
 			var zoom = <?=$desa['zoom'] ?: 10?>;
 		<?php else: ?>
-			var posisi = [-1.8785136045360042,78.05561483728009];
+			var posisi = [-7.2025712,107.8852316];
 			var zoom   = 10;
 		<?php endif; ?>
 
@@ -69,7 +69,7 @@
 		cetakPeta(mymap);
 
     //Menambahkan Legenda Ke Peta
-    var legenda_desa = L.control({position: 'bottomright'});
+   /* var legenda_desa = L.control({position: 'bottomright'});
     var legenda_dusun = L.control({position: 'bottomright'});
     var legenda_rw = L.control({position: 'bottomright'});
     var legenda_rt = L.control({position: 'bottomright'});
@@ -103,7 +103,7 @@
         mymap.removeControl(legenda_rt);
       }
     });
-
+*/
     // Menampilkan OverLayer Area, Garis, Lokasi
     layerCustom = tampilkan_layer_area_garis_lokasi(mymap, '<?=addslashes(json_encode($area))?>', '<?=addslashes(json_encode($garis))?>', '<?=addslashes(json_encode($lokasi))?>', '<?= base_url().LOKASI_SIMBOL_LOKASI?>', '<?= base_url().LOKASI_FOTO_AREA?>', '<?= base_url().LOKASI_FOTO_GARIS?>', '<?= base_url().LOKASI_FOTO_LOKASI?>');
 
@@ -205,7 +205,7 @@
 					'<td style="padding-left:2px"><font size="2.5" style="bold">Nama : '+penduduk[x].nama+'</font> - '+penduduk[x].sex+
 					'<p>'+penduduk[x].umur+' Tahun '+penduduk[x].agama+'</p>'+
 					'<p>'+penduduk[x].alamat+'</p>'+
-					'<p><a href="<?=site_url("penduduk/detail/1/0/")?>'+penduduk[x].id+'" target="ajax-modalx" rel="content" header="Rincian Data '+penduduk[x].nama+'" >Data Rincian</a></p></td>'+
+					'<p><a href="<?=site_url("penduduk/detail/1/0/")?>'+penduduk[x].id+'" target="ajax-modalx" rel="content" header="Rincian Data '+penduduk[x].nama+'" >LIHAT DETAIL</a></p></td>'+
 					'</tr></table>';
 					//Menambahkan point ke marker
 					semua_marker.push(turf.point([Number(penduduk[x].lng), Number(penduduk[x].lat)], {content: content, style: point_style}));
