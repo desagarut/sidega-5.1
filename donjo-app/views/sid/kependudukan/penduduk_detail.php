@@ -36,9 +36,9 @@
             <div class="box-body box-profile">
               <div align="center">
                 <?php if ($penduduk['foto']): ?>
-                <img class="img-responsive img-circle" src="<?= AmbilFoto($penduduk['foto'])?>" alt="Foto Penduduk">
+                <img class="img-responsive img-circle" src="<?= AmbilFoto($penduduk['foto'], '', $penduduk['id_sex']) ?>" alt="Foto Penduduk">
                 <?php else: ?>
-                <img class="img-responsive img-circle" src="<?= base_url()?>assets/files/user_pict/kuser.png" alt="Foto Penduduk">
+                  <img class="img-responsive img-circle" alt="Foto Penduduk" src="<?= AmbilFoto($penduduk['foto'], '', $penduduk['id_sex']) ?>" />
                 <?php endif; ?>
                 <h3 class="profile-username text-center">
                   <?= strtoupper($penduduk['nama'])?>
