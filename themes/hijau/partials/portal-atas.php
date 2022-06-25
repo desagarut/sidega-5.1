@@ -1,4 +1,3 @@
-<!-- ======= Features Section ======= -->
 
 <section id="features" class="features" style="padding-top:-60px;">
   <div class="row" data-aos="fade-left">
